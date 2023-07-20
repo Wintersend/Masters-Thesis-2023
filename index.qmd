@@ -1,6 +1,6 @@
 ---
-title: "Title of your work"
-author: "Your Name"
+title: 2023 Master's Thesis
+author: Michael Corwin Getty
 
 execute:
   echo: false
@@ -14,66 +14,98 @@ bibliography: references.bib
 
 # Introduction
 
-This is a template repository for the Research Report for **Macroeconometrics**. Learn more about about developing online reports with **quarto** at [quarto.org](https://quarto.org/).
+A chief concern in many parts of the world today is an ongoing housing crisis. House prices have been skyrocketing and home ownership decreasing. Recently in the United States there have been a few observable trends as a possible cause behind this, increasing use of property as an investment vehicle, depressed wages, and high disparities in intergenerational wealth.
 
-## A Simple Example
+The purpose of this paper is to analyze what portion of the change in homeownership and expenses are a result of these events, and which are more long term trends tied to predictable causes such as inflation and changing demographics. In pursuit of this I will utilize a Blinder-Oaxca decomposition to identify the source of the changes in housing expenditure. Additionally, I will plot the change in the share of renters vs owners in income demographics over time. 
 
-This is a Quarto document in which we can cite the **bsvars** package by @wozniakBsvarsBayesianEstimation2022. Look for more info at [package CRAN website](https://cran.r-project.org/package=bsvars).
 
-Simply load the package by running
-```{r package load}
-library(bsvars)
-```
-
-The code below performs simple computations for sampling posterior draws of the impulse responses. The first line uploads the data from the package,another sets the seed for reproducible computations, and then the pipe `|>` is used to streamline the model specification, estimation including the first burn-in run to obtain convergence and finally, the computed impulse responses are saved in object `irf`.
-```{r estimate irf}
-#| message: false
-#| echo: true
-
-data(us_fiscal_lsuw)
-set.seed(123)
-us_fiscal_lsuw |>
-  specify_bsvar$new(p = 1) |>
-  estimate(S = 1000, show_progress = FALSE) |> 
-  estimate(S = 2000, show_progress = FALSE) |> 
-  compute_impulse_responses(horizon = 20) -> irf
-```
-
-The code above is visible as the **R** chunk contains the setting `#| echo: true`.
-
-@tbl-irf reports the posterior means of the gross domestic product response to an unanticipated tax increase by 1 pp.
 ```{r}
-#| label: tbl-irf
-#| tbl-cap: Impulse response of gdp to unanticipated tax increase by 1 pp. within two years
 
-irf_gdp_tax = matrix(apply(irf[3,1,1:9,],1, mean), nrow = 1)
-rownames(irf_gdp_tax) = "change in gdp [%]"
-colnames(irf_gdp_tax) = 0:8
-knitr::kable(irf_gdp_tax, digits = 3)
+#Load in packages to be used for future
+
+library(fredr)
+library(zoo)
+library(dplyr)
+library(coda)
+library(HDInterval)
+library(MASS)
+library(distributionsrd)
+library(arrayhelpers)
+#set key for accessing FRED data
+fredr_set_key("f1d6de070cd07cd6028872a3bc573657")
+
+#Load in some FRED data to start as a base analysis
+
+HAI = fredr(series_id = "FIXHAI")
+housepriceindex = fredr(series_id = "USSTHPI")
+
 ```
 
-@fig-irf presents the same reaction over the horizon of five years.
 ```{r}
-#| label: fig-irf
-#| fig-cap: Impulse response of gdp to unanticipated tax increase by 1 pp. within five years
 
-irf_median    = apply(irf[3,1,,],1, median)
-irf_hdi       = apply(irf[3,1,,],1, HDInterval::hdi, credMass = .68)
-plot(x = 0:20, y = irf_median, type = "l", bty = "n", 
-     xlab = "horizon", ylab = "change in gdp [%]",
-     ylim = range(irf_hdi))
-polygon(x = c(0:20, 20:0), y = c(irf_hdi[1,], irf_hdi[2,21:1]), col = "deepskyblue1", border = "deepskyblue1")
-lines(x = 0:20, y = irf_median, lwd = 2, col = "deepskyblue3")
+#function initialization 
+
+
+#data filtering
+clean_data = function(datax, filterp = 1){
+  
+  
+}
+
+#Set up function for graph by quantile
+set.seed(123456)
+datax = matrix(rnorm(10000, 0, 1), nrow=10)
+
+
+
+quants = 5
+i=1
+#tested, scales to any matrix data input, qunatile count, and auto resizes to fit
+
+#data input, quantiles, name of graph
+quant_graph = function(datax, quants, graph_name){
+  n = nrow(datax)
+  tiles = matrix(0,n,quants+1)
+  for(i in 1:n){
+  tiles[i,] = quantile(datax[i,], probs = seq(0,1, 1/quants))
+  }
+  m = ncol(tiles)-1
+  #maybe can adjust color pallete to have variable input
+  plotcol = colorRampPalette(c("red","blue"))(m+1)
+  plot(tiles[,1], type = "b", ylim = c(min(datax),max(datax)), xlab = "Time", ylab = "Value", main = graph_name, col = plotcol[1])
+  for (i in 1:m) {
+    lines(tiles[,i+1], type = "b", col = plotcol[i+1])
+  }
+  #return quantiles incase it is needed elsewhere
+  return(tiles)
+}
+
+#modified function for multiple trends over time, e.g. %rent vs homeowner
+#filterp
+# 1 = monthly
+# 2 = quarterly
+# 3 = yearly
+# 4 = decade
+trend_graph = function(datax, graph_name, filterp = 3, lower_bound = min(datax), upper_bound = max(datax)){
+  case_when(
+  filterp == 1 | datax$Date == as.yearmon(datax$Date),
+  filterp == 2 | datax$Date == as.yearqtr(datax$Date),
+  filterp == 3 | datax$Date == as.year(datax$Date)    
+  
+    )
+  m = ncol(datax)-1
+  #maybe can adjust color pallete to have variable input
+  plotcol = colorRampPalette(c("red","blue"))(m+1)
+  plot(tiles[,1], type = "b", ylim = c(lower_bound(datax),upper_bound), xlab = "Time", ylab = "Value", main = graph_name, col = plotcol[1])
+  for (i in 1:m) {
+    lines(tiles[,i+1], type = "b", col = plotcol[i+1])
+  }
+  
+}
+
+
 ```
 
-## Some Hints
-
-Have a look at how to work with **RStudio** and **GitHub** at: [How to use git and GitHub with R](https://rfortherestofus.com/2021/02/how-to-use-git-github-with-r/). 
-
-These are many different ways of how to work with references in **RStudio**: [Preview Citations](https://posit.co/blog/rstudio-1-4-preview-citations/).
-
-To make all the **R** code visible on the website change the settings in the preabmble of this document to:
-```
 execute:
   echo: true
 ```
