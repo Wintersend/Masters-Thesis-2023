@@ -24,55 +24,55 @@ dp3.2010 = read.csv("ACS Data/2010/DP03.csv")
 dp4.2010 = read.csv("ACS Data/2010/DP04.csv")
 dp5.2010 = read.csv("ACS Data/2010/DP05.csv")
 
-dp2.2011 = read.csv("ACS Data/2011/DP02.csv", check.names = FALSE)
-dp3.2011 = read.csv("ACS Data/2011/DP03.csv", check.names = FALSE)
-dp4.2011 = read.csv("ACS Data/2011/DP04.csv", check.names = FALSE)
-dp5.2011 = read.csv("ACS Data/2011/DP05.csv", check.names = FALSE)
+dp2.2011 = read.csv("ACS Data/2011/DP02.csv")
+dp3.2011 = read.csv("ACS Data/2011/DP03.csv")
+dp4.2011 = read.csv("ACS Data/2011/DP04.csv")
+dp5.2011 = read.csv("ACS Data/2011/DP05.csv")
 
-dp2.2012 = read.csv("ACS Data/2012/DP02.csv", check.names = FALSE)
-dp3.2012 = read.csv("ACS Data/2012/DP03.csv", check.names = FALSE)
-dp4.2012 = read.csv("ACS Data/2012/DP04.csv", check.names = FALSE)
-dp5.2012 = read.csv("ACS Data/2012/DP05.csv", check.names = FALSE)
+dp2.2012 = read.csv("ACS Data/2012/DP02.csv")
+dp3.2012 = read.csv("ACS Data/2012/DP03.csv")
+dp4.2012 = read.csv("ACS Data/2012/DP04.csv")
+dp5.2012 = read.csv("ACS Data/2012/DP05.csv")
 
-dp2.2013 = read.csv("ACS Data/2013/DP02.csv", check.names = FALSE)
-dp3.2013 = read.csv("ACS Data/2013/DP03.csv", check.names = FALSE)
-dp4.2013 = read.csv("ACS Data/2013/DP04.csv", check.names = FALSE)
-dp5.2013 = read.csv("ACS Data/2013/DP05.csv", check.names = FALSE)
+dp2.2013 = read.csv("ACS Data/2013/DP02.csv")
+dp3.2013 = read.csv("ACS Data/2013/DP03.csv")
+dp4.2013 = read.csv("ACS Data/2013/DP04.csv")
+dp5.2013 = read.csv("ACS Data/2013/DP05.csv")
 
-dp2.2014 = read.csv("ACS Data/2014/DP02.csv", check.names = FALSE)
-dp3.2014 = read.csv("ACS Data/2014/DP03.csv", check.names = FALSE)
-dp4.2014 = read.csv("ACS Data/2014/DP04.csv", check.names = FALSE)
-dp5.2014 = read.csv("ACS Data/2014/DP05.csv", check.names = FALSE)
+dp2.2014 = read.csv("ACS Data/2014/DP02.csv")
+dp3.2014 = read.csv("ACS Data/2014/DP03.csv")
+dp4.2014 = read.csv("ACS Data/2014/DP04.csv")
+dp5.2014 = read.csv("ACS Data/2014/DP05.csv")
 
-dp2.2015 = read.csv("ACS Data/2015/DP02.csv", check.names = FALSE)
-dp3.2015 = read.csv("ACS Data/2015/DP03.csv", check.names = FALSE)
-dp4.2015 = read.csv("ACS Data/2015/DP04.csv", check.names = FALSE)
-dp5.2015 = read.csv("ACS Data/2015/DP05.csv", check.names = FALSE)
+dp2.2015 = read.csv("ACS Data/2015/DP02.csv")
+dp3.2015 = read.csv("ACS Data/2015/DP03.csv")
+dp4.2015 = read.csv("ACS Data/2015/DP04.csv")
+dp5.2015 = read.csv("ACS Data/2015/DP05.csv")
 
-dp2.2016 = read.csv("ACS Data/2016/DP02.csv", check.names = FALSE)
-dp3.2016 = read.csv("ACS Data/2016/DP03.csv", check.names = FALSE)
-dp4.2016 = read.csv("ACS Data/2016/DP04.csv", check.names = FALSE)
-dp5.2016 = read.csv("ACS Data/2016/DP05.csv", check.names = FALSE)
+dp2.2016 = read.csv("ACS Data/2016/DP02.csv")
+dp3.2016 = read.csv("ACS Data/2016/DP03.csv")
+dp4.2016 = read.csv("ACS Data/2016/DP04.csv")
+dp5.2016 = read.csv("ACS Data/2016/DP05.csv")
 
-dp2.2017 = read.csv("ACS Data/2017/DP02.csv", check.names = FALSE)
-dp3.2017 = read.csv("ACS Data/2017/DP03.csv", check.names = FALSE)
-dp4.2017 = read.csv("ACS Data/2017/DP04.csv", check.names = FALSE)
-dp5.2017 = read.csv("ACS Data/2017/DP05.csv", check.names = FALSE)
+dp2.2017 = read.csv("ACS Data/2017/DP02.csv")
+dp3.2017 = read.csv("ACS Data/2017/DP03.csv")
+dp4.2017 = read.csv("ACS Data/2017/DP04.csv")
+dp5.2017 = read.csv("ACS Data/2017/DP05.csv")
 
-dp2.2018 = read.csv("ACS Data/2018/DP02.csv", check.names = FALSE)
-dp3.2018 = read.csv("ACS Data/2018/DP03.csv", check.names = FALSE)
-dp4.2018 = read.csv("ACS Data/2018/DP04.csv", check.names = FALSE)
-dp5.2018 = read.csv("ACS Data/2018/DP05.csv", check.names = FALSE)
+dp2.2018 = read.csv("ACS Data/2018/DP02.csv")
+dp3.2018 = read.csv("ACS Data/2018/DP03.csv")
+dp4.2018 = read.csv("ACS Data/2018/DP04.csv")
+dp5.2018 = read.csv("ACS Data/2018/DP05.csv")
 
 dp2.2019 = read.csv("ACS Data/2019/DP02.csv")
 dp3.2019 = read.csv("ACS Data/2019/DP03.csv")
 dp4.2019 = read.csv("ACS Data/2019/DP04.csv")
 dp5.2019 = read.csv("ACS Data/2019/DP05.csv")
 
-dp2.2021 = read.csv("ACS Data/2021/DP02.csv", check.names = FALSE)
-dp3.2021 = read.csv("ACS Data/2021/DP03.csv", check.names = FALSE)
-dp4.2021 = read.csv("ACS Data/2021/DP04.csv", check.names = FALSE)
-dp5.2021 = read.csv("ACS Data/2021/DP05.csv", check.names = FALSE)
+dp2.2021 = read.csv("ACS Data/2021/DP02.csv")
+dp3.2021 = read.csv("ACS Data/2021/DP03.csv")
+dp4.2021 = read.csv("ACS Data/2021/DP04.csv")
+dp5.2021 = read.csv("ACS Data/2021/DP05.csv")
 
 #THIS FUNCTION CURRENTLY ONLY WORKS FOR ACS DATA AND IS DESIGNED ENTIRELY AROUND ITS STRUCUTRE
 #DO NOT USE FOR ANYTHING ELSE
@@ -178,24 +178,110 @@ dp.2021 = dp.2021[,c("state", 'year', 'region', 'SEX.AND.AGE..Total.population',
                      'COMPUTERS.AND.INTERNET.USE..Total.households..With.a.computer',
                      'COMPUTERS.AND.INTERNET.USE..Total.households..With.a.broadband.Internet.subscription')]
 
-dp.2010 = dp.2010[,c("state", 'year', 'region', 'SEX.AND.AGE..Total.population', 'SEX.AND.AGE..Total.population..Under.18.years',
-                     'SEX.AND.AGE..Total.population..18.years.and.over', 'SEX.AND.AGE..Total.population..62.years.and.over',
-                     'Total.housing.units', 'EMPLOYMENT.STATUS..Population.16.years.and.over..In.labor.force',
+#2010 data lacks population characteristics
+#lacks cohabitating households
+
+
+dp.2010 = dp.2010[,c("state", 'year', 'region',
+                     'UNITS.IN.STRUCTURE..Total.housing.units', 'EMPLOYMENT.STATUS..Population.16.years.and.over',
+                     'EMPLOYMENT.STATUS..In.labor.force..Civilian.labor.force',
+                     'EMPLOYMENT.STATUS..In.labor.force..Civilian.labor.force..Employed',
+                     'INCOME.AND.BENEFITS..IN.2010.INFLATION.ADJUSTED.DOLLARS...Total.households',
+                     'INCOME.AND.BENEFITS..IN.2010.INFLATION.ADJUSTED.DOLLARS...Less.than..10.000',
+                     'INCOME.AND.BENEFITS..IN.2010.INFLATION.ADJUSTED.DOLLARS....10.000.to..14.999',
+                     'INCOME.AND.BENEFITS..IN.2010.INFLATION.ADJUSTED.DOLLARS....15.000.to..24.999',
+                     'INCOME.AND.BENEFITS..IN.2010.INFLATION.ADJUSTED.DOLLARS....25.000.to..34.999',
+                     'INCOME.AND.BENEFITS..IN.2010.INFLATION.ADJUSTED.DOLLARS....35.000.to..49.999',
+                     'INCOME.AND.BENEFITS..IN.2010.INFLATION.ADJUSTED.DOLLARS....50.000.to..74.999',
+                     'INCOME.AND.BENEFITS..IN.2010.INFLATION.ADJUSTED.DOLLARS....75.000.to..99.999',
+                     'INCOME.AND.BENEFITS..IN.2010.INFLATION.ADJUSTED.DOLLARS....100.000.to..149.999',
+                     'INCOME.AND.BENEFITS..IN.2010.INFLATION.ADJUSTED.DOLLARS....150.000.to..199.999',
+                     'INCOME.AND.BENEFITS..IN.2010.INFLATION.ADJUSTED.DOLLARS....200.000.or.more',
+                     'HOUSEHOLDS.BY.TYPE..Total.households', 'HOUSEHOLDS.BY.TYPE..Family.households..families...Married.couple.family',
+                     'MARITAL.STATUS..Males.15.years.and.over', 'MARITAL.STATUS..Females.15.years.and.over',
+                     'EDUCATIONAL.ATTAINMENT..Population.25.years.and.over',
+                     'EDUCATIONAL.ATTAINMENT..Less.than.9th.grade',
+                     'EDUCATIONAL.ATTAINMENT..9th.to.12th.grade..no.diploma',
+                     'EDUCATIONAL.ATTAINMENT..High.school.graduate..includes.equivalency.',
+                     'EDUCATIONAL.ATTAINMENT..Some.college..no.degree',
+                     'EDUCATIONAL.ATTAINMENT..Associate.s.degree',
+                     'EDUCATIONAL.ATTAINMENT..Bachelor.s.degree',
+                     'EDUCATIONAL.ATTAINMENT..Graduate.or.professional.degree',
+                     'COMPUTERS.AND.INTERNET.USE..Total.households',
+                     'COMPUTERS.AND.INTERNET.USE..Total.households..With.a.computer',
+                     'COMPUTERS.AND.INTERNET.USE..Total.households..With.a.broadband.Internet.subscription')]
+
+
+dp.2011 = dp.2011[,c("state", 'year', 'region',
+                     'UNITS.IN.STRUCTURE..Total.housing.units', 'EMPLOYMENT.STATUS..In.labor.force',
+                     'EMPLOYMENT.STATUS..In.labor.force..Civilian.labor.force',
+                     'EMPLOYMENT.STATUS..In.labor.force..Civilian.labor.force..Employed',
+                     'INCOME.AND.BENEFITS..IN.2011.INFLATION.ADJUSTED.DOLLARS...Total.households',
+                     'INCOME.AND.BENEFITS..IN.2011.INFLATION.ADJUSTED.DOLLARS...Less.than..10.000',
+                     'INCOME.AND.BENEFITS..IN.2011.INFLATION.ADJUSTED.DOLLARS....10.000.to..14.999',
+                     'INCOME.AND.BENEFITS..IN.2011.INFLATION.ADJUSTED.DOLLARS....15.000.to..24.999',
+                     'INCOME.AND.BENEFITS..IN.2011.INFLATION.ADJUSTED.DOLLARS....25.000.to..34.999',
+                     'INCOME.AND.BENEFITS..IN.2011.INFLATION.ADJUSTED.DOLLARS....35.000.to..49.999',
+                     'INCOME.AND.BENEFITS..IN.2011.INFLATION.ADJUSTED.DOLLARS....50.000.to..74.999',
+                     'INCOME.AND.BENEFITS..IN.2011.INFLATION.ADJUSTED.DOLLARS....75.000.to..99.999',
+                     'INCOME.AND.BENEFITS..IN.2011.INFLATION.ADJUSTED.DOLLARS....100.000.to..149.999',
+                     'INCOME.AND.BENEFITS..IN.2011.INFLATION.ADJUSTED.DOLLARS....150.000.to..199.999',
+                     'INCOME.AND.BENEFITS..IN.2011.INFLATION.ADJUSTED.DOLLARS....200.000.or.more',
+                     'HOUSEHOLDS.BY.TYPE..Total.households', 'HOUSEHOLDS.BY.TYPE..Family.households..families...Married.couple.family',
+                     'MARITAL.STATUS..Males.15.years.and.over', 'MARITAL.STATUS..Females.15.years.and.over',
+                     'EDUCATIONAL.ATTAINMENT..Population.25.years.and.over',
+                     'EDUCATIONAL.ATTAINMENT..Less.than.9th.grade',
+                     'EDUCATIONAL.ATTAINMENT..9th.to.12th.grade..no.diploma',
+                     'EDUCATIONAL.ATTAINMENT..High.school.graduate..includes.equivalency.',
+                     'EDUCATIONAL.ATTAINMENT..Some.college..no.degree',
+                     'EDUCATIONAL.ATTAINMENT..Associate.s.degree',
+                     'EDUCATIONAL.ATTAINMENT..Bachelor.s.degree',
+                     'EDUCATIONAL.ATTAINMENT..Graduate.or.professional.degree')]
+
+
+dp.2012 = dp.2012[,c("state", 'year', 'region',
+                     'UNITS.IN.STRUCTURE..Total.housing.units', 'EMPLOYMENT.STATUS..In.labor.force',
+                     'EMPLOYMENT.STATUS..In.labor.force..Civilian.labor.force',
+                     'EMPLOYMENT.STATUS..In.labor.force..Civilian.labor.force..Employed',
+                     'INCOME.AND.BENEFITS..IN.2012.INFLATION.ADJUSTED.DOLLARS...Total.households',
+                     'INCOME.AND.BENEFITS..IN.2012.INFLATION.ADJUSTED.DOLLARS...Less.than..10.000',
+                     'INCOME.AND.BENEFITS..IN.2012.INFLATION.ADJUSTED.DOLLARS....10.000.to..14.999',
+                     'INCOME.AND.BENEFITS..IN.2012.INFLATION.ADJUSTED.DOLLARS....15.000.to..24.999',
+                     'INCOME.AND.BENEFITS..IN.2012.INFLATION.ADJUSTED.DOLLARS....25.000.to..34.999',
+                     'INCOME.AND.BENEFITS..IN.2012.INFLATION.ADJUSTED.DOLLARS....35.000.to..49.999',
+                     'INCOME.AND.BENEFITS..IN.2012.INFLATION.ADJUSTED.DOLLARS....50.000.to..74.999',
+                     'INCOME.AND.BENEFITS..IN.2012.INFLATION.ADJUSTED.DOLLARS....75.000.to..99.999',
+                     'INCOME.AND.BENEFITS..IN.2012.INFLATION.ADJUSTED.DOLLARS....100.000.to..149.999',
+                     'INCOME.AND.BENEFITS..IN.2012.INFLATION.ADJUSTED.DOLLARS....150.000.to..199.999',
+                     'INCOME.AND.BENEFITS..IN.2012.INFLATION.ADJUSTED.DOLLARS....200.000.or.more',
+                     'HOUSEHOLDS.BY.TYPE..Total.households', 'HOUSEHOLDS.BY.TYPE..Family.households..families...Married.couple.family',
+                     'MARITAL.STATUS..Males.15.years.and.over', 'MARITAL.STATUS..Females.15.years.and.over',
+                     'EDUCATIONAL.ATTAINMENT..Population.25.years.and.over',
+                     'EDUCATIONAL.ATTAINMENT..Less.than.9th.grade',
+                     'EDUCATIONAL.ATTAINMENT..9th.to.12th.grade..no.diploma',
+                     'EDUCATIONAL.ATTAINMENT..High.school.graduate..includes.equivalency.',
+                     'EDUCATIONAL.ATTAINMENT..Some.college..no.degree',
+                     'EDUCATIONAL.ATTAINMENT..Associate.s.degree',
+                     'EDUCATIONAL.ATTAINMENT..Bachelor.s.degree',
+                     'EDUCATIONAL.ATTAINMENT..Graduate.or.professional.degree')]
+
+
+dp.2013 = dp.2013[,c("state", 'year', 'region',
+                     'UNITS.IN.STRUCTURE..Total.housing.units', 'EMPLOYMENT.STATUS..Population.16.years.and.over..In.labor.force',
                      'EMPLOYMENT.STATUS..Population.16.years.and.over..In.labor.force..Civilian.labor.force',
                      'EMPLOYMENT.STATUS..Population.16.years.and.over..In.labor.force..Civilian.labor.force..Employed',
-                     'INCOME.AND.BENEFITS..IN.2010.INFLATION.ADJUSTED.DOLLARS...Total.households',
-                     'INCOME.AND.BENEFITS..IN.2010.INFLATION.ADJUSTED.DOLLARS...Total.households..Less.than..10.000',
-                     'INCOME.AND.BENEFITS..IN.2010.INFLATION.ADJUSTED.DOLLARS...Total.households...10.000.to..14.999',
-                     'INCOME.AND.BENEFITS..IN.2010.INFLATION.ADJUSTED.DOLLARS...Total.households...15.000.to..24.999',
-                     'INCOME.AND.BENEFITS..IN.2010.INFLATION.ADJUSTED.DOLLARS...Total.households...25.000.to..34.999',
-                     'INCOME.AND.BENEFITS..IN.2010.INFLATION.ADJUSTED.DOLLARS...Total.households...35.000.to..49.999',
-                     'INCOME.AND.BENEFITS..IN.2010.INFLATION.ADJUSTED.DOLLARS...Total.households...50.000.to..74.999',
-                     'INCOME.AND.BENEFITS..IN.2010.INFLATION.ADJUSTED.DOLLARS...Total.households...75.000.to..99.999',
-                     'INCOME.AND.BENEFITS..IN.2010.INFLATION.ADJUSTED.DOLLARS...Total.households...100.000.to..149.999',
-                     'INCOME.AND.BENEFITS..IN.2010.INFLATION.ADJUSTED.DOLLARS...Total.households...150.000.to..199.999',
-                     'INCOME.AND.BENEFITS..IN.2010.INFLATION.ADJUSTED.DOLLARS...Total.households...200.000.or.more',
-                     'HOUSEHOLDS.BY.TYPE..Total.households', 'HOUSEHOLDS.BY.TYPE..Total.households..Married.couple.household',
-                     'HOUSEHOLDS.BY.TYPE..Total.households..Cohabiting.couple.household',
+                     'INCOME.AND.BENEFITS..IN.2013.INFLATION.ADJUSTED.DOLLARS...Total.households',
+                     'INCOME.AND.BENEFITS..IN.2013.INFLATION.ADJUSTED.DOLLARS...Less.than..10.000',
+                     'INCOME.AND.BENEFITS..IN.2013.INFLATION.ADJUSTED.DOLLARS....10.000.to..14.999',
+                     'INCOME.AND.BENEFITS..IN.2013.INFLATION.ADJUSTED.DOLLARS....15.000.to..24.999',
+                     'INCOME.AND.BENEFITS..IN.2013.INFLATION.ADJUSTED.DOLLARS....25.000.to..34.999',
+                     'INCOME.AND.BENEFITS..IN.2013.INFLATION.ADJUSTED.DOLLARS....35.000.to..49.999',
+                     'INCOME.AND.BENEFITS..IN.2013.INFLATION.ADJUSTED.DOLLARS....50.000.to..74.999',
+                     'INCOME.AND.BENEFITS..IN.2013.INFLATION.ADJUSTED.DOLLARS....75.000.to..99.999',
+                     'INCOME.AND.BENEFITS..IN.2013.INFLATION.ADJUSTED.DOLLARS....100.000.to..149.999',
+                     'INCOME.AND.BENEFITS..IN.2013.INFLATION.ADJUSTED.DOLLARS....150.000.to..199.999',
+                     'INCOME.AND.BENEFITS..IN.2013.INFLATION.ADJUSTED.DOLLARS....200.000.or.more',
+                     'HOUSEHOLDS.BY.TYPE..Total.households', 'HOUSEHOLDS.BY.TYPE..Total.households..Family.households..families..Married.couple.family',
                      'MARITAL.STATUS..Males.15.years.and.over', 'MARITAL.STATUS..Females.15.years.and.over',
                      'EDUCATIONAL.ATTAINMENT..Population.25.years.and.over',
                      'EDUCATIONAL.ATTAINMENT..Population.25.years.and.over..Less.than.9th.grade',
@@ -209,7 +295,35 @@ dp.2010 = dp.2010[,c("state", 'year', 'region', 'SEX.AND.AGE..Total.population',
                      'COMPUTERS.AND.INTERNET.USE..Total.households..With.a.computer',
                      'COMPUTERS.AND.INTERNET.USE..Total.households..With.a.broadband.Internet.subscription')]
 
-dp.2010[,'SEX.AND.AGE..Total.population']
+
+dp.2014 = dp.2014[,c("state", 'year', 'region',
+                     'UNITS.IN.STRUCTURE..Total.housing.units', 'EMPLOYMENT.STATUS..Population.16.years.and.over..In.labor.force',
+                     'EMPLOYMENT.STATUS..Population.16.years.and.over..In.labor.force..Civilian.labor.force',
+                     'EMPLOYMENT.STATUS..Population.16.years.and.over..In.labor.force..Civilian.labor.force..Employed',
+                     'INCOME.AND.BENEFITS..IN.2014.INFLATION.ADJUSTED.DOLLARS...Total.households',
+                     'INCOME.AND.BENEFITS..IN.2014.INFLATION.ADJUSTED.DOLLARS...Less.than..10.000',
+                     'INCOME.AND.BENEFITS..IN.2014.INFLATION.ADJUSTED.DOLLARS....10.000.to..14.999',
+                     'INCOME.AND.BENEFITS..IN.2014.INFLATION.ADJUSTED.DOLLARS....15.000.to..24.999',
+                     'INCOME.AND.BENEFITS..IN.2014.INFLATION.ADJUSTED.DOLLARS....25.000.to..34.999',
+                     'INCOME.AND.BENEFITS..IN.2014.INFLATION.ADJUSTED.DOLLARS....35.000.to..49.999',
+                     'INCOME.AND.BENEFITS..IN.2014.INFLATION.ADJUSTED.DOLLARS....50.000.to..74.999',
+                     'INCOME.AND.BENEFITS..IN.2014.INFLATION.ADJUSTED.DOLLARS....75.000.to..99.999',
+                     'INCOME.AND.BENEFITS..IN.2014.INFLATION.ADJUSTED.DOLLARS....100.000.to..149.999',
+                     'INCOME.AND.BENEFITS..IN.2014.INFLATION.ADJUSTED.DOLLARS....150.000.to..199.999',
+                     'INCOME.AND.BENEFITS..IN.2014.INFLATION.ADJUSTED.DOLLARS....200.000.or.more',
+                     'HOUSEHOLDS.BY.TYPE..Total.households', 'HOUSEHOLDS.BY.TYPE..Total.households..Family.households..families..Married.couple.family',
+                     'MARITAL.STATUS..Males.15.years.and.over', 'MARITAL.STATUS..Females.15.years.and.over',
+                     'EDUCATIONAL.ATTAINMENT..Population.25.years.and.over',
+                     'EDUCATIONAL.ATTAINMENT..Population.25.years.and.over..Less.than.9th.grade',
+                     'EDUCATIONAL.ATTAINMENT..Population.25.years.and.over..9th.to.12th.grade..no.diploma',
+                     'EDUCATIONAL.ATTAINMENT..Population.25.years.and.over..High.school.graduate..includes.equivalency.',
+                     'EDUCATIONAL.ATTAINMENT..Population.25.years.and.over..Some.college..no.degree',
+                     'EDUCATIONAL.ATTAINMENT..Population.25.years.and.over..Associate.s.degree',
+                     'EDUCATIONAL.ATTAINMENT..Population.25.years.and.over..Bachelor.s.degree',
+                     'EDUCATIONAL.ATTAINMENT..Population.25.years.and.over..Graduate.or.professional.degree',
+                     'COMPUTERS.AND.INTERNET.USE..Total.households',
+                     'COMPUTERS.AND.INTERNET.USE..Total.households..With.a.computer',
+                     'COMPUTERS.AND.INTERNET.USE..Total.households..With.a.broadband.Internet.subscription')]
 
 
 dp.2019[,c("state", 'year', 'region', 
@@ -232,8 +346,7 @@ dp.2019[,c("state", 'year', 'region',
                      'MARITAL.STATUS..Males.15.years.and.over', 'MARITAL.STATUS..Females.15.years.and.over')]
 
 
-'SEX.AND.AGE..Total.population', 'SEX.AND.AGE..Total.population..Under.18.years',
-'SEX.AND.AGE..Total.population..18.years.and.over', 'SEX.AND.AGE..Total.population..62.years.and.over',
+
 #Useful Data
 #Total Population so I can divide it up by age group. Sum by decade?
 #Age Group Population
@@ -248,15 +361,3 @@ dp.2019[,c("state", 'year', 'region',
 #length of residency. Places where new people flock to are likely to experience a surge in prices
 #% with computers can maybe function as an instrument for tech level since it varies a lot by state?
 #year and region obviously
-
-'EDUCATIONAL.ATTAINMENT..Population.25.years.and.over',
-'EDUCATIONAL.ATTAINMENT..Population.25.years.and.over..Less.than.9th.grade',
-'EDUCATIONAL.ATTAINMENT..Population.25.years.and.over..9th.to.12th.grade..no.diploma',
-'EDUCATIONAL.ATTAINMENT..Population.25.years.and.over..High.school.graduate..includes.equivalency.',
-'EDUCATIONAL.ATTAINMENT..Population.25.years.and.over..Some.college..no.degree',
-'EDUCATIONAL.ATTAINMENT..Population.25.years.and.over..Associate.s.degree',
-'EDUCATIONAL.ATTAINMENT..Population.25.years.and.over..Bachelor.s.degree',
-'EDUCATIONAL.ATTAINMENT..Population.25.years.and.over..Graduate.or.professional.degree',
-'COMPUTERS.AND.INTERNET.USE..Total.households',
-'COMPUTERS.AND.INTERNET.USE..Total.households..With.a.computer',
-'COMPUTERS.AND.INTERNET.USE..Total.households..With.a.broadband.Internet.subscription'

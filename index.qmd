@@ -16,7 +16,11 @@ bibliography: references.bib
 
 A chief concern in many parts of the world today is an ongoing housing crisis. House prices have been skyrocketing and home ownership decreasing. Recently in the United States there have been a few observable trends as a possible cause behind this, increasing use of property as an investment vehicle, depressed wages, and high disparities in intergenerational wealth.
 
-The purpose of this paper is to analyze what portion of the change in homeownership and expenses are a result of these events, and which are more long term trends tied to predictable causes such as inflation and changing demographics. In pursuit of this I will utilize a Blinder-Oaxca decomposition to identify the source of the changes in housing expenditure. Additionally, I will plot the change in the share of renters vs owners in income demographics over time. 
+The purpose of this paper is to analyze what portion of the change in homeownership and expenses are a result of these events, and which are more long term trends tied to predictable causes such as inflation and changing demographics. In pursuit of this I will utilize a Blinder-Oaxca decomposition to identify the source of the changes in housing expenditure. Additionally, I will plot the change in the share of renters vs owners in income demographics over time.
+
+Due to data limitations, this study is carried out at the county level using all available data from the American Community Survey (ACS), utilizing census data.
+
+The expected result is that there will be a gradual decrease in the rate of home-ownership over time, especially in the lowest income regions.
 
 
 ```{r}
@@ -31,6 +35,9 @@ library(HDInterval)
 library(MASS)
 library(distributionsrd)
 library(arrayhelpers)
+library(ggplot2)
+library(qpcR)
+library(DescTools)
 #set key for accessing FRED data
 fredr_set_key("f1d6de070cd07cd6028872a3bc573657")
 
@@ -40,6 +47,17 @@ HAI = fredr(series_id = "FIXHAI")
 housepriceindex = fredr(series_id = "USSTHPI")
 
 ```
+
+#REPEAT OF THE ITNRO
+
+Recently the United States have been plagued by concerns of an ongoing housing crisis. There have been many proposed causes for it, housing being used as an investment vehicle in the wake of uncertainty stemming from the COVID-19 pandemic, depressed wages failing to keep up with rising expenses, intergenerational wealth gaps leading to disparity in opportunity. Each of these, perhaps, tells a part of the story.
+
+What this paper seeks to analyze is how these recent trends have deviated from the trends of the past. Whether this is a new phenomenon or if it is in line with what would be expected were the economy not disrupted by emergency measures during the COVID pandemic. If there is a break in the trend, the question then becomes how has it broken?
+
+In line with this objective, several facets of the housing market will be examined. As data is only publicly accessible at the county level, that is the level at which the analysis will be conducted. First and foremost, changes in both the stock of housing and how ownership rates have varied across counties will be of paramount importance. Of particular interest is whether certain counties have been impacted in an unusual manner, such as if rural areas are less impacted by any recent changes than metropolitan areas, or if any fluctuations are confined primarily to particular regions. 
+
+The expected outcome is in line with what has been popularly observed in the media as of late, that home ownership rates are falling and that this is especially concentrated among lower income individuals. Due to data limitations, this paper is ill-suited to answering the impact on an individual level, but it can be indicative for if lower income regions are being more adversely affected. It is also capable of monitoring general trends in housing prices based on aggregate mortgage data. 
+
 
 ```{r}
 
