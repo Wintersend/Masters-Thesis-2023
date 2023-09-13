@@ -216,10 +216,12 @@ mergedf$year = factor(mergedf$year)
 
 #All above data shows no trend of particular interest
 #Check state level DID
-
+#--------------------------
+#STATE LEVEL
+#--------------------------
 mergedf.s.did = mergedf.s[order(mergedf.s$state),]
 
-for(x in 1:28){
+for(x in 1:30){
 mergedf.s.did[,5+x] = as.numeric(as.character(mergedf.s.did[,5+x]))
 }
 
@@ -255,11 +257,30 @@ mergedf.s.did = mergedf.s.did %>%
          renter.hh.size.dif = renter.hh.size - lag(renter.hh.size),
          owner.percent = owner/(owner + renter),
          renter.percent = renter/(owner + renter),
-         year = as.factor(year)
+         year = as.factor(year),
+         over.18.pop.dif = over.18.pop - lag(over.18.pop),
+         #create new share metrics due to advisor feedback for better comparative analysis
+         educated.pop =  educ.9th + educ.no.dip + educ.dip + educ.col.no.deg + educ.associate + educ.bachelor + educ.graduate.deg   ,
+         educ.9th.share = educ.9th/educated.pop,
+         educ.no.dip.share = educ.no.dip/educated.pop,
+         educ.dip.share = educ.dip/educated.pop,
+         educ.col.no.deg.share = educ.col.no.deg/educated.pop,
+         educ.associate.share = educ.associate/educated.pop,
+         educ.bachelor.share = educ.bachelor/educated.pop,
+         educ.gradaute.share = educ.graduate.deg/educated.pop,
+         housing.pop.ratio = total.housing/over.18.pop,
+         #And I actually need to pull more data to do these
+         working.age = over.18.pop - over.65.pop,
+         housing.pop.working.age = total.housing/working.age,
+         #houding.pop.total = total.housing/population
          #calculate gini, income values taking median of range, value in thousands, assume 200,000 is just 200
+         owner.percent.lag = lag(owner.percent),
+         GINI = GINI*100,
+         lagged.GINI = lag(GINI)
          ) %>%
   ungroup
 #My GINI isn't calculating properly inside mutate, use for loop instead
+#-------------
 n = nrow(mergedf.s.did)
 #initialize empty column
 
@@ -268,10 +289,59 @@ for(i in 1:n){
   weightings = c(mergedf.s.did$inc.0.10[i], mergedf.s.did$inc.10.15[i], mergedf.s.did$inc.15.25[i], mergedf.s.did$inc.25.35[i],
                  mergedf.s.did$inc.35.50[i], mergedf.s.did$inc.50.75[i], mergedf.s.did$inc.75.100[i], mergedf.s.did$inc.100.150[i],
                  mergedf.s.did$inc.150.200[i], mergedf.s.did$inc.200.abv[i])
-  mergedf.s.did$Gini.estimate[i] = Gini(incs, weightings)
+  mergedf.s.did$Gini.estimate.low[i] = Gini(incs, weightings)
 }
 
+#edit Gini to be multiplied by 100 for readability
+mergedf.s.did = mergedf.s.did %>%
+  group_by(state) %>%
+  mutate(Gini.estimate.low = Gini.estimate.low*100,
+         lagged.Gini.low = lag(Gini.estimate.low),
+         lagged.Gini.sqr.low = lagged.Gini.low^2,
+         Gini.estimate.sqr.low = Gini.estimate.low^2
+  ) %>%
+  ungroup
+
+#Increased GINI (more realistic than using minimum)
+for(i in 1:n){
+  incs = c(5, 12.5, 20, 30, 42.5, 62.5, 87.5, 125, 175, 300)
+  weightings = c(mergedf.s.did$inc.0.10[i], mergedf.s.did$inc.10.15[i], mergedf.s.did$inc.15.25[i], mergedf.s.did$inc.25.35[i],
+                 mergedf.s.did$inc.35.50[i], mergedf.s.did$inc.50.75[i], mergedf.s.did$inc.75.100[i], mergedf.s.did$inc.100.150[i],
+                 mergedf.s.did$inc.150.200[i], mergedf.s.did$inc.200.abv[i])
+  mergedf.s.did$Gini.estimate.mid[i] = Gini(incs, weightings)
+}
+
+
+mergedf.s.did = mergedf.s.did %>%
+  group_by(state) %>%
+  mutate(Gini.estimate.mid = Gini.estimate.mid*100,
+         lagged.Gini.mid = lag(Gini.estimate.mid),
+         lagged.Gini.sqr.mid = lagged.Gini.mid^2,
+         Gini.estimate.sqr.mid = Gini.estimate.mid^2
+  ) %>%
+  ungroup
+
+#High GINI estimate
+for(i in 1:n){
+  incs = c(5, 12.5, 20, 30, 42.5, 62.5, 87.5, 125, 175, 500)
+  weightings = c(mergedf.s.did$inc.0.10[i], mergedf.s.did$inc.10.15[i], mergedf.s.did$inc.15.25[i], mergedf.s.did$inc.25.35[i],
+                 mergedf.s.did$inc.35.50[i], mergedf.s.did$inc.50.75[i], mergedf.s.did$inc.75.100[i], mergedf.s.did$inc.100.150[i],
+                 mergedf.s.did$inc.150.200[i], mergedf.s.did$inc.200.abv[i])
+  mergedf.s.did$Gini.estimate.high[i] = Gini(incs, weightings)
+}
+
+mergedf.s.did = mergedf.s.did %>%
+  group_by(state) %>%
+  mutate(Gini.estimate.high = Gini.estimate.high*100,
+         lagged.Gini.high = lag(Gini.estimate.high),
+         lagged.Gini.sqr.high = lagged.Gini.high^2,
+         Gini.estimate.sqr.high = Gini.estimate.high^2
+  ) %>%
+  ungroup
+
+#-------------------------
 #run some regressions
+#-------------------------
 reg1 = lm(owner.percent ~ inc.0.10.dif + inc.10.15.dif + inc.15.25.dif + inc.25.35.dif + inc.35.50.dif + inc.50.75.dif + inc.75.100.dif 
           + inc.100.150.dif + inc.150.200.dif + inc.200.abv.dif
             , data = mergedf.s.did)
@@ -388,10 +458,603 @@ reg17 = lm(log(owner) ~ I(Gini.estimate*100) + log(educ.9th) + log(educ.no.dip) 
 summary(reg17)
 
 
+#include housing numbers
+
+reg18 = lm(owner.percent ~ I(Gini.estimate*100) + log(educ.9th) + log(educ.no.dip) + log(educ.dip) + log(educ.col.no.deg)
+           + log(educ.associate) + log(educ.bachelor) + log(educ.graduate.deg) + total.housing + year
+           , data = mergedf.s.did)
+
+summary(reg18)
 
 
-plot(mergedf.s.did$total.housing.dif, type = 'l', col = 'red')
-abline(h = 0)
+reg19 = lm(log(owner) ~ I(Gini.estimate*100) + log(educ.9th) + log(educ.no.dip) + log(educ.dip) + log(educ.col.no.deg)
+           + log(educ.associate) + log(educ.bachelor) + log(educ.graduate.deg) + total.housing + year
+           , data = mergedf.s.did)
 
-hist(mergedf.s.did$total.housing.dif, prob = TRUE)
-lines(density(na.omit(mergedf.s.did$total.housing.dif)))
+summary(reg19)
+
+#owner difference shows minimal effect from anything but year and loses significant explainatory power
+reg20 = lm(owner.dif ~ I(Gini.estimate*100) + log(educ.9th) + log(educ.no.dip) + log(educ.dip) + log(educ.col.no.deg)
+           + log(educ.associate) + log(educ.bachelor) + log(educ.graduate.deg) + total.housing + year
+           , data = mergedf.s.did)
+
+summary(reg20)
+
+#Include squared GINI
+reg21 = lm(owner.dif ~ I(Gini.estimate*100) + I((Gini.estimate*100)^2) + log(educ.9th) + log(educ.no.dip) + log(educ.dip) + log(educ.col.no.deg)
+           + log(educ.associate) + log(educ.bachelor) + log(educ.graduate.deg) + total.housing + year
+           , data = mergedf.s.did)
+
+summary(reg21)
+
+reg22 = lm(owner.dif ~ Gini.estimate + I(Gini.estimate^2) + log(educ.9th) + log(educ.no.dip) + log(educ.dip) + log(educ.col.no.deg)
+           + log(educ.associate) + log(educ.bachelor) + log(educ.graduate.deg) + total.housing + year
+           , data = mergedf.s.did)
+
+summary(reg22)
+
+
+
+#Use Log Housing
+
+reg23 = lm(owner.percent ~ I(Gini.estimate*100) + log(educ.9th) + log(educ.no.dip) + log(educ.dip) + log(educ.col.no.deg)
+           + log(educ.associate) + log(educ.bachelor) + log(educ.graduate.deg) + log(total.housing) + year
+           , data = mergedf.s.did)
+
+summary(reg23)
+
+
+reg24 = lm(log(owner) ~ I(Gini.estimate*100) + log(educ.9th) + log(educ.no.dip) + log(educ.dip) + log(educ.col.no.deg)
+           + log(educ.associate) + log(educ.bachelor) + log(educ.graduate.deg) + log(total.housing) + year
+           , data = mergedf.s.did)
+
+summary(reg24)
+
+
+#Gini, log education, log population, log housing
+
+reg25 = lm(owner.percent ~ I(Gini.estimate*100) + log(educ.9th) + log(educ.no.dip) + log(educ.dip) + log(educ.col.no.deg)
+           + log(educ.associate) + log(educ.bachelor) + log(educ.graduate.deg) + log(total.housing) + log(over.18.pop) + year
+           , data = mergedf.s.did)
+
+summary(reg25)
+
+
+reg26 = lm(log(owner) ~ I(Gini.estimate*100) + log(educ.9th) + log(educ.no.dip) + log(educ.dip) + log(educ.col.no.deg)
+           + log(educ.associate) + log(educ.bachelor) + log(educ.graduate.deg) + log(total.housing) + log(over.18.pop) + year
+           , data = mergedf.s.did)
+
+summary(reg26)
+
+#FE Gini, log education, log population, log housing
+
+reg27 = lm(owner.percent ~ I(Gini.estimate*100) + log(educ.9th) + log(educ.no.dip) + log(educ.dip) + log(educ.col.no.deg)
+           + log(educ.associate) + log(educ.bachelor) + log(educ.graduate.deg) + log(total.housing) + log(over.18.pop) + year + as.factor(county)
+           , data = mergedf.s.did)
+
+summary(reg27)
+
+
+reg28 = lm(log(owner) ~ I(Gini.estimate*100) + log(educ.9th) + log(educ.no.dip) + log(educ.dip) + log(educ.col.no.deg)
+           + log(educ.associate) + log(educ.bachelor) + log(educ.graduate.deg) + log(total.housing) + log(over.18.pop) + year + as.factor(county)
+           , data = mergedf.s.did)
+
+summary(reg28)
+
+
+
+reg29 = lm(owner.percent ~ I(Gini.estimate*100) + year + as.factor(county)
+           , data = mergedf.s.did)
+
+summary(reg29)
+
+#------------------
+#Check the above works at county level
+#------------------
+
+for(x in 1:28){
+  mergedf[,5+x] = as.numeric(as.character(mergedf[,5+x]))
+}
+
+mergedf.dif = mergedf %>%
+  group_by(county) %>%
+  mutate(total.housing.dif = total.housing - lag(total.housing),
+         employable.pop.dif = employable.pop - lag(employable.pop),
+         total.pop.labor.dif = total.pop.labor - lag(total.pop.labor),
+         employed.pop.labor.dif = employed.pop.labor - lag(employed.pop.labor),
+         total.income.benefits.dif = total.income.benefits - lag(total.income.benefits),
+         inc.0.10.dif = inc.0.10 - lag(inc.0.10),
+         inc.10.15.dif = inc.10.15 - lag(inc.10.15),
+         inc.15.25.dif = inc.15.25 - lag(inc.15.25),
+         inc.25.35.dif = inc.25.35 - lag(inc.25.35),
+         inc.35.50.dif = inc.35.50 - lag(inc.35.50),
+         inc.50.75.dif = inc.50.75 - lag(inc.50.75),
+         inc.75.100.dif = inc.75.100 - lag(inc.75.100),
+         inc.100.150.dif = inc.100.150 - lag(inc.100.150),
+         inc.150.200.dif = inc.150.200 - lag(inc.150.200),
+         inc.200.abv.dif = inc.200.abv - lag(inc.200.abv),
+         total.educ.dif = total.educ - lag(total.educ),
+         educ.9th.dif = educ.9th - lag(educ.9th),
+         educ.no.dip.dif = educ.no.dip - lag(educ.no.dip),
+         educ.dip.dif = educ.dip - lag(educ.dip),
+         educ.col.no.deg.dif = educ.col.no.deg - lag(educ.col.no.deg),
+         educ.associate.dif = educ.associate - lag(educ.associate),
+         educ.bachelor.dif = educ.bachelor - lag(educ.bachelor),
+         educ.graduate.deg.dif = educ.graduate.deg - lag(educ.graduate.deg),
+         owner.dif = owner - lag(owner),
+         renter.dif = renter - lag(renter),
+         owner.hh.size.dif = owner.hh.size - lag(owner.hh.size),
+         renter.hh.size.dif = renter.hh.size - lag(renter.hh.size),
+         owner.percent = owner/(owner + renter),
+         renter.percent = renter/(owner + renter),
+         year = as.factor(year)
+         #calculate gini, income values taking median of range, value in thousands, assume 200,000 is just 200
+  ) %>%
+  ungroup
+
+n = nrow(mergedf.dif)
+for(i in 1:n){
+  incs = c(5, 12.5, 20, 30, 42.5, 62.5, 87.5, 125, 175, 200)
+  weightings = c(mergedf.dif$inc.0.10[i], mergedf.dif$inc.10.15[i], mergedf.dif$inc.15.25[i], mergedf.dif$inc.25.35[i],
+                 mergedf.dif$inc.35.50[i], mergedf.dif$inc.50.75[i], mergedf.dif$inc.75.100[i], mergedf.dif$inc.100.150[i],
+                 mergedf.dif$inc.150.200[i], mergedf.dif$inc.200.abv[i])
+  mergedf.dif$Gini.estimate[i] = Gini(incs, weightings)
+}
+
+
+#retest potentially useful values at a finer data level to try and test for spurious regression
+#I need to reconstruct data frame to only include the needed data then NA.omit
+
+
+mergedf.dif = mergedf.dif %>% drop_na(owner)
+mergedf.dif = mergedf.dif %>% drop_na(Gini.estimate)
+mergedf.dif = mergedf.dif %>% drop_na(inc.0.10)
+
+reg16.2 = lm(owner.percent ~ I(Gini.estimate*100) + log(educ.9th) + log(educ.no.dip) + log(educ.dip) + log(educ.col.no.deg)
+           + log(educ.associate) + log(educ.bachelor) + log(educ.graduate.deg) + year
+           , data = mergedf.dif)
+
+summary(reg16.2)
+
+
+reg17.2 = lm(log(owner) ~ I(Gini.estimate*100) + log(educ.9th) + log(educ.no.dip) + log(educ.dip) + log(educ.col.no.deg)
+           + log(educ.associate) + log(educ.bachelor) + log(educ.graduate.deg) + year
+           , data = mergedf.dif)
+
+summary(reg17.2)
+
+
+#include housing numbers
+
+reg18.2 = lm(owner.percent ~ I(Gini.estimate*100) + log(educ.9th) + log(educ.no.dip) + log(educ.dip) + log(educ.col.no.deg)
+           + log(educ.associate) + log(educ.bachelor) + log(educ.graduate.deg) + total.housing + year
+           , data = mergedf.dif)
+
+summary(reg18.2)
+
+
+reg19.2 = lm(log(owner) ~ I(Gini.estimate*100) + log(educ.9th) + log(educ.no.dip) + log(educ.dip) + log(educ.col.no.deg)
+           + log(educ.associate) + log(educ.bachelor) + log(educ.graduate.deg) + total.housing + year
+           , data = mergedf.dif)
+
+summary(reg19.2)
+
+#-------------------------------------------------
+#TESTING FOR NORMALITY
+#-------------------------------------------------
+
+#Plor residuals and test for normally distributed errors to see if estimated parameters are well defined
+res.reg18 = residuals(reg18)
+
+
+plot(res.reg18, ylab = 'Residuals', main = 'Gini, Log Edu, Housing Stock, Year',type = 'l')
+abline(h=0)
+
+
+jarque.bera.test(res.reg18)
+
+
+
+res.reg19 = residuals(reg19)
+
+
+plot(res.reg19, ylab = 'Residuals', main = 'Gini, Log Edu, Housing Stock, Year',type = 'l')
+abline(h=0)
+
+
+jarque.bera.test(res.reg19)
+
+
+
+res.reg23 = residuals(reg23)
+
+
+plot(res.reg23, ylab = 'Residuals', main = 'Gini, Log Edu, Log Housing Stock, Year',type = 'l')
+abline(h=0)
+
+
+jarque.bera.test(res.reg23)
+
+res.reg24 = residuals(reg24)
+
+
+plot(res.reg24, ylab = 'Residuals', main = 'Gini, Log Edu, Log Housing Stock, Year',type = 'l')
+abline(h=0)
+
+
+jarque.bera.test(res.reg24)
+
+#latest update
+
+res.reg25 = residuals(reg25)
+
+plot(res.reg25, ylab = 'Residuals', main = 'Gini, Log Edu, Log Housing Stock, Log Pop, Year',type = 'l')
+abline(h=0)
+
+#definitely still have heteroskedasticity
+jarque.bera.test(res.reg25)
+
+res.reg26 = residuals(reg26)
+
+
+plot(res.reg26, ylab = 'Residuals', main = 'Gini, Log Edu, Log Housing Stock, Log Pop, Year',type = 'l')
+abline(h=0)
+
+
+jarque.bera.test(res.reg26)
+
+
+#Fe Model
+
+res.reg27 = residuals(reg27)
+
+plot(res.reg27, ylab = 'Residuals', main = 'Gini, Log Edu, Log Housing Stock, Log Pop, Year',type = 'l')
+abline(h=0)
+
+
+jarque.bera.test(res.reg27)
+
+res.reg28 = residuals(reg28)
+
+
+plot(res.reg28, ylab = 'Residuals', main = 'Gini, Log Edu, Log Housing Stock, Log Pop, Year',type = 'l')
+abline(h=0)
+
+
+jarque.bera.test(res.reg28)
+#Density plots to visual analyze how far from normal the distribution of the above 4 tests are.
+
+#Initialize a normal overlay
+
+plotNormalDensity(res.reg18)
+plotNormalDensity(res.reg19)
+plotNormalDensity(res.reg23)
+plotNormalDensity(res.reg24)
+
+#still decidedly not normal distribution and displays some bias, indicating missing variables
+#But it is much better
+plotNormalDensity(res.reg25)
+plotNormalDensity(res.reg26)
+
+plotNormalDensity(res.reg27)
+plotNormalDensity(res.reg28)
+#There is no normally distributed error terms may not be relevant
+
+#It does look like there may be a heteroskedasticity problem
+
+
+
+#---------------------------------
+#Retest key regressions (18,19,23,24) with robust standard errors
+#---------------------------------
+
+reg18.robust = coeftest(reg18, vcovHC(reg18, type = 'HC0'))
+
+reg19.robust = coeftest(reg19, vcovHC(reg19, type = 'HC0'))
+
+reg23.robust = coeftest(reg23, vcovHC(reg23, type = 'HC0'))
+
+reg24.robust = coeftest(reg24, vcovHC(reg24, type = 'HC0'))
+
+reg25.robust = coeftest(reg25, vcovHC(reg25, type = 'HC0'))
+
+reg26.robust = coeftest(reg26, vcovHC(reg26, type = 'HC0'))
+
+reg27.robust = coeftest(reg27, vcovHC(reg27, type = 'HC0'))
+
+reg28.robust = coeftest(reg28, vcovHC(reg28, type = 'HC0'))
+
+#Compare robust and regular estimates
+summary(reg18)
+coeftest(reg18, vcovHC(reg18, type = 'HC0'))
+
+summary(reg19)
+coeftest(reg19, vcovHC(reg19, type = 'HC0'))
+
+summary(reg23)
+coeftest(reg23, vcovHC(reg23, type = 'HC0'))
+
+summary(reg24)
+coeftest(reg24, vcovHC(reg24, type = 'HC0'))
+
+
+summary(reg25)
+coeftest(reg25, vcovHC(reg25, type = 'HC0'))
+
+summary(reg26)
+coeftest(reg26, vcovHC(reg26, type = 'HC0'))
+
+
+summary(reg27)
+coeftest(reg27, vcovHC(reg27, type = 'HC0'))
+
+summary(reg28)
+coeftest(reg28, vcovHC(reg28, type = 'HC0'))
+
+#------------------------------------
+#Additional modified regressions utilizing relative metrics
+#Owner Percentage Only
+#------------------------------------
+
+#remove Puerto Rico
+analysis.set = mergedf.s.did[1:510,]
+
+#remove DC
+analysis.set = analysis.set[-(81:90),]
+#---------
+#low estimator regressions
+
+base.reg.low = lm(owner.percent ~ Gini.estimate.low + housing.pop.working.age + year + county
+              ,data = analysis.set)
+
+summary(base.reg.low)
+
+lag.reg.low = lm(owner.percent ~ lagged.Gini.low + housing.pop.working.age + year + county
+             ,data = analysis.set)
+
+summary(lag.reg.low)
+
+gini.sqr.reg.low = lm(owner.percent ~ Gini.estimate.low + Gini.estimate.sqr.low + housing.pop.working.age + year + county
+                ,data = analysis.set)
+
+lag.sqr.reg.low = lm(owner.percent ~ lagged.Gini.low + lagged.Gini.sqr.low + housing.pop.working.age + year + county
+               ,data = analysis.set)
+
+AR.base.reg.low = lm(owner.percent ~ Gini.estimate.low + housing.pop.working.age + owner.percent.lag + year + county
+                 ,data = analysis.set)
+
+AR.lag.reg.low = lm(owner.percent ~ lagged.Gini.low + housing.pop.working.age + owner.percent.lag + year + county
+         ,data = analysis.set)
+
+summary(gini.sqr.reg.low)
+summary(lag.sqr.reg.low)
+summary(AR.base.reg.low)
+summary(AR.lag.reg.low)
+
+
+AR.base.reg2.low = lm(owner.percent ~ Gini.estimate.low + housing.pop.ratio + owner.percent.lag + year + county
+                 ,data = analysis.set)
+
+AR.lag.reg2.low = lm(owner.percent ~ lagged.Gini.low + housing.pop.ratio + owner.percent.lag + year + county
+                ,data = analysis.set)
+
+
+summary(AR.base.reg2.low)
+summary(AR.lag.reg2.low)
+
+AR.lag.reg3.low = lm(owner.percent ~ lagged.Gini.low + housing.pop.ratio + owner.hh.size + renter.hh.size + owner.percent.lag + year + county
+                      ,data = analysis.set)
+
+#medium estimator regressions
+
+base.reg.mid = lm(owner.percent ~ Gini.estimate.mid + housing.pop.working.age + year + county
+                  ,data = analysis.set)
+
+summary(base.reg.mid)
+
+lag.reg.mid = lm(owner.percent ~ lagged.Gini.mid + housing.pop.working.age + year + county
+                 ,data = analysis.set)
+
+summary(lag.reg.mid)
+
+gini.sqr.reg.mid = lm(owner.percent ~ Gini.estimate.mid + Gini.estimate.sqr.mid + housing.pop.working.age + year + county
+                      ,data = analysis.set)
+
+lag.sqr.reg.mid = lm(owner.percent ~ lagged.Gini.mid + lagged.Gini.sqr.mid + housing.pop.working.age + year + county
+                     ,data = analysis.set)
+
+AR.base.reg.mid = lm(owner.percent ~ Gini.estimate.mid + housing.pop.working.age + owner.percent.lag + year + county
+                     ,data = analysis.set)
+
+AR.lag.reg.mid = lm(owner.percent ~ lagged.Gini.mid + housing.pop.working.age + owner.percent.lag + year + county
+                    ,data = analysis.set)
+
+summary(gini.sqr.reg.mid)
+summary(lag.sqr.reg.mid)
+summary(AR.base.reg.mid)
+summary(AR.lag.reg.mid)
+
+
+AR.base.reg2.mid = lm(owner.percent ~ Gini.estimate.mid + housing.pop.ratio + owner.percent.lag + year + county
+                      ,data = analysis.set)
+
+AR.lag.reg2.mid = lm(owner.percent ~ lagged.Gini.mid + housing.pop.ratio + owner.percent.lag + year + county
+                     ,data = analysis.set)
+
+
+summary(AR.base.reg2.mid)
+summary(AR.lag.reg2.mid)
+
+AR.lag.reg3.mid = lm(owner.percent ~ lagged.Gini.mid + housing.pop.ratio + owner.hh.size + renter.hh.size + owner.percent.lag + year + county
+                      ,data = analysis.set)
+
+#high estimator regressions
+
+base.reg.high = lm(owner.percent ~ Gini.estimate.high + housing.pop.working.age + year + county
+                  ,data = analysis.set)
+
+summary(base.reg.high)
+
+lag.reg.high = lm(owner.percent ~ lagged.Gini.high + housing.pop.working.age + year + county
+                 ,data = analysis.set)
+
+summary(lag.reg.high)
+
+gini.sqr.reg.high = lm(owner.percent ~ Gini.estimate.high + Gini.estimate.sqr.high + housing.pop.working.age + year + county
+                      ,data = analysis.set)
+
+lag.sqr.reg.high = lm(owner.percent ~ lagged.Gini.high + lagged.Gini.sqr.high + housing.pop.working.age + year + county
+                     ,data = analysis.set)
+
+AR.base.reg.high = lm(owner.percent ~ Gini.estimate.high + housing.pop.working.age + owner.percent.lag + year + county
+                     ,data = analysis.set)
+
+AR.lag.reg.high = lm(owner.percent ~ lagged.Gini.high + housing.pop.working.age + owner.percent.lag + year + county
+                    ,data = analysis.set)
+
+summary(gini.sqr.reg.high)
+summary(lag.sqr.reg.high)
+summary(AR.base.reg.high)
+summary(AR.lag.reg.high)
+
+
+AR.base.reg2.high = lm(owner.percent ~ Gini.estimate.high + housing.pop.ratio + owner.percent.lag + year + county
+                      ,data = analysis.set)
+
+AR.lag.reg2.high = lm(owner.percent ~ lagged.Gini.high + housing.pop.ratio + owner.percent.lag + year + county
+                     ,data = analysis.set)
+
+
+summary(AR.base.reg2.high)
+summary(AR.lag.reg2.high)
+
+
+AR.lag.reg3.high = lm(owner.percent ~ lagged.Gini.high + housing.pop.ratio + owner.hh.size + renter.hh.size + owner.percent.lag + year + county
+                      ,data = analysis.set)
+
+
+summary(AR.lag.reg3.high)
+plot(residuals(AR.lag.reg3.high), type = "l")
+abline(h=0)
+plot(density(residuals(AR.lag.reg3.high)))
+plotNormalDensity(residuals(AR.lag.reg3.high))
+
+plotNormalDensity(residuals(AR.lag.reg3.mid))
+plotNormalDensity(residuals(AR.lag.reg3.low))
+#-------------
+#TRUE VALUES BECAUSE I FOUND THOSE
+AR.lag.reg3 = lm(owner.percent ~ lagged.GINI + housing.pop.ratio + owner.hh.size + renter.hh.size + owner.percent.lag + year + county
+                 ,data = analysis.set)
+
+summary(AR.lag.reg3)
+
+AR.lag.reg2 = lm(owner.percent ~ lagged.GINI + housing.pop.ratio + owner.percent.lag + year + county
+                 ,data = analysis.set)
+
+summary(AR.lag.reg2)
+
+AR.lag.reg = lm(owner.percent ~ lagged.GINI + housing.pop.ratio + year + county
+                 ,data = analysis.set)
+
+summary(AR.lag.reg)
+
+working.pop.reg = lm(owner.percent ~ lagged.GINI + housing.pop.working.age + year + county
+                ,data = analysis.set)
+
+summary(working.pop.reg)
+
+educ.reg = lm(owner.percent ~ lagged.GINI + housing.pop.working.age + educ.9th.share + educ.no.dip.share +
+                educ.dip.share + educ.col.no.deg.share + educ.associate.share + educ.bachelor.share + educ.gradaute.share + year + county
+              ,data = analysis.set)
+
+summary(educ.reg)
+
+#Use non-lagged gini
+AR.reg3 = lm(owner.percent ~ GINI + housing.pop.ratio + owner.hh.size + renter.hh.size + owner.percent.lag + year + county
+                 ,data = analysis.set)
+
+summary(AR.reg3)
+
+AR.reg2 = lm(owner.percent ~ GINI + housing.pop.ratio + owner.percent.lag + year + county
+                 ,data = analysis.set)
+
+summary(AR.reg2)
+
+Gini.reg = lm(owner.percent ~ GINI + housing.pop.ratio + year + county
+                ,data = analysis.set)
+
+summary(Gini.reg)
+#---------------
+#Some more visual analysis
+#---------------
+
+
+plot(analysis.set$owner.percent, analysis.set$Gini.estimate.low, xlab = "Ownership Percentage", ylab = "GINI Coefficient", main = "Low GINI Estimate")
+plot(analysis.set$owner.percent, analysis.set$Gini.estimate.mid, xlab = "Ownership Percentage", ylab = "GINI Coefficient", main = "Medium GINI Estimate")
+plot(analysis.set$owner.percent, analysis.set$Gini.estimate.high, xlab = "Ownership Percentage", ylab = "GINI Coefficient", main = "High GINI Estimate")
+
+plot(owner.percent,owner.percent.lag)
+
+
+#kernal plotter function
+kernal.plotter = function(x, y, mains, xlabs, ylabs = 'Density'){
+  plot(density(na.omit(x[y$year == 2010])), col = 1, main = mains, ylab = ylabs, xlab = xlabs
+       #, ylim = c(0,0.25)
+       )
+  lines(density(na.omit(x[y$year == 2012])), col = 2)
+  lines(density(na.omit(x[y$year == 2013])), col = 3)
+  lines(density(na.omit(x[y$year == 2014])), col = 4)
+  lines(density(na.omit(x[y$year == 2015])), col = 5)
+  lines(density(na.omit(x[y$year == 2016])), col = 6)
+  lines(density(na.omit(x[y$year == 2017])), col = 7)
+  lines(density(na.omit(x[y$year == 2018])), col = 8)
+  lines(density(na.omit(x[y$year == 2019])), lty = 2, col = 9)
+  lines(density(na.omit(x[y$year == 2021])), lty = 2, col = 10)
+  
+  legend(x = "topright", legend = c('2010', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2021'),
+         col = c(1,2,3,4,5,6,7,8,9,10), lty = c(1,1,1,1,1,1,1,1,2,2),
+         lwd = 2)
+}
+kernal.plotter(analysis.set$GINI, analysis.set, "Gini True", "Coefficient", 'Density')
+
+
+kernal.plotter(analysis.set$Gini.estimate.low, "Gini Estimate Low", "Coefficient", 'Density')
+
+kernal.plotter(analysis.set$Gini.estimate.mid, "Gini Estimate Medium", "Coefficient", 'Density')
+
+kernal.plotter(analysis.set$Gini.estimate.high, "Gini Estimate High", "Coefficient", 'Density')
+
+kernal.plotter(analysis.set$housing.pop.working.age, "Housing by working age", "Percentage")
+
+kernal.plotter(analysis.set$housing.pop.ratio, "Housing by population", "Percentage")
+
+kernal.plotter(analysis.set$owner.percent, analysis.set, "Owner Percentage", "Percentage")
+
+#---------------
+#Publish Results
+#---------------
+
+#owner % regressions
+models = list(AR.lag.reg,  AR.lag.reg2, AR.lag.reg3)
+
+#owner regressions
+models2 = list(reg19, reg24,  reg26, reg26.robust)
+
+stargazer(models, title = 'Ownership % Regression Results', column.labels = c('GINI & Ratio only', 'AR term', "household size"),
+                    type = "text", omit = c("year","county") , out = "prelimresults2.txt")
+
+stargazer(models2, title = 'Number of Owners Regression Results', column.labels = c('Absolute Housing', 'Log Housing', "Log Housing + Pop", 'Log Housing + pop RSE'),
+          type = "text", out = "prelimresults2.txt")
+
+
+stargazer(models, title = 'Ownership % Regression Results', column.labels = c('Absolute Housing', 'Log Housing', "Log Housing + Pop", 'Log Housing + pop RSE'),
+          type = "text", out = "prelimresults1.pdf")
+
+stargazer(models2, title = 'Number of Owners Regression Results', column.labels = c('Absolute Housing', 'Log Housing', "Log Housing + Pop", 'Log Housing + pop RSE'),
+          type = "text", out = "prelimresults2.txt")
+
+#-----------------
+#Do more plotting 
+#-----------------
+#remove peurto rico
+plot(mergedf.s.did$owner.percent, mergedf.s.did$Gini.estimate)

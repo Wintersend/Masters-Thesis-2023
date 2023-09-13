@@ -38,6 +38,13 @@ library(arrayhelpers)
 library(ggplot2)
 library(qpcR)
 library(DescTools)
+library(tidyr)
+library(tseries)
+library(stargazer)
+library(lmtest)
+library(sandwich)
+library(rcompanion)
+
 #set key for accessing FRED data
 fredr_set_key("f1d6de070cd07cd6028872a3bc573657")
 

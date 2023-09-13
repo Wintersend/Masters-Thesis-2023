@@ -9,6 +9,7 @@ dp2.2010.c = read.csv("ACS Data/2010/ACSDP1Y2010.DP02-Data.csv", skip = 1)
 dp3.2010.c = read.csv("ACS Data/2010/ACSDP1Y2010.DP03-Data.csv", skip = 1)
 dp4.2010.c = read.csv("ACS Data/2010/ACSDP1Y2010.DP04-Data.csv", skip = 1)
 dp5.2010.c = read.csv("ACS Data/2010/ACSDP1Y2010.DP05-Data.csv", skip = 1)
+GINI.2010.c = read.csv("ACS Data/2010/ACSDT1Y2010.GINI.csv", skip = 1)
 st1.2010.c = read.csv("ACS Data/2010/ACSST1Y2010.S0101-Data.csv")
 
 #2011 data excluded due to download issues
@@ -17,54 +18,63 @@ dp2.2012.c = read.csv("ACS Data/2012/ACSDP1Y2012.DP02-Data.csv", skip = 1)
 dp3.2012.c = read.csv("ACS Data/2012/ACSDP1Y2012.DP03-Data.csv", skip = 1)
 dp4.2012.c = read.csv("ACS Data/2012/ACSDP1Y2012.DP04-Data.csv", skip = 1)
 dp5.2012.c = read.csv("ACS Data/2012/ACSDP1Y2012.DP05-Data.csv", skip = 1)
+GINI.2012.c = read.csv("ACS Data/2012/ACSDT1Y2012.GINI.csv", skip = 1)
 st1.2012.c = read.csv("ACS Data/2012/ACSDT1Y2012.B25101-2023-07-28T112752.csv")
 
 dp2.2013.c = read.csv("ACS Data/2013/ACSDP1Y2013.DP02-Data.csv", skip = 1)
 dp3.2013.c = read.csv("ACS Data/2013/ACSDP1Y2013.DP03-Data.csv", skip = 1)
 dp4.2013.c = read.csv("ACS Data/2013/ACSDP1Y2013.DP04-Data.csv", skip = 1)
 dp5.2013.c = read.csv("ACS Data/2013/ACSDP1Y2013.DP05-Data.csv", skip = 1)
+GINI.2013.c = read.csv("ACS Data/2013/ACSDT1Y2013.GINI.csv", skip = 1)
 st1.2013.c = read.csv("ACS Data/2013/ACSDT1Y2013.B25101-2023-07-28T112741.csv")
 
 dp2.2014.c = read.csv("ACS Data/2014/ACSDP1Y2014.DP02-Data.csv", skip = 1)
 dp3.2014.c = read.csv("ACS Data/2014/ACSDP1Y2014.DP03-Data.csv", skip = 1)
 dp4.2014.c = read.csv("ACS Data/2014/ACSDP1Y2014.DP04-Data.csv", skip = 1)
 dp5.2014.c = read.csv("ACS Data/2014/ACSDP1Y2014.DP05-Data.csv", skip = 1)
+GINI.2014.c = read.csv("ACS Data/2014/ACSDT1Y2014.GINI.csv", skip = 1)
 st1.2014.c = read.csv("ACS Data/2014/ACSDT1Y2014.B25101-2023-07-28T112731.csv")
 
 dp2.2015.c = read.csv("ACS Data/2015/ACSDP1Y2015.DP02-Data.csv", skip = 1)
 dp3.2015.c = read.csv("ACS Data/2015/ACSDP1Y2015.DP03-Data.csv", skip = 1)
 dp4.2015.c = read.csv("ACS Data/2015/ACSDP1Y2015.DP04-Data.csv", skip = 1)
 dp5.2015.c = read.csv("ACS Data/2015/ACSDP1Y2015.DP05-Data.csv", skip = 1)
+GINI.2015.c = read.csv("ACS Data/2015/ACSDT1Y2015.GINI.csv", skip = 1)
 st1.2015.c = read.csv("ACS Data/2015/ACSDT1Y2015.B25101-2023-07-28T112657.csv")
 
 dp2.2016.c = read.csv("ACS Data/2016/ACSDP1Y2016.DP02-Data.csv", skip = 1)
 dp3.2016.c = read.csv("ACS Data/2016/ACSDP1Y2016.DP03-Data.csv", skip = 1)
 dp4.2016.c = read.csv("ACS Data/2016/ACSDP1Y2016.DP04-Data.csv", skip = 1)
 dp5.2016.c = read.csv("ACS Data/2016/ACSDP1Y2016.DP05-Data.csv", skip = 1)
+GINI.2016.c = read.csv("ACS Data/2016/ACSDT1Y2016.GINI.csv", skip = 1)
 st1.2016.c = read.csv("ACS Data/2016/ACSDT1Y2016.B25101-2023-07-28T112629.csv")
 
 dp2.2017.c = read.csv("ACS Data/2017/ACSDP1Y2017.DP02-Data.csv", skip = 1)
 dp3.2017.c = read.csv("ACS Data/2017/ACSDP1Y2017.DP03-Data.csv", skip = 1)
 dp4.2017.c = read.csv("ACS Data/2017/ACSDP1Y2017.DP04-Data.csv", skip = 1)
 dp5.2017.c = read.csv("ACS Data/2017/ACSDP1Y2017.DP05-Data.csv", skip = 1)
+GINI.2017.c = read.csv("ACS Data/2017/ACSDT1Y2017.GINI.csv", skip = 1)
 st1.2017.c = read.csv("ACS Data/2017/ACSDT1Y2017.B25101-2023-07-28T112613.csv")
 
 dp2.2018.c = read.csv("ACS Data/2018/ACSDP1Y2018.DP02-Data.csv", skip = 1)
 dp3.2018.c = read.csv("ACS Data/2018/ACSDP1Y2018.DP03-Data.csv", skip = 1)
 dp4.2018.c = read.csv("ACS Data/2018/ACSDP1Y2018.DP04-Data.csv", skip = 1)
 dp5.2018.c = read.csv("ACS Data/2018/ACSDP1Y2018.DP05-Data.csv", skip = 1)
+GINI.2018.c = read.csv("ACS Data/2018/ACSDT1Y2018.GINI.csv", skip = 1)
 st1.2018.c = read.csv("ACS Data/2018/ACSDT1Y2018.B25101-2023-07-28T112556.csv")
 
 dp2.2019.c = read.csv("ACS Data/2019/ACSDP1Y2019.DP02-Data.csv", skip = 1)
 dp3.2019.c = read.csv("ACS Data/2019/ACSDP1Y2019.DP03-Data.csv", skip = 1)
 dp4.2019.c = read.csv("ACS Data/2019/ACSDP1Y2019.DP04-Data.csv", skip = 1)
 dp5.2019.c = read.csv("ACS Data/2019/ACSDP1Y2019.DP05-Data.csv", skip = 1)
+GINI.2019.c = read.csv("ACS Data/2019/ACSDT1Y2019.GINI.csv", skip = 1)
 st1.2019.c = read.csv("ACS Data/2019/ACSDT1Y2019.B25101-2023-07-28T112540.csv")
 
 dp2.2021.c = read.csv("ACS Data/2021/ACSDP1Y2021.DP02-Data.csv", skip = 1)
 dp3.2021.c = read.csv("ACS Data/2021/ACSDP1Y2021.DP03-Data.csv", skip = 1)
 dp4.2021.c = read.csv("ACS Data/2021/ACSDP1Y2021.DP04-Data.csv", skip = 1)
 dp5.2021.c = read.csv("ACS Data/2021/ACSDP1Y2021.DP05-Data.csv", skip = 1)
+GINI.2021.c = read.csv("ACS Data/2021/ACSDT1Y2021.GINI.csv", skip = 1)
 st1.2021.c = read.csv("ACS Data/2021/ACSDT1Y2021.B25101-2023-07-28T112524.csv")
 
 
@@ -149,14 +159,14 @@ dataclean = function(dataset){
 
 #Uses the above function to merge all specified data sets into one after cleaning
 #Also remove Puerto Rico
-datamerge = function(dp2, dp3, dp4, dp5, end_name, year){
+datamerge = function(dp2, dp3, dp4, dp5, GINI, end_name, year){
   dp2 = dataclean(dp2)
   dp3 = dataclean(dp3)
   dp4 = dataclean(dp4)
   dp5 = dataclean(dp5)
-  dflist = list(dp2, dp3, dp4, dp5)
+  dflist = list(dp2, dp3, dp4, dp5, GINI)
   end_name = Reduce(function(x,y) merge(x,y, all=TRUE), dflist)
-  end_name = end_name[-40,]
+  end_name = end_name[-53,]
   year = rep(year, nrow(end_name))
   region = rep(0, nrow(end_name))
   end_name = cbind(end_name, year, region)
@@ -188,16 +198,16 @@ datamerge = function(dp2, dp3, dp4, dp5, end_name, year){
 
 
 #Get cleaned data for each year
-cleaned2010 = datamerge(dp2.2010.c, dp3.2010.c, dp4.2010.c, dp5.2010.c, cleaned2010, 2010)
-cleaned2012 = datamerge(dp2.2012.c, dp3.2012.c, dp4.2012.c, dp5.2012.c, cleaned2012, 2012)
-cleaned2013 = datamerge(dp2.2013.c, dp3.2013.c, dp4.2013.c, dp5.2013.c, cleaned2013, 2013)
-cleaned2014 = datamerge(dp2.2014.c, dp3.2014.c, dp4.2014.c, dp5.2014.c, cleaned2014, 2014)
-cleaned2015 = datamerge(dp2.2015.c, dp3.2015.c, dp4.2015.c, dp5.2015.c, cleaned2015, 2015)
-cleaned2016 = datamerge(dp2.2016.c, dp3.2016.c, dp4.2016.c, dp5.2016.c, cleaned2016, 2016)
-cleaned2017 = datamerge(dp2.2017.c, dp3.2017.c, dp4.2017.c, dp5.2017.c, cleaned2017, 2017)
-cleaned2018 = datamerge(dp2.2018.c, dp3.2018.c, dp4.2018.c, dp5.2018.c, cleaned2018, 2018)
-cleaned2019 = datamerge(dp2.2019.c, dp3.2019.c, dp4.2019.c, dp5.2019.c, cleaned2019, 2019)
-cleaned2021 = datamerge(dp2.2021.c, dp3.2021.c, dp4.2021.c, dp5.2021.c, cleaned2021, 2021)
+cleaned2010 = datamerge(dp2.2010.c, dp3.2010.c, dp4.2010.c, dp5.2010.c, GINI.2010.c, cleaned2010, 2010)
+cleaned2012 = datamerge(dp2.2012.c, dp3.2012.c, dp4.2012.c, dp5.2012.c, GINI.2012.c, cleaned2012, 2012)
+cleaned2013 = datamerge(dp2.2013.c, dp3.2013.c, dp4.2013.c, dp5.2013.c, GINI.2013.c, cleaned2013, 2013)
+cleaned2014 = datamerge(dp2.2014.c, dp3.2014.c, dp4.2014.c, dp5.2014.c, GINI.2014.c, cleaned2014, 2014)
+cleaned2015 = datamerge(dp2.2015.c, dp3.2015.c, dp4.2015.c, dp5.2015.c, GINI.2015.c, cleaned2015, 2015)
+cleaned2016 = datamerge(dp2.2016.c, dp3.2016.c, dp4.2016.c, dp5.2016.c, GINI.2016.c, cleaned2016, 2016)
+cleaned2017 = datamerge(dp2.2017.c, dp3.2017.c, dp4.2017.c, dp5.2017.c, GINI.2017.c, cleaned2017, 2017)
+cleaned2018 = datamerge(dp2.2018.c, dp3.2018.c, dp4.2018.c, dp5.2018.c, GINI.2018.c, cleaned2018, 2018)
+cleaned2019 = datamerge(dp2.2019.c, dp3.2019.c, dp4.2019.c, dp5.2019.c, GINI.2019.c, cleaned2019, 2019)
+cleaned2021 = datamerge(dp2.2021.c, dp3.2021.c, dp4.2021.c, dp5.2021.c, GINI.2021.c, cleaned2021, 2021)
 
 
 #ST1 data is laid out differently and needs a separate data clean step
@@ -228,6 +238,8 @@ cleaned21.a = percent_out(cleaned2021)
 #lacks cohabitating households
 
 
+#isolate above 18 population statistics
+
 dp.2010 = cleaned10.a[,c("state", 'Geographic.Area.Name', 'year', 'region',
                      'Estimate..UNITS.IN.STRUCTURE..Total.housing.units', 'Estimate..EMPLOYMENT.STATUS..Population.16.years.and.over',
                      'Estimate..EMPLOYMENT.STATUS..In.labor.force..Civilian.labor.force',
@@ -256,7 +268,10 @@ dp.2010 = cleaned10.a[,c("state", 'Geographic.Area.Name', 'year', 'region',
                      'Estimate..HOUSING.TENURE..Owner.occupied',
                      'Estimate..HOUSING.TENURE..Renter.occupied',
                      'Estimate..HOUSING.TENURE..Average.household.size.of.owner.occupied.unit',
-                     'Estimate..HOUSING.TENURE..Average.household.size.of.renter.occupied.unit')]
+                     'Estimate..HOUSING.TENURE..Average.household.size.of.renter.occupied.unit',
+                     'Estimate..SEX.AND.AGE..18.years.and.over',
+                     'Estimate..SEX.AND.AGE..65.years.and.over',
+                     'Estimate..Gini.Index')]
 
 
 
@@ -289,7 +304,10 @@ dp.2012 = cleaned12.a[,c("state", 'Geographic.Area.Name', 'year', 'region',
                      'Estimate..HOUSING.TENURE..Owner.occupied',
                      'Estimate..HOUSING.TENURE..Renter.occupied',
                      'Estimate..HOUSING.TENURE..Average.household.size.of.owner.occupied.unit',
-                     'Estimate..HOUSING.TENURE..Average.household.size.of.renter.occupied.unit')]
+                     'Estimate..HOUSING.TENURE..Average.household.size.of.renter.occupied.unit',
+                     'Estimate..SEX.AND.AGE..18.years.and.over',
+                     'Estimate..SEX.AND.AGE..65.years.and.over',
+                     'Estimate..Gini.Index')]
 
 
 dp.2013 = cleaned13.a[,c("state", 'Geographic.Area.Name', 'year', 'region',
@@ -320,7 +338,10 @@ dp.2013 = cleaned13.a[,c("state", 'Geographic.Area.Name', 'year', 'region',
                      'Estimate..HOUSING.TENURE..Occupied.housing.units..Owner.occupied',
                      'Estimate..HOUSING.TENURE..Occupied.housing.units..Renter.occupied',
                      'Estimate..HOUSING.TENURE..Average.household.size.of.owner.occupied.unit',
-                     'Estimate..HOUSING.TENURE..Average.household.size.of.owner.occupied.unit')]
+                     'Estimate..HOUSING.TENURE..Average.household.size.of.owner.occupied.unit',
+                    'Estimate..SEX.AND.AGE..18.years.and.over',
+                    'Estimate..SEX.AND.AGE..65.years.and.over',
+                    'Estimate..Gini.Index')]
 
 
 dp.2014 = cleaned14.a[,c("state", 'Geographic.Area.Name', 'year', 'region',
@@ -351,7 +372,10 @@ dp.2014 = cleaned14.a[,c("state", 'Geographic.Area.Name', 'year', 'region',
                      'Estimate..HOUSING.TENURE..Occupied.housing.units..Owner.occupied',
                      'Estimate..HOUSING.TENURE..Occupied.housing.units..Renter.occupied',
                      'Estimate..HOUSING.TENURE..Average.household.size.of.owner.occupied.unit',
-                     'Estimate..HOUSING.TENURE..Average.household.size.of.owner.occupied.unit')]
+                     'Estimate..HOUSING.TENURE..Average.household.size.of.owner.occupied.unit',
+                     'Estimate..SEX.AND.AGE..18.years.and.over',
+                     'Estimate..SEX.AND.AGE..65.years.and.over',
+                     'Estimate..Gini.Index')]
 
 #input 15,16,17,18
 
@@ -383,7 +407,10 @@ dp.2015 = cleaned15.a[,c("state", 'Geographic.Area.Name', 'year', 'region',
                      'Estimate..HOUSING.TENURE..Occupied.housing.units..Owner.occupied',
                      'Estimate..HOUSING.TENURE..Occupied.housing.units..Renter.occupied',
                      'Estimate..HOUSING.TENURE..Average.household.size.of.owner.occupied.unit',
-                     'Estimate..HOUSING.TENURE..Average.household.size.of.owner.occupied.unit')]
+                     'Estimate..HOUSING.TENURE..Average.household.size.of.owner.occupied.unit',
+                     'Estimate..SEX.AND.AGE..18.years.and.over',
+                     'Estimate..SEX.AND.AGE..65.years.and.over',
+                     'Estimate..Gini.Index')]
 
 
 dp.2016 = cleaned16.a[,c("state", 'Geographic.Area.Name', 'year', 'region',
@@ -417,7 +444,10 @@ dp.2016 = cleaned16.a[,c("state", 'Geographic.Area.Name', 'year', 'region',
                          'Estimate..HOUSING.TENURE..Occupied.housing.units..Owner.occupied',
                          'Estimate..HOUSING.TENURE..Occupied.housing.units..Renter.occupied',
                          'Estimate..HOUSING.TENURE..Average.household.size.of.owner.occupied.unit',
-                         'Estimate..HOUSING.TENURE..Average.household.size.of.owner.occupied.unit')]
+                         'Estimate..HOUSING.TENURE..Average.household.size.of.owner.occupied.unit',
+                        'Estimate..SEX.AND.AGE..18.years.and.over',
+                        'Estimate..SEX.AND.AGE..65.years.and.over',
+                        'Estimate..Gini.Index')]
 
 dp.2017 = cleaned17.a[,c("state", 'Geographic.Area.Name', 'year', 'region',
                          'Estimate..UNITS.IN.STRUCTURE..Total.housing.units', 'Estimate..EMPLOYMENT.STATUS..Population.16.years.and.over..In.labor.force',
@@ -451,7 +481,10 @@ dp.2017 = cleaned17.a[,c("state", 'Geographic.Area.Name', 'year', 'region',
                          'Estimate..HOUSING.TENURE..Occupied.housing.units..Owner.occupied',
                          'Estimate..HOUSING.TENURE..Occupied.housing.units..Renter.occupied',
                          'Estimate..HOUSING.TENURE..Average.household.size.of.owner.occupied.unit',
-                         'Estimate..HOUSING.TENURE..Average.household.size.of.owner.occupied.unit')]
+                         'Estimate..HOUSING.TENURE..Average.household.size.of.owner.occupied.unit',
+                        'Estimate..SEX.AND.AGE..18.years.and.over',
+                        'Estimate..SEX.AND.AGE..65.years.and.over',
+                        'Estimate..Gini.Index')]
 
 dp.2018 = cleaned18.a[,c("state", 'Geographic.Area.Name', 'year', 'region',
                          'Estimate..UNITS.IN.STRUCTURE..Total.housing.units', 'Estimate..EMPLOYMENT.STATUS..Population.16.years.and.over..In.labor.force',
@@ -485,7 +518,10 @@ dp.2018 = cleaned18.a[,c("state", 'Geographic.Area.Name', 'year', 'region',
                          'Estimate..HOUSING.TENURE..Occupied.housing.units..Owner.occupied',
                          'Estimate..HOUSING.TENURE..Occupied.housing.units..Renter.occupied',
                          'Estimate..HOUSING.TENURE..Occupied.housing.units..Average.household.size.of.owner.occupied.unit',
-                         'Estimate..HOUSING.TENURE..Occupied.housing.units..Average.household.size.of.owner.occupied.unit')]
+                         'Estimate..HOUSING.TENURE..Occupied.housing.units..Average.household.size.of.owner.occupied.unit',
+                         'Estimate..SEX.AND.AGE..Total.population..18.years.and.over',
+                      'Estimate..SEX.AND.AGE..Total.population..65.years.and.over',
+                      'Estimate..Gini.Index')]
 
 dp.2019 = cleaned19.a[,c("state", 'Geographic.Area.Name', 'year', 'region', 
            'Estimate..Total.housing.units', 'Estimate..EMPLOYMENT.STATUS..Population.16.years.and.over..In.labor.force',
@@ -520,7 +556,10 @@ dp.2019 = cleaned19.a[,c("state", 'Geographic.Area.Name', 'year', 'region',
            'Estimate..HOUSING.TENURE..Occupied.housing.units..Owner.occupied',
            'Estimate..HOUSING.TENURE..Occupied.housing.units..Renter.occupied',
            'Estimate..HOUSING.TENURE..Occupied.housing.units..Average.household.size.of.owner.occupied.unit',
-           'Estimate..HOUSING.TENURE..Occupied.housing.units..Average.household.size.of.owner.occupied.unit')]
+           'Estimate..HOUSING.TENURE..Occupied.housing.units..Average.household.size.of.owner.occupied.unit',
+           'Estimate..SEX.AND.AGE..Total.population..18.years.and.over',
+        'Estimate..SEX.AND.AGE..Total.population..65.years.and.over',
+        'Estimate..Gini.Index')]
 
 
 
@@ -559,7 +598,10 @@ dp.2021 = cleaned21.a[,c("state", 'Geographic.Area.Name' ,'year', 'region',
                          'Estimate..HOUSING.TENURE..Occupied.housing.units..Owner.occupied',
                          'Estimate..HOUSING.TENURE..Occupied.housing.units..Renter.occupied',
                          'Estimate..HOUSING.TENURE..Occupied.housing.units..Average.household.size.of.owner.occupied.unit',
-                         'Estimate..HOUSING.TENURE..Occupied.housing.units..Average.household.size.of.owner.occupied.unit')]
+                         'Estimate..HOUSING.TENURE..Occupied.housing.units..Average.household.size.of.owner.occupied.unit',
+                         'Estimate..SEX.AND.AGE..Total.population..18.years.and.over',
+                    'Estimate..SEX.AND.AGE..Total.population..65.years.and.over',
+                    'Estimate..Gini.Index')]
 #-----------------------------------
 #Ready for merging
 #-----------------------------------
@@ -599,7 +641,8 @@ name_align = function(df, new_name){
            owner = 30,
            renter = 31,
            owner.hh.size = 32,
-           renter.hh.size = 33
+           renter.hh.size = 33,
+           over.18.pop = 34
            )
   #commented out, cuts all non-country observations
   new_name = subset(new_name[-(1:53),])
@@ -654,14 +697,17 @@ name_align.s = function(df, new_name){
            owner = 30,
            renter = 31,
            owner.hh.size = 32,
-           renter.hh.size = 33
+           renter.hh.size = 33,
+           over.18.pop = 34,
+           over.65.pop =35,
+           GINI = 36
     )
   #commented out, cuts all non-country observations
   new_name = subset(new_name[(2:53),])
   return(new_name)
 }
 
-merge10s = name_align.s(dp.2010, merge10)
+merge10s = name_align.s(dp.2010, merge10s)
 merge12s = name_align.s(dp.2012, merge12)
 merge13s = name_align.s(dp.2013, merge13)
 merge14s = name_align.s(dp.2014, merge14)
@@ -675,9 +721,9 @@ merge21s = name_align.s(dp.2021, merge21)
 mergedf.s = rbind(merge10s, merge12s, merge13s, merge14s, merge15s, merge16s, merge17s, merge18s, merge19s, merge21s)
 
 
-#------------------------
+#---------------------------
 #EXPERIMENTAL CODE
-#------------------------
+#---------------------------
 test = dp5.2021.c[,-(grep("Margin.of.Error", colnames(dp5.2021.c), ignore.case = TRUE))]
 test = test[,-(grep("Annotation", colnames(test), ignore.case = TRUE))]
 test = test[,-(grep("race", colnames(test), ignore.case = TRUE))]
@@ -708,3 +754,15 @@ zero_checker = function(dataset){
 
 is.null(grep("race", colnames(test2), ignore.case = TRUE))
         
+#---------------------------
+#Create more new parameters
+#---------------------------
+#control to be in proportions
+#normalize on Population
+#lagged income
+#educ
+#plot out inequality
+#create working population 18-65 population
+#use over 65 pop maybe
+mergedf.s.did = mergedf.s.did %>% 
+  mutate(inc.pop = total.income.benefits/employable.pop)
