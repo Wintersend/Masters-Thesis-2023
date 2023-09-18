@@ -4,79 +4,115 @@
 #Each year has different counties, making this panel data
 #Need to figure out how to work with that effectively
 
-
+house.2010.c = read.csv("ACS Data/2010/Housing.csv", skip = 1)
+inc.2010.c = read.csv("ACS Data/2010/Quant.csv", skip = 1)
 dp2.2010.c = read.csv("ACS Data/2010/ACSDP1Y2010.DP02-Data.csv", skip = 1)
 dp3.2010.c = read.csv("ACS Data/2010/ACSDP1Y2010.DP03-Data.csv", skip = 1)
 dp4.2010.c = read.csv("ACS Data/2010/ACSDP1Y2010.DP04-Data.csv", skip = 1)
 dp5.2010.c = read.csv("ACS Data/2010/ACSDP1Y2010.DP05-Data.csv", skip = 1)
 GINI.2010.c = read.csv("ACS Data/2010/ACSDT1Y2010.GINI.csv", skip = 1)
-st1.2010.c = read.csv("ACS Data/2010/ACSST1Y2010.S0101-Data.csv")
+mortgage.2010.c = read.csv("ACS Data/2010/Mortgage.csv", skip = 1)
 
 #2011 data excluded due to download issues
+house.2011.c = read.csv("ACS Data/2011/Housing.csv", skip = 1)
+inc.2011.c = read.csv("ACS Data/2011/Quant.csv", skip = 1)
+dp2.2011.c = read.csv("ACS Data/2011/ACSDP1Y2011.DP02-Data.csv", skip = 1)
+dp3.2011.c = read.csv("ACS Data/2011/ACSDP1Y2011.DP03-Data.csv", skip = 1)
+dp4.2011.c = read.csv("ACS Data/2011/ACSDP1Y2011.DP04-Data.csv", skip = 1)
+dp5.2011.c = read.csv("ACS Data/2011/ACSDP1Y2011.DP05-Data.csv", skip = 1)
+GINI.2011.c = read.csv("ACS Data/2011/GINI.csv", skip = 1)
+mortgage.2011.c = read.csv("ACS Data/2011/Mortgage.csv", skip = 1)
 
+
+house.2012.c = read.csv("ACS Data/2012/Housing.csv", skip = 1)
+inc.2012.c = read.csv("ACS Data/2012/Quant.csv", skip = 1)
 dp2.2012.c = read.csv("ACS Data/2012/ACSDP1Y2012.DP02-Data.csv", skip = 1)
 dp3.2012.c = read.csv("ACS Data/2012/ACSDP1Y2012.DP03-Data.csv", skip = 1)
 dp4.2012.c = read.csv("ACS Data/2012/ACSDP1Y2012.DP04-Data.csv", skip = 1)
 dp5.2012.c = read.csv("ACS Data/2012/ACSDP1Y2012.DP05-Data.csv", skip = 1)
 GINI.2012.c = read.csv("ACS Data/2012/ACSDT1Y2012.GINI.csv", skip = 1)
-st1.2012.c = read.csv("ACS Data/2012/ACSDT1Y2012.B25101-2023-07-28T112752.csv")
+mortgage.2012.c = read.csv("ACS Data/2012/Mortgage.csv", skip = 1)
 
+house.2013.c = read.csv("ACS Data/2013/Housing.csv", skip = 1)
+inc.2013.c = read.csv("ACS Data/2013/Quant.csv", skip = 1)
 dp2.2013.c = read.csv("ACS Data/2013/ACSDP1Y2013.DP02-Data.csv", skip = 1)
 dp3.2013.c = read.csv("ACS Data/2013/ACSDP1Y2013.DP03-Data.csv", skip = 1)
 dp4.2013.c = read.csv("ACS Data/2013/ACSDP1Y2013.DP04-Data.csv", skip = 1)
 dp5.2013.c = read.csv("ACS Data/2013/ACSDP1Y2013.DP05-Data.csv", skip = 1)
 GINI.2013.c = read.csv("ACS Data/2013/ACSDT1Y2013.GINI.csv", skip = 1)
-st1.2013.c = read.csv("ACS Data/2013/ACSDT1Y2013.B25101-2023-07-28T112741.csv")
+mortgage.2013.c = read.csv("ACS Data/2013/Mortgage.csv", skip = 1)
 
+house.2014.c = read.csv("ACS Data/2014/Housing.csv", skip = 1)
+inc.2014.c = read.csv("ACS Data/2014/Quant.csv", skip = 1)
 dp2.2014.c = read.csv("ACS Data/2014/ACSDP1Y2014.DP02-Data.csv", skip = 1)
 dp3.2014.c = read.csv("ACS Data/2014/ACSDP1Y2014.DP03-Data.csv", skip = 1)
 dp4.2014.c = read.csv("ACS Data/2014/ACSDP1Y2014.DP04-Data.csv", skip = 1)
 dp5.2014.c = read.csv("ACS Data/2014/ACSDP1Y2014.DP05-Data.csv", skip = 1)
 GINI.2014.c = read.csv("ACS Data/2014/ACSDT1Y2014.GINI.csv", skip = 1)
-st1.2014.c = read.csv("ACS Data/2014/ACSDT1Y2014.B25101-2023-07-28T112731.csv")
+mortgage.2014.c = read.csv("ACS Data/2014/Mortgage.csv", skip = 1)
 
+house.2015.c = read.csv("ACS Data/2015/Housing.csv", skip = 1)
+inc.2015.c = read.csv("ACS Data/2015/Quant.csv", skip = 1)
 dp2.2015.c = read.csv("ACS Data/2015/ACSDP1Y2015.DP02-Data.csv", skip = 1)
 dp3.2015.c = read.csv("ACS Data/2015/ACSDP1Y2015.DP03-Data.csv", skip = 1)
 dp4.2015.c = read.csv("ACS Data/2015/ACSDP1Y2015.DP04-Data.csv", skip = 1)
 dp5.2015.c = read.csv("ACS Data/2015/ACSDP1Y2015.DP05-Data.csv", skip = 1)
 GINI.2015.c = read.csv("ACS Data/2015/ACSDT1Y2015.GINI.csv", skip = 1)
-st1.2015.c = read.csv("ACS Data/2015/ACSDT1Y2015.B25101-2023-07-28T112657.csv")
+mortgage.2015.c = read.csv("ACS Data/2015/Mortgage.csv", skip = 1)
 
+house.2016.c = read.csv("ACS Data/2016/Housing.csv", skip = 1)
+inc.2016.c = read.csv("ACS Data/2016/Quant.csv", skip = 1)
 dp2.2016.c = read.csv("ACS Data/2016/ACSDP1Y2016.DP02-Data.csv", skip = 1)
 dp3.2016.c = read.csv("ACS Data/2016/ACSDP1Y2016.DP03-Data.csv", skip = 1)
 dp4.2016.c = read.csv("ACS Data/2016/ACSDP1Y2016.DP04-Data.csv", skip = 1)
 dp5.2016.c = read.csv("ACS Data/2016/ACSDP1Y2016.DP05-Data.csv", skip = 1)
 GINI.2016.c = read.csv("ACS Data/2016/ACSDT1Y2016.GINI.csv", skip = 1)
-st1.2016.c = read.csv("ACS Data/2016/ACSDT1Y2016.B25101-2023-07-28T112629.csv")
+mortgage.2016.c = read.csv("ACS Data/2016/Mortgage.csv", skip = 1)
 
+house.2017.c = read.csv("ACS Data/2017/Housing.csv", skip = 1)
+inc.2017.c = read.csv("ACS Data/2017/Quant.csv", skip = 1)
 dp2.2017.c = read.csv("ACS Data/2017/ACSDP1Y2017.DP02-Data.csv", skip = 1)
 dp3.2017.c = read.csv("ACS Data/2017/ACSDP1Y2017.DP03-Data.csv", skip = 1)
 dp4.2017.c = read.csv("ACS Data/2017/ACSDP1Y2017.DP04-Data.csv", skip = 1)
 dp5.2017.c = read.csv("ACS Data/2017/ACSDP1Y2017.DP05-Data.csv", skip = 1)
 GINI.2017.c = read.csv("ACS Data/2017/ACSDT1Y2017.GINI.csv", skip = 1)
-st1.2017.c = read.csv("ACS Data/2017/ACSDT1Y2017.B25101-2023-07-28T112613.csv")
+mortgage.2017.c = read.csv("ACS Data/2017/Mortgage.csv", skip = 1)
 
+house.2018.c = read.csv("ACS Data/2018/Housing.csv", skip = 1)
+inc.2018.c = read.csv("ACS Data/2018/Quant.csv", skip = 1)
 dp2.2018.c = read.csv("ACS Data/2018/ACSDP1Y2018.DP02-Data.csv", skip = 1)
 dp3.2018.c = read.csv("ACS Data/2018/ACSDP1Y2018.DP03-Data.csv", skip = 1)
 dp4.2018.c = read.csv("ACS Data/2018/ACSDP1Y2018.DP04-Data.csv", skip = 1)
 dp5.2018.c = read.csv("ACS Data/2018/ACSDP1Y2018.DP05-Data.csv", skip = 1)
 GINI.2018.c = read.csv("ACS Data/2018/ACSDT1Y2018.GINI.csv", skip = 1)
-st1.2018.c = read.csv("ACS Data/2018/ACSDT1Y2018.B25101-2023-07-28T112556.csv")
+mortgage.2018.c = read.csv("ACS Data/2018/Mortgage.csv", skip = 1)
 
+house.2019.c = read.csv("ACS Data/2019/Housing.csv", skip = 1)
+inc.2019.c = read.csv("ACS Data/2019/Quant.csv", skip = 1)
 dp2.2019.c = read.csv("ACS Data/2019/ACSDP1Y2019.DP02-Data.csv", skip = 1)
 dp3.2019.c = read.csv("ACS Data/2019/ACSDP1Y2019.DP03-Data.csv", skip = 1)
 dp4.2019.c = read.csv("ACS Data/2019/ACSDP1Y2019.DP04-Data.csv", skip = 1)
 dp5.2019.c = read.csv("ACS Data/2019/ACSDP1Y2019.DP05-Data.csv", skip = 1)
 GINI.2019.c = read.csv("ACS Data/2019/ACSDT1Y2019.GINI.csv", skip = 1)
-st1.2019.c = read.csv("ACS Data/2019/ACSDT1Y2019.B25101-2023-07-28T112540.csv")
+mortgage.2019.c = read.csv("ACS Data/2019/Mortgage.csv", skip = 1)
 
+house.2021.c = read.csv("ACS Data/2021/Housing.csv", skip = 1)
+inc.2021.c = read.csv("ACS Data/2021/Quant.csv", skip = 1)
 dp2.2021.c = read.csv("ACS Data/2021/ACSDP1Y2021.DP02-Data.csv", skip = 1)
 dp3.2021.c = read.csv("ACS Data/2021/ACSDP1Y2021.DP03-Data.csv", skip = 1)
 dp4.2021.c = read.csv("ACS Data/2021/ACSDP1Y2021.DP04-Data.csv", skip = 1)
 dp5.2021.c = read.csv("ACS Data/2021/ACSDP1Y2021.DP05-Data.csv", skip = 1)
 GINI.2021.c = read.csv("ACS Data/2021/ACSDT1Y2021.GINI.csv", skip = 1)
-st1.2021.c = read.csv("ACS Data/2021/ACSDT1Y2021.B25101-2023-07-28T112524.csv")
+mortgage.2021.c = read.csv("ACS Data/2021/Mortgage.csv", skip = 1)
 
+house.2022.c = read.csv("ACS Data/2022/Housing.csv", skip = 1)
+inc.2022.c = read.csv("ACS Data/2022/Quant.csv", skip = 1)
+dp2.2022.c = read.csv("ACS Data/2022/ACSDP1Y2022.DP02-Data.csv", skip = 1)
+dp3.2022.c = read.csv("ACS Data/2022/ACSDP1Y2022.DP03-Data.csv", skip = 1)
+dp4.2022.c = read.csv("ACS Data/2022/ACSDP1Y2022.DP04-Data.csv", skip = 1)
+dp5.2022.c = read.csv("ACS Data/2022/ACSDP1Y2022.DP05-Data.csv", skip = 1)
+GINI.2022.c = read.csv("ACS Data/2022/GINI.csv", skip = 1)
+mortgage.2022.c = read.csv("ACS Data/2022/Mortgage.csv", skip = 1)
 
 #If the input dataset will not contain specified search term, returns false
 zero_checker = function(search.term, dataset){
@@ -117,54 +153,57 @@ dataclean = function(dataset){
   if(zero_checker("health.insurance", dataset)){
     dataset = dataset[,-(grep("health.insurance", colnames(dataset), ignore.case = TRUE))]}
   
-  if(zero_checker("poverty", dataset)){
-    dataset = dataset[,-(grep("poverty", colnames(dataset), ignore.case = TRUE))]}
+# if(zero_checker("poverty", dataset)){
+#    dataset = dataset[,-(grep("poverty", colnames(dataset), ignore.case = TRUE))]}
   
   #Below this point may be used again but isn't neccesary right now
-  if(zero_checker("rooms", dataset)){
-    dataset = dataset[,-(grep("rooms", colnames(dataset), ignore.case = TRUE))]}
+# if(zero_checker("rooms", dataset)){
+#   dataset = dataset[,-(grep("rooms", colnames(dataset), ignore.case = TRUE))]}
   
-  if(zero_checker("built", dataset)){
-    dataset = dataset[,-(grep("built", colnames(dataset), ignore.case = TRUE))]}
+# if(zero_checker("built", dataset)){
+#   dataset = dataset[,-(grep("built", colnames(dataset), ignore.case = TRUE))]}
   
-  if(zero_checker("grandparents", dataset)){
-    dataset = dataset[,-(grep("grandparents", colnames(dataset), ignore.case = TRUE))]}
+# if(zero_checker("grandparents", dataset)){
+#   dataset = dataset[,-(grep("grandparents", colnames(dataset), ignore.case = TRUE))]}
   
-  if(zero_checker("school.enrollment", dataset)){
-    dataset = dataset[,-(grep("school.enrollment", colnames(dataset), ignore.case = TRUE))]}
+# if(zero_checker("school.enrollment", dataset)){
+#   dataset = dataset[,-(grep("school.enrollment", colnames(dataset), ignore.case = TRUE))]}
   
-  if(zero_checker("year.of.entry", dataset)){
-    dataset = dataset[,-(grep("year.of.entry", colnames(dataset), ignore.case = TRUE))]}
+# if(zero_checker("year.of.entry", dataset)){
+#   dataset = dataset[,-(grep("year.of.entry", colnames(dataset), ignore.case = TRUE))]}
   
-  if(zero_checker("veteran", dataset)){
-    dataset = dataset[,-(grep("veteran", colnames(dataset), ignore.case = TRUE))]}
+# if(zero_checker("veteran", dataset)){
+#   dataset = dataset[,-(grep("veteran", colnames(dataset), ignore.case = TRUE))]}
   
-  if(zero_checker("disability", dataset)){
-    dataset = dataset[,-(grep("disability", colnames(dataset), ignore.case = TRUE))]}
+# if(zero_checker("disability", dataset)){
+#   dataset = dataset[,-(grep("disability", colnames(dataset), ignore.case = TRUE))]}
   
-  if(zero_checker("commuting", dataset)){
-    dataset = dataset[,-(grep("commuting", colnames(dataset), ignore.case = TRUE))]}
+# if(zero_checker("commuting", dataset)){
+#   dataset = dataset[,-(grep("commuting", colnames(dataset), ignore.case = TRUE))]}
   
-  if(zero_checker("industry", dataset)){
-    dataset = dataset[,-(grep("industry", colnames(dataset), ignore.case = TRUE))]}
+# if(zero_checker("industry", dataset)){
+#   dataset = dataset[,-(grep("industry", colnames(dataset), ignore.case = TRUE))]}
   
-  if(zero_checker("heating", dataset)){
-    dataset = dataset[,-(grep("heating", colnames(dataset), ignore.case = TRUE))]}
+# if(zero_checker("heating", dataset)){
+#   dataset = dataset[,-(grep("heating", colnames(dataset), ignore.case = TRUE))]}
   
-  if(zero_checker("selected.characteristics", dataset)){
-    dataset = dataset[,-(grep("selected.characteristics", colnames(dataset), ignore.case = TRUE))]}
+# if(zero_checker("selected.characteristics", dataset)){
+#   dataset = dataset[,-(grep("selected.characteristics", colnames(dataset), ignore.case = TRUE))]}
   
   return(dataset)
 }
 
 #Uses the above function to merge all specified data sets into one after cleaning
 #Also remove Puerto Rico
-datamerge = function(dp2, dp3, dp4, dp5, GINI, end_name, year){
+datamerge = function(dp2, dp3, dp4, dp5, GINI, house, inc, mortgage, end_name, year){
   dp2 = dataclean(dp2)
   dp3 = dataclean(dp3)
   dp4 = dataclean(dp4)
   dp5 = dataclean(dp5)
-  dflist = list(dp2, dp3, dp4, dp5, GINI)
+  house = dataclean(house)
+  inc = dataclean(inc)
+  mort = dataclean(mortgage)
+  dflist = list(dp2, dp3, dp4, dp5, GINI, house, inc, mortgage)
   end_name = Reduce(function(x,y) merge(x,y, all=TRUE), dflist)
   end_name = end_name[-53,]
   year = rep(year, nrow(end_name))
@@ -198,17 +237,18 @@ datamerge = function(dp2, dp3, dp4, dp5, GINI, end_name, year){
 
 
 #Get cleaned data for each year
-cleaned2010 = datamerge(dp2.2010.c, dp3.2010.c, dp4.2010.c, dp5.2010.c, GINI.2010.c, cleaned2010, 2010)
-cleaned2012 = datamerge(dp2.2012.c, dp3.2012.c, dp4.2012.c, dp5.2012.c, GINI.2012.c, cleaned2012, 2012)
-cleaned2013 = datamerge(dp2.2013.c, dp3.2013.c, dp4.2013.c, dp5.2013.c, GINI.2013.c, cleaned2013, 2013)
-cleaned2014 = datamerge(dp2.2014.c, dp3.2014.c, dp4.2014.c, dp5.2014.c, GINI.2014.c, cleaned2014, 2014)
-cleaned2015 = datamerge(dp2.2015.c, dp3.2015.c, dp4.2015.c, dp5.2015.c, GINI.2015.c, cleaned2015, 2015)
-cleaned2016 = datamerge(dp2.2016.c, dp3.2016.c, dp4.2016.c, dp5.2016.c, GINI.2016.c, cleaned2016, 2016)
-cleaned2017 = datamerge(dp2.2017.c, dp3.2017.c, dp4.2017.c, dp5.2017.c, GINI.2017.c, cleaned2017, 2017)
-cleaned2018 = datamerge(dp2.2018.c, dp3.2018.c, dp4.2018.c, dp5.2018.c, GINI.2018.c, cleaned2018, 2018)
-cleaned2019 = datamerge(dp2.2019.c, dp3.2019.c, dp4.2019.c, dp5.2019.c, GINI.2019.c, cleaned2019, 2019)
-cleaned2021 = datamerge(dp2.2021.c, dp3.2021.c, dp4.2021.c, dp5.2021.c, GINI.2021.c, cleaned2021, 2021)
-
+cleaned2010 = datamerge(dp2.2010.c, dp3.2010.c, dp4.2010.c, dp5.2010.c, GINI.2010.c, house.2010.c, inc.2010.c, mortgage.2010.c, cleaned2010, 2010)
+cleaned2011 = datamerge(dp2.2011.c, dp3.2011.c, dp4.2011.c, dp5.2011.c, GINI.2011.c, house.2011.c, inc.2011.c, mortgage.2011.c, cleaned2011, 2011)
+cleaned2012 = datamerge(dp2.2012.c, dp3.2012.c, dp4.2012.c, dp5.2012.c, GINI.2012.c, house.2012.c, inc.2012.c, mortgage.2012.c, cleaned2012, 2012)
+cleaned2013 = datamerge(dp2.2013.c, dp3.2013.c, dp4.2013.c, dp5.2013.c, GINI.2013.c, house.2013.c, inc.2013.c, mortgage.2013.c, cleaned2013, 2013)
+cleaned2014 = datamerge(dp2.2014.c, dp3.2014.c, dp4.2014.c, dp5.2014.c, GINI.2014.c, house.2014.c, inc.2014.c, mortgage.2014.c, cleaned2014, 2014)
+cleaned2015 = datamerge(dp2.2015.c, dp3.2015.c, dp4.2015.c, dp5.2015.c, GINI.2015.c, house.2015.c, inc.2015.c, mortgage.2015.c, cleaned2015, 2015)
+cleaned2016 = datamerge(dp2.2016.c, dp3.2016.c, dp4.2016.c, dp5.2016.c, GINI.2016.c, house.2016.c, inc.2016.c, mortgage.2016.c, cleaned2016, 2016)
+cleaned2017 = datamerge(dp2.2017.c, dp3.2017.c, dp4.2017.c, dp5.2017.c, GINI.2017.c, house.2017.c, inc.2017.c, mortgage.2017.c, cleaned2017, 2017)
+cleaned2018 = datamerge(dp2.2018.c, dp3.2018.c, dp4.2018.c, dp5.2018.c, GINI.2018.c, house.2018.c, inc.2018.c, mortgage.2018.c, cleaned2018, 2018)
+cleaned2019 = datamerge(dp2.2019.c, dp3.2019.c, dp4.2019.c, dp5.2019.c, GINI.2019.c, house.2019.c, inc.2019.c, mortgage.2019.c, cleaned2019, 2019)
+cleaned2021 = datamerge(dp2.2021.c, dp3.2021.c, dp4.2021.c, dp5.2021.c, GINI.2021.c, house.2021.c, inc.2021.c, mortgage.2021.c, cleaned2021, 2021)
+cleaned2022 = datamerge(dp2.2022.c, dp3.2022.c, dp4.2022.c, dp5.2022.c, GINI.2022.c, house.2022.c, inc.2022.c, mortgage.2022.c, cleaned2022, 2022)
 
 #ST1 data is laid out differently and needs a separate data clean step
 
@@ -219,6 +259,7 @@ percent_out = function(dataset){
 }
 
 cleaned10.a = percent_out(cleaned2010)
+cleaned11.a = percent_out(cleaned2011)
 cleaned12.a = percent_out(cleaned2012)
 cleaned13.a = percent_out(cleaned2013)
 cleaned14.a = percent_out(cleaned2014)
@@ -228,6 +269,30 @@ cleaned17.a = percent_out(cleaned2017)
 cleaned18.a = percent_out(cleaned2018)
 cleaned19.a = percent_out(cleaned2019)
 cleaned21.a = percent_out(cleaned2021)
+cleaned22.a = percent_out(cleaned2022)
+
+#use this instead rn
+
+cleaned10.a = cleaned2010
+cleaned11.a = cleaned2011
+cleaned12.a = cleaned2012
+cleaned13.a = cleaned2013
+cleaned14.a = cleaned2014
+cleaned15.a = cleaned2015
+cleaned16.a = cleaned2016
+cleaned17.a = cleaned2017
+cleaned18.a = cleaned2018
+cleaned19.a = cleaned2019
+cleaned21.a = cleaned2021
+cleaned22.a = cleaned2022
+
+#-------------------------
+#mortgage puller
+#------------------------
+mortgage.percents = function(df){
+  df = df %>%
+    mutate(
+}
 
 
 #------------------------
@@ -271,7 +336,73 @@ dp.2010 = cleaned10.a[,c("state", 'Geographic.Area.Name', 'year', 'region',
                      'Estimate..HOUSING.TENURE..Average.household.size.of.renter.occupied.unit',
                      'Estimate..SEX.AND.AGE..18.years.and.over',
                      'Estimate..SEX.AND.AGE..65.years.and.over',
-                     'Estimate..Gini.Index')]
+                     'Estimate..Gini.Index',
+                     'Estimate..Quintile.Means..Lowest.Quintile',
+                     'Estimate..Quintile.Means..Second.Quintile',
+                     'Estimate..Quintile.Means..Third.Quintile',
+                     'Estimate..Quintile.Means..Fourth.Quintile',
+                     'Estimate..Quintile.Means..Highest.Quintile',
+                     'Estimate..Top.5.Percent',
+                     'Estimate..Total..With.a.mortgage..Less.than..20.000',
+                     'Estimate..Total..With.a.mortgage..Less.than..20.000..30.percent.or.more',
+                     'Estimate..Total..With.a.mortgage...20.000.to..34.999',
+                     'Estimate..Total..With.a.mortgage...20.000.to..34.999..30.percent.or.more',
+                     'Estimate..Total..With.a.mortgage...35.000.to..49.999',
+                     'Estimate..Total..With.a.mortgage...35.000.to..49.999..30.percent.or.more',
+                     'Estimate..Total..With.a.mortgage...50.000.to..74.999',
+                     'Estimate..Total..With.a.mortgage...50.000.to..74.999..30.percent.or.more',
+                     'Estimate..Total..With.a.mortgage...75.000.or.more',
+                     'Estimate..Total..With.a.mortgage...75.000.or.more..30.percent.or.more'
+                     )]
+
+dp.2011 = cleaned11.a[,c("state", 'Geographic.Area.Name', 'year', 'region',
+                         'Estimate..UNITS.IN.STRUCTURE..Total.housing.units', 'Estimate..EMPLOYMENT.STATUS..Population.16.years.and.over',
+                         'Estimate..EMPLOYMENT.STATUS..In.labor.force..Civilian.labor.force',
+                         'Estimate..EMPLOYMENT.STATUS..In.labor.force..Civilian.labor.force..Employed',
+                         'Estimate..INCOME.AND.BENEFITS..IN.2011.INFLATION.ADJUSTED.DOLLARS...Total.households',
+                         'Estimate..INCOME.AND.BENEFITS..IN.2011.INFLATION.ADJUSTED.DOLLARS...Less.than..10.000',
+                         'Estimate..INCOME.AND.BENEFITS..IN.2011.INFLATION.ADJUSTED.DOLLARS....10.000.to..14.999',
+                         'Estimate..INCOME.AND.BENEFITS..IN.2011.INFLATION.ADJUSTED.DOLLARS....15.000.to..24.999',
+                         'Estimate..INCOME.AND.BENEFITS..IN.2011.INFLATION.ADJUSTED.DOLLARS....25.000.to..34.999',
+                         'Estimate..INCOME.AND.BENEFITS..IN.2011.INFLATION.ADJUSTED.DOLLARS....35.000.to..49.999',
+                         'Estimate..INCOME.AND.BENEFITS..IN.2011.INFLATION.ADJUSTED.DOLLARS....50.000.to..74.999',
+                         'Estimate..INCOME.AND.BENEFITS..IN.2011.INFLATION.ADJUSTED.DOLLARS....75.000.to..99.999',
+                         'Estimate..INCOME.AND.BENEFITS..IN.2011.INFLATION.ADJUSTED.DOLLARS....100.000.to..149.999',
+                         'Estimate..INCOME.AND.BENEFITS..IN.2011.INFLATION.ADJUSTED.DOLLARS....150.000.to..199.999',
+                         'Estimate..INCOME.AND.BENEFITS..IN.2011.INFLATION.ADJUSTED.DOLLARS....200.000.or.more',
+                         'Estimate..HOUSEHOLDS.BY.TYPE..Total.households', 'Estimate..HOUSEHOLDS.BY.TYPE..Family.households..families...Married.couple.family',
+                         #'Estimate..MARITAL.STATUS..Males.15.years.and.over', 'Estimate..MARITAL.STATUS..Females.15.years.and.over',
+                         'Estimate..EDUCATIONAL.ATTAINMENT..Population.25.years.and.over',
+                         'Estimate..EDUCATIONAL.ATTAINMENT..Less.than.9th.grade',
+                         'Estimate..EDUCATIONAL.ATTAINMENT..9th.to.12th.grade..no.diploma',
+                         'Estimate..EDUCATIONAL.ATTAINMENT..High.school.graduate..includes.equivalency.',
+                         'Estimate..EDUCATIONAL.ATTAINMENT..Some.college..no.degree',
+                         'Estimate..EDUCATIONAL.ATTAINMENT..Associate.s.degree',
+                         'Estimate..EDUCATIONAL.ATTAINMENT..Bachelor.s.degree',
+                         'Estimate..EDUCATIONAL.ATTAINMENT..Graduate.or.professional.degree',
+                         'Estimate..HOUSING.TENURE..Owner.occupied',
+                         'Estimate..HOUSING.TENURE..Renter.occupied',
+                         'Estimate..HOUSING.TENURE..Average.household.size.of.owner.occupied.unit',
+                         'Estimate..HOUSING.TENURE..Average.household.size.of.renter.occupied.unit',
+                         'Estimate..SEX.AND.AGE..18.years.and.over',
+                         'Estimate..SEX.AND.AGE..65.years.and.over',
+                         'Estimate..Gini.Index',
+                         'Estimate..Quintile.Means..Lowest.Quintile',
+                         'Estimate..Quintile.Means..Second.Quintile',
+                         'Estimate..Quintile.Means..Third.Quintile',
+                         'Estimate..Quintile.Means..Fourth.Quintile',
+                         'Estimate..Quintile.Means..Highest.Quintile',
+                         'Estimate..Top.5.Percent',
+                         'Estimate..Total..With.a.mortgage..Less.than..20.000',
+                         'Estimate..Total..With.a.mortgage..Less.than..20.000..30.percent.or.more',
+                         'Estimate..Total..With.a.mortgage...20.000.to..34.999',
+                         'Estimate..Total..With.a.mortgage...20.000.to..34.999..30.percent.or.more',
+                         'Estimate..Total..With.a.mortgage...35.000.to..49.999',
+                         'Estimate..Total..With.a.mortgage...35.000.to..49.999..30.percent.or.more',
+                         'Estimate..Total..With.a.mortgage...50.000.to..74.999',
+                         'Estimate..Total..With.a.mortgage...50.000.to..74.999..30.percent.or.more',
+                         'Estimate..Total..With.a.mortgage...75.000.or.more',
+                         'Estimate..Total..With.a.mortgage...75.000.or.more..30.percent.or.more')]
 
 
 
@@ -307,7 +438,23 @@ dp.2012 = cleaned12.a[,c("state", 'Geographic.Area.Name', 'year', 'region',
                      'Estimate..HOUSING.TENURE..Average.household.size.of.renter.occupied.unit',
                      'Estimate..SEX.AND.AGE..18.years.and.over',
                      'Estimate..SEX.AND.AGE..65.years.and.over',
-                     'Estimate..Gini.Index')]
+                     'Estimate..Gini.Index',
+                     'Estimate..Quintile.Means..Lowest.Quintile',
+                     'Estimate..Quintile.Means..Second.Quintile',
+                     'Estimate..Quintile.Means..Third.Quintile',
+                     'Estimate..Quintile.Means..Fourth.Quintile',
+                     'Estimate..Quintile.Means..Highest.Quintile',
+                     'Estimate..Top.5.Percent',
+                     'Estimate..Total..With.a.mortgage..Less.than..20.000',
+                     'Estimate..Total..With.a.mortgage..Less.than..20.000..30.percent.or.more',
+                     'Estimate..Total..With.a.mortgage...20.000.to..34.999',
+                     'Estimate..Total..With.a.mortgage...20.000.to..34.999..30.percent.or.more',
+                     'Estimate..Total..With.a.mortgage...35.000.to..49.999',
+                     'Estimate..Total..With.a.mortgage...35.000.to..49.999..30.percent.or.more',
+                     'Estimate..Total..With.a.mortgage...50.000.to..74.999',
+                     'Estimate..Total..With.a.mortgage...50.000.to..74.999..30.percent.or.more',
+                     'Estimate..Total..With.a.mortgage...75.000.or.more',
+                     'Estimate..Total..With.a.mortgage...75.000.or.more..30.percent.or.more')]
 
 
 dp.2013 = cleaned13.a[,c("state", 'Geographic.Area.Name', 'year', 'region',
@@ -341,7 +488,23 @@ dp.2013 = cleaned13.a[,c("state", 'Geographic.Area.Name', 'year', 'region',
                      'Estimate..HOUSING.TENURE..Average.household.size.of.owner.occupied.unit',
                     'Estimate..SEX.AND.AGE..18.years.and.over',
                     'Estimate..SEX.AND.AGE..65.years.and.over',
-                    'Estimate..Gini.Index')]
+                    'Estimate..Gini.Index',
+                    'Estimate..Quintile.Means..Lowest.Quintile',
+                    'Estimate..Quintile.Means..Second.Quintile',
+                    'Estimate..Quintile.Means..Third.Quintile',
+                    'Estimate..Quintile.Means..Fourth.Quintile',
+                    'Estimate..Quintile.Means..Highest.Quintile',
+                    'Estimate..Top.5.Percent',
+                    'Estimate..Total..With.a.mortgage..Less.than..20.000',
+                    'Estimate..Total..With.a.mortgage..Less.than..20.000..30.percent.or.more',
+                    'Estimate..Total..With.a.mortgage...20.000.to..34.999',
+                    'Estimate..Total..With.a.mortgage...20.000.to..34.999..30.percent.or.more',
+                    'Estimate..Total..With.a.mortgage...35.000.to..49.999',
+                    'Estimate..Total..With.a.mortgage...35.000.to..49.999..30.percent.or.more',
+                    'Estimate..Total..With.a.mortgage...50.000.to..74.999',
+                    'Estimate..Total..With.a.mortgage...50.000.to..74.999..30.percent.or.more',
+                    'Estimate..Total..With.a.mortgage...75.000.or.more',
+                    'Estimate..Total..With.a.mortgage...75.000.or.more..30.percent.or.more')]
 
 
 dp.2014 = cleaned14.a[,c("state", 'Geographic.Area.Name', 'year', 'region',
@@ -375,7 +538,23 @@ dp.2014 = cleaned14.a[,c("state", 'Geographic.Area.Name', 'year', 'region',
                      'Estimate..HOUSING.TENURE..Average.household.size.of.owner.occupied.unit',
                      'Estimate..SEX.AND.AGE..18.years.and.over',
                      'Estimate..SEX.AND.AGE..65.years.and.over',
-                     'Estimate..Gini.Index')]
+                     'Estimate..Gini.Index',
+                     'Estimate..Quintile.Means..Lowest.Quintile',
+                     'Estimate..Quintile.Means..Second.Quintile',
+                     'Estimate..Quintile.Means..Third.Quintile',
+                     'Estimate..Quintile.Means..Fourth.Quintile',
+                     'Estimate..Quintile.Means..Highest.Quintile',
+                     'Estimate..Top.5.Percent',
+                     'Estimate..Total..With.a.mortgage..Less.than..20.000',
+                     'Estimate..Total..With.a.mortgage..Less.than..20.000..30.percent.or.more',
+                     'Estimate..Total..With.a.mortgage...20.000.to..34.999',
+                     'Estimate..Total..With.a.mortgage...20.000.to..34.999..30.percent.or.more',
+                     'Estimate..Total..With.a.mortgage...35.000.to..49.999',
+                     'Estimate..Total..With.a.mortgage...35.000.to..49.999..30.percent.or.more',
+                     'Estimate..Total..With.a.mortgage...50.000.to..74.999',
+                     'Estimate..Total..With.a.mortgage...50.000.to..74.999..30.percent.or.more',
+                     'Estimate..Total..With.a.mortgage...75.000.or.more',
+                     'Estimate..Total..With.a.mortgage...75.000.or.more..30.percent.or.more')]
 
 #input 15,16,17,18
 
@@ -410,7 +589,23 @@ dp.2015 = cleaned15.a[,c("state", 'Geographic.Area.Name', 'year', 'region',
                      'Estimate..HOUSING.TENURE..Average.household.size.of.owner.occupied.unit',
                      'Estimate..SEX.AND.AGE..18.years.and.over',
                      'Estimate..SEX.AND.AGE..65.years.and.over',
-                     'Estimate..Gini.Index')]
+                     'Estimate..Gini.Index',
+                     'Estimate..Quintile.Means..Lowest.Quintile',
+                     'Estimate..Quintile.Means..Second.Quintile',
+                     'Estimate..Quintile.Means..Third.Quintile',
+                     'Estimate..Quintile.Means..Fourth.Quintile',
+                     'Estimate..Quintile.Means..Highest.Quintile',
+                     'Estimate..Top.5.Percent',
+                     'Estimate..Total..With.a.mortgage..Less.than..20.000',
+                     'Estimate..Total..With.a.mortgage..Less.than..20.000..30.percent.or.more',
+                     'Estimate..Total..With.a.mortgage...20.000.to..34.999',
+                     'Estimate..Total..With.a.mortgage...20.000.to..34.999..30.percent.or.more',
+                     'Estimate..Total..With.a.mortgage...35.000.to..49.999',
+                     'Estimate..Total..With.a.mortgage...35.000.to..49.999..30.percent.or.more',
+                     'Estimate..Total..With.a.mortgage...50.000.to..74.999',
+                     'Estimate..Total..With.a.mortgage...50.000.to..74.999..30.percent.or.more',
+                     'Estimate..Total..With.a.mortgage...75.000.or.more',
+                     'Estimate..Total..With.a.mortgage...75.000.or.more..30.percent.or.more')]
 
 
 dp.2016 = cleaned16.a[,c("state", 'Geographic.Area.Name', 'year', 'region',
@@ -447,7 +642,23 @@ dp.2016 = cleaned16.a[,c("state", 'Geographic.Area.Name', 'year', 'region',
                          'Estimate..HOUSING.TENURE..Average.household.size.of.owner.occupied.unit',
                         'Estimate..SEX.AND.AGE..18.years.and.over',
                         'Estimate..SEX.AND.AGE..65.years.and.over',
-                        'Estimate..Gini.Index')]
+                        'Estimate..Gini.Index',
+                        'Estimate..Quintile.Means..Lowest.Quintile',
+                        'Estimate..Quintile.Means..Second.Quintile',
+                        'Estimate..Quintile.Means..Third.Quintile',
+                        'Estimate..Quintile.Means..Fourth.Quintile',
+                        'Estimate..Quintile.Means..Highest.Quintile',
+                        'Estimate..Top.5.Percent',
+                        'Estimate..Total..With.a.mortgage..Less.than..20.000',
+                        'Estimate..Total..With.a.mortgage..Less.than..20.000..30.percent.or.more',
+                        'Estimate..Total..With.a.mortgage...20.000.to..34.999',
+                        'Estimate..Total..With.a.mortgage...20.000.to..34.999..30.percent.or.more',
+                        'Estimate..Total..With.a.mortgage...35.000.to..49.999',
+                        'Estimate..Total..With.a.mortgage...35.000.to..49.999..30.percent.or.more',
+                        'Estimate..Total..With.a.mortgage...50.000.to..74.999',
+                        'Estimate..Total..With.a.mortgage...50.000.to..74.999..30.percent.or.more',
+                        'Estimate..Total..With.a.mortgage...75.000.or.more',
+                        'Estimate..Total..With.a.mortgage...75.000.or.more..30.percent.or.more')]
 
 dp.2017 = cleaned17.a[,c("state", 'Geographic.Area.Name', 'year', 'region',
                          'Estimate..UNITS.IN.STRUCTURE..Total.housing.units', 'Estimate..EMPLOYMENT.STATUS..Population.16.years.and.over..In.labor.force',
@@ -484,7 +695,23 @@ dp.2017 = cleaned17.a[,c("state", 'Geographic.Area.Name', 'year', 'region',
                          'Estimate..HOUSING.TENURE..Average.household.size.of.owner.occupied.unit',
                         'Estimate..SEX.AND.AGE..18.years.and.over',
                         'Estimate..SEX.AND.AGE..65.years.and.over',
-                        'Estimate..Gini.Index')]
+                        'Estimate..Gini.Index',
+                        'Estimate..Quintile.Means..Lowest.Quintile',
+                        'Estimate..Quintile.Means..Second.Quintile',
+                        'Estimate..Quintile.Means..Third.Quintile',
+                        'Estimate..Quintile.Means..Fourth.Quintile',
+                        'Estimate..Quintile.Means..Highest.Quintile',
+                        'Estimate..Top.5.Percent',
+                        'Estimate..Total..With.a.mortgage..Less.than..20.000',
+                        'Estimate..Total..With.a.mortgage..Less.than..20.000..30.percent.or.more',
+                        'Estimate..Total..With.a.mortgage...20.000.to..34.999',
+                        'Estimate..Total..With.a.mortgage...20.000.to..34.999..30.percent.or.more',
+                        'Estimate..Total..With.a.mortgage...35.000.to..49.999',
+                        'Estimate..Total..With.a.mortgage...35.000.to..49.999..30.percent.or.more',
+                        'Estimate..Total..With.a.mortgage...50.000.to..74.999',
+                        'Estimate..Total..With.a.mortgage...50.000.to..74.999..30.percent.or.more',
+                        'Estimate..Total..With.a.mortgage...75.000.or.more',
+                        'Estimate..Total..With.a.mortgage...75.000.or.more..30.percent.or.more')]
 
 dp.2018 = cleaned18.a[,c("state", 'Geographic.Area.Name', 'year', 'region',
                          'Estimate..UNITS.IN.STRUCTURE..Total.housing.units', 'Estimate..EMPLOYMENT.STATUS..Population.16.years.and.over..In.labor.force',
@@ -521,7 +748,23 @@ dp.2018 = cleaned18.a[,c("state", 'Geographic.Area.Name', 'year', 'region',
                          'Estimate..HOUSING.TENURE..Occupied.housing.units..Average.household.size.of.owner.occupied.unit',
                          'Estimate..SEX.AND.AGE..Total.population..18.years.and.over',
                       'Estimate..SEX.AND.AGE..Total.population..65.years.and.over',
-                      'Estimate..Gini.Index')]
+                      'Estimate..Gini.Index',
+                      'Estimate..Quintile.Means..Lowest.Quintile',
+                      'Estimate..Quintile.Means..Second.Quintile',
+                      'Estimate..Quintile.Means..Third.Quintile',
+                      'Estimate..Quintile.Means..Fourth.Quintile',
+                      'Estimate..Quintile.Means..Highest.Quintile',
+                      'Estimate..Top.5.Percent',
+                      'Estimate..Total..With.a.mortgage..Less.than..20.000',
+                      'Estimate..Total..With.a.mortgage..Less.than..20.000..30.percent.or.more',
+                      'Estimate..Total..With.a.mortgage...20.000.to..34.999',
+                      'Estimate..Total..With.a.mortgage...20.000.to..34.999..30.percent.or.more',
+                      'Estimate..Total..With.a.mortgage...35.000.to..49.999',
+                      'Estimate..Total..With.a.mortgage...35.000.to..49.999..30.percent.or.more',
+                      'Estimate..Total..With.a.mortgage...50.000.to..74.999',
+                      'Estimate..Total..With.a.mortgage...50.000.to..74.999..30.percent.or.more',
+                      'Estimate..Total..With.a.mortgage...75.000.or.more',
+                      'Estimate..Total..With.a.mortgage...75.000.or.more..30.percent.or.more')]
 
 dp.2019 = cleaned19.a[,c("state", 'Geographic.Area.Name', 'year', 'region', 
            'Estimate..Total.housing.units', 'Estimate..EMPLOYMENT.STATUS..Population.16.years.and.over..In.labor.force',
@@ -559,7 +802,24 @@ dp.2019 = cleaned19.a[,c("state", 'Geographic.Area.Name', 'year', 'region',
            'Estimate..HOUSING.TENURE..Occupied.housing.units..Average.household.size.of.owner.occupied.unit',
            'Estimate..SEX.AND.AGE..Total.population..18.years.and.over',
         'Estimate..SEX.AND.AGE..Total.population..65.years.and.over',
-        'Estimate..Gini.Index')]
+        'Estimate..Gini.Index',
+        'Estimate..Quintile.Means...Lowest.Quintile',
+        'Estimate..Quintile.Means...Second.Quintile',
+        'Estimate..Quintile.Means...Third.Quintile',
+        'Estimate..Quintile.Means...Fourth.Quintile',
+        'Estimate..Quintile.Means...Highest.Quintile',
+        'Estimate..Top.5.Percent',
+        'Estimate..Total...With.a.mortgage...Less.than..20.000.',
+        'Estimate..Total...With.a.mortgage...Less.than..20.000...30.percent.or.more',
+        'Estimate..Total...With.a.mortgage....20.000.to..34.999.',
+        'Estimate..Total...With.a.mortgage....20.000.to..34.999...30.percent.or.more',
+        'Estimate..Total...With.a.mortgage....35.000.to..49.999.',
+        'Estimate..Total...With.a.mortgage....35.000.to..49.999...30.percent.or.more',
+        'Estimate..Total...With.a.mortgage....50.000.to..74.999.',
+        'Estimate..Total...With.a.mortgage....50.000.to..74.999...30.percent.or.more',
+        'Estimate..Total...With.a.mortgage....75.000.or.more.',
+        'Estimate..Total...With.a.mortgage....75.000.or.more...30.percent.or.more'
+        )]
 
 
 
@@ -601,7 +861,79 @@ dp.2021 = cleaned21.a[,c("state", 'Geographic.Area.Name' ,'year', 'region',
                          'Estimate..HOUSING.TENURE..Occupied.housing.units..Average.household.size.of.owner.occupied.unit',
                          'Estimate..SEX.AND.AGE..Total.population..18.years.and.over',
                     'Estimate..SEX.AND.AGE..Total.population..65.years.and.over',
-                    'Estimate..Gini.Index')]
+                    'Estimate..Gini.Index',
+                    'Estimate..Quintile.Means...Lowest.Quintile',
+                    'Estimate..Quintile.Means...Second.Quintile',
+                    'Estimate..Quintile.Means...Third.Quintile',
+                    'Estimate..Quintile.Means...Fourth.Quintile',
+                    'Estimate..Quintile.Means...Highest.Quintile',
+                    'Estimate..Top.5.Percent',
+                    'Estimate..Total...With.a.mortgage...Less.than..20.000.',
+                    'Estimate..Total...With.a.mortgage...Less.than..20.000...30.percent.or.more',
+                    'Estimate..Total...With.a.mortgage....20.000.to..34.999.',
+                    'Estimate..Total...With.a.mortgage....20.000.to..34.999...30.percent.or.more',
+                    'Estimate..Total...With.a.mortgage....35.000.to..49.999.',
+                    'Estimate..Total...With.a.mortgage....35.000.to..49.999...30.percent.or.more',
+                    'Estimate..Total...With.a.mortgage....50.000.to..74.999.',
+                    'Estimate..Total...With.a.mortgage....50.000.to..74.999...30.percent.or.more',
+                    'Estimate..Total...With.a.mortgage....75.000.or.more.',
+                    'Estimate..Total...With.a.mortgage....75.000.or.more...30.percent.or.more')]
+
+dp.2022 = cleaned22.a[,c("state", 'Geographic.Area.Name' ,'year', 'region', 
+                         #'Estimate..SEX.AND.AGE..Total.population', 'Estimate..SEX.AND.AGE..Total.population..Under.18.years',
+                         #'Estimate..SEX.AND.AGE..Total.population..18.years.and.over', 'Estimate..SEX.AND.AGE..Total.population..62.years.and.over',
+                         'Estimate..Total.housing.units', 'Estimate..EMPLOYMENT.STATUS..Population.16.years.and.over..In.labor.force',
+                         'Estimate..EMPLOYMENT.STATUS..Population.16.years.and.over..In.labor.force..Civilian.labor.force',
+                         'Estimate..EMPLOYMENT.STATUS..Population.16.years.and.over..In.labor.force..Civilian.labor.force..Employed',
+                         'Estimate..INCOME.AND.BENEFITS..IN.2022.INFLATION.ADJUSTED.DOLLARS...Total.households',
+                         'Estimate..INCOME.AND.BENEFITS..IN.2022.INFLATION.ADJUSTED.DOLLARS...Total.households..Less.than..10.000',
+                         'Estimate..INCOME.AND.BENEFITS..IN.2022.INFLATION.ADJUSTED.DOLLARS...Total.households...10.000.to..14.999',
+                         'Estimate..INCOME.AND.BENEFITS..IN.2022.INFLATION.ADJUSTED.DOLLARS...Total.households...15.000.to..24.999',
+                         'Estimate..INCOME.AND.BENEFITS..IN.2022.INFLATION.ADJUSTED.DOLLARS...Total.households...25.000.to..34.999',
+                         'Estimate..INCOME.AND.BENEFITS..IN.2022.INFLATION.ADJUSTED.DOLLARS...Total.households...35.000.to..49.999',
+                         'Estimate..INCOME.AND.BENEFITS..IN.2022.INFLATION.ADJUSTED.DOLLARS...Total.households...50.000.to..74.999',
+                         'Estimate..INCOME.AND.BENEFITS..IN.2022.INFLATION.ADJUSTED.DOLLARS...Total.households...75.000.to..99.999',
+                         'Estimate..INCOME.AND.BENEFITS..IN.2022.INFLATION.ADJUSTED.DOLLARS...Total.households...100.000.to..149.999',
+                         'Estimate..INCOME.AND.BENEFITS..IN.2022.INFLATION.ADJUSTED.DOLLARS...Total.households...150.000.to..199.999',
+                         'Estimate..INCOME.AND.BENEFITS..IN.2022.INFLATION.ADJUSTED.DOLLARS...Total.households...200.000.or.more',
+                         'Estimate..HOUSEHOLDS.BY.TYPE..Total.households', 'Estimate..HOUSEHOLDS.BY.TYPE..Total.households..Married.couple.household',
+                         #    'Estimate..HOUSEHOLDS.BY.TYPE..Total.households..Cohabiting.couple.household',
+                         #    'Estimate..MARITAL.STATUS..Males.15.years.and.over', 'Estimate..MARITAL.STATUS..Females.15.years.and.over',
+                         'Estimate..EDUCATIONAL.ATTAINMENT..Population.25.years.and.over',
+                         'Estimate..EDUCATIONAL.ATTAINMENT..Population.25.years.and.over..Less.than.9th.grade',
+                         'Estimate..EDUCATIONAL.ATTAINMENT..Population.25.years.and.over..9th.to.12th.grade..no.diploma',
+                         'Estimate..EDUCATIONAL.ATTAINMENT..Population.25.years.and.over..High.school.graduate..includes.equivalency.',
+                         'Estimate..EDUCATIONAL.ATTAINMENT..Population.25.years.and.over..Some.college..no.degree',
+                         'Estimate..EDUCATIONAL.ATTAINMENT..Population.25.years.and.over..Associate.s.degree',
+                         'Estimate..EDUCATIONAL.ATTAINMENT..Population.25.years.and.over..Bachelor.s.degree',
+                         'Estimate..EDUCATIONAL.ATTAINMENT..Population.25.years.and.over..Graduate.or.professional.degree',
+                         #    'Estimate..COMPUTERS.AND.INTERNET.USE..Total.households',
+                         #     'Estimate..COMPUTERS.AND.INTERNET.USE..Total.households..With.a.computer',
+                         #     'Estimate..COMPUTERS.AND.INTERNET.USE..Total.households..With.a.broadband.Internet.subscription',
+                         #     'Estimate..HOUSING.TENURE..Occupied.housing.units',
+                         'Estimate..HOUSING.TENURE..Occupied.housing.units..Owner.occupied',
+                         'Estimate..HOUSING.TENURE..Occupied.housing.units..Renter.occupied',
+                         'Estimate..HOUSING.TENURE..Occupied.housing.units..Average.household.size.of.owner.occupied.unit',
+                         'Estimate..HOUSING.TENURE..Occupied.housing.units..Average.household.size.of.owner.occupied.unit',
+                         'Estimate..SEX.AND.AGE..Total.population..18.years.and.over',
+                         'Estimate..SEX.AND.AGE..Total.population..65.years.and.over',
+                         'Estimate..Gini.Index',
+                         'Estimate..Quintile.Means...Lowest.Quintile',
+                         'Estimate..Quintile.Means...Second.Quintile',
+                         'Estimate..Quintile.Means...Third.Quintile',
+                         'Estimate..Quintile.Means...Fourth.Quintile',
+                         'Estimate..Quintile.Means...Highest.Quintile',
+                         'Estimate..Top.5.Percent',
+                         'Estimate..Total...With.a.mortgage...Less.than..20.000.',
+                         'Estimate..Total...With.a.mortgage...Less.than..20.000...30.percent.or.more',
+                         'Estimate..Total...With.a.mortgage....20.000.to..34.999.',
+                         'Estimate..Total...With.a.mortgage....20.000.to..34.999...30.percent.or.more',
+                         'Estimate..Total...With.a.mortgage....35.000.to..49.999.',
+                         'Estimate..Total...With.a.mortgage....35.000.to..49.999...30.percent.or.more',
+                         'Estimate..Total...With.a.mortgage....50.000.to..74.999.',
+                         'Estimate..Total...With.a.mortgage....50.000.to..74.999...30.percent.or.more',
+                         'Estimate..Total...With.a.mortgage....75.000.or.more.',
+                         'Estimate..Total...With.a.mortgage....75.000.or.more...30.percent.or.more')]
 #-----------------------------------
 #Ready for merging
 #-----------------------------------
@@ -642,7 +974,15 @@ name_align = function(df, new_name){
            renter = 31,
            owner.hh.size = 32,
            renter.hh.size = 33,
-           over.18.pop = 34
+           over.18.pop = 34,
+           over.65.pop =35,
+           GINI = 36,
+           first.quant = 37,
+           second.quant = 38,
+           third.quant = 39,
+           fourth.quant = 40,
+           fifth.quant = 41,
+           top5 = 42
            )
   #commented out, cuts all non-country observations
   new_name = subset(new_name[-(1:53),])
@@ -650,6 +990,7 @@ name_align = function(df, new_name){
 }
 
 merge10 = name_align(dp.2010, merge10)
+merge11 = name_align(dp.2011, merge11)
 merge12 = name_align(dp.2012, merge12)
 merge13 = name_align(dp.2013, merge13)
 merge14 = name_align(dp.2014, merge14)
@@ -659,8 +1000,9 @@ merge17 = name_align(dp.2017, merge17)
 merge18 = name_align(dp.2018, merge18)
 merge19 = name_align(dp.2019, merge19)
 merge21 = name_align(dp.2021, merge21)
+merge22 = name_align(dp.2022, merge22)
 
-mergedf = rbind(merge10, merge12, merge13, merge14, merge15, merge16, merge17, merge18, merge19, merge21)
+mergedf = rbind(merge10, merge11, merge12, merge13, merge14, merge15, merge16, merge17, merge18, merge19, merge21, merge22)
 
 #-----------------------
 #State level alter
@@ -700,14 +1042,31 @@ name_align.s = function(df, new_name){
            renter.hh.size = 33,
            over.18.pop = 34,
            over.65.pop =35,
-           GINI = 36
+           GINI = 36,
+           first.quant = 37,
+           second.quant = 38,
+           third.quant = 39,
+           fourth.quant = 40,
+           fifth.quant = 41,
+           top5 = 42,
+           mort.20 = 43,
+           mort.20.30 = 44,
+           mort.20.35 = 45, 
+           mort.20.35.30 = 46,
+           mort.35.50 = 47,
+           mort.35.50.30 = 48,
+           mort.50.75 = 49,
+           mort.50.75.30 = 50,
+           mort.75 = 51, 
+           mort.75.30 = 52
     )
   #commented out, cuts all non-country observations
   new_name = subset(new_name[(2:53),])
   return(new_name)
 }
 
-merge10s = name_align.s(dp.2010, merge10s)
+merge10s = name_align.s(dp.2010, merge10)
+merge11s = name_align.s(dp.2011, merge10)
 merge12s = name_align.s(dp.2012, merge12)
 merge13s = name_align.s(dp.2013, merge13)
 merge14s = name_align.s(dp.2014, merge14)
@@ -717,8 +1076,10 @@ merge17s = name_align.s(dp.2017, merge17)
 merge18s = name_align.s(dp.2018, merge18)
 merge19s = name_align.s(dp.2019, merge19)
 merge21s = name_align.s(dp.2021, merge21)
+merge22s = name_align.s(dp.2022, merge21)
 
-mergedf.s = rbind(merge10s, merge12s, merge13s, merge14s, merge15s, merge16s, merge17s, merge18s, merge19s, merge21s)
+
+mergedf.s = rbind(merge10s, merge11s, merge12s, merge13s, merge14s, merge15s, merge16s, merge17s, merge18s, merge19s, merge21s, merge22s)
 
 
 #---------------------------

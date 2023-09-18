@@ -44,6 +44,7 @@ library(stargazer)
 library(lmtest)
 library(sandwich)
 library(rcompanion)
+library(car)
 
 #set key for accessing FRED data
 fredr_set_key("f1d6de070cd07cd6028872a3bc573657")
