@@ -151,38 +151,61 @@ working.pop.reg = lm(owner.percent ~ lagged.GINI + did.GINI + housing.pop.ratio 
 summary(working.pop.reg)
 
 #8020 alt
-AR.lag.8020 = lm(owner.percent ~ log.income.gap + did.80.20 + housing.pop.ratio + did.housing.pop.ratio + owner.hh.size + renter.hh.size + owner.percent.lag + year + county
+AR.lag.8020.3 = lm(owner.percent ~ log.income.gap + did.80.20 + housing.pop.ratio + did.housing.pop.ratio + owner.hh.size + renter.hh.size + owner.percent.lag + year + county
                  ,data = analysis.set)
 
-summary(AR.lag.8020)
+summary(AR.lag.8020.3)
 
 AR.lag.8020.2 = lm(owner.percent ~ log.income.gap + did.80.20 + housing.pop.ratio + did.housing.pop.ratio + owner.percent.lag + year + county
                    ,data = analysis.set)
 
 summary(AR.lag.8020.2)
 
-AR.lag.8020.3 = lm(owner.percent ~ log.income.gap + did.80.20 + housing.pop.ratio + did.housing.pop.ratio + year + county
+AR.lag.8020 = lm(owner.percent ~ log.income.gap + did.80.20 + housing.pop.ratio + did.housing.pop.ratio + year + county
                    ,data = analysis.set)
 
-summary(AR.lag.8020.3)
+summary(AR.lag.8020)
 
 
-#805 alt
+#805 alt 
 #Use 80-5 measure to test inequality at extremes
-AR.lag.805 = lm(owner.percent ~ log.income.gap.80.5 + did.80.5 + housing.pop.ratio + did.housing.pop.ratio + owner.hh.size + renter.hh.size + owner.percent.lag + year + county
+AR.lag.805.3 = lm(owner.percent ~ log.income.gap.80.5 + did.80.5 + housing.pop.ratio + did.housing.pop.ratio + owner.hh.size + renter.hh.size + owner.percent.lag + year + county
                 ,data = analysis.set)
 
-summary(AR.lag.805)
+summary(AR.lag.805.3)
 
 AR.lag.805.2 = lm(owner.percent ~ log.income.gap.80.5 + did.80.5 + housing.pop.ratio + did.housing.pop.ratio + owner.percent.lag + year + county
                   ,data = analysis.set)
 
 summary(AR.lag.805.2)
 
-AR.lag.805.3 = lm(owner.percent ~ log.income.gap.80.5 + did.80.5 + housing.pop.ratio + did.housing.pop.ratio + year + county
+AR.lag.805 = lm(owner.percent ~ log.income.gap.80.5 + did.80.5 + housing.pop.ratio + did.housing.pop.ratio + year + county
                   ,data = analysis.set)
 
-summary(AR.lag.805.3)
+summary(AR.lag.805)
+
+#Robust Standard Errors
+ownership.Gini.robust = coeftest(AR.lag.reg.did, vcov = vcovHC(AR.lag.reg.did, type = 'HC0'))
+
+ownership.Gini.robust.2 = coeftest(AR.lag.reg2.did, vcov = vcovHC(AR.lag.reg2.did, type = 'HC0'))
+
+ownership.Gini.robust.3 = coeftest(AR.lag.reg3.did, vcov = vcovHC(AR.lag.reg3.did, type = 'HC0'))
+
+#8020
+ownership.8020.robust = coeftest(AR.lag.8020, vcov = vcovHC(AR.lag.8020, type = 'HC0'))
+
+ownership.8020.robust.2 = coeftest(AR.lag.8020.2, vcov = vcovHC(AR.lag.8020.2, type = 'HC0'))
+
+ownership.8020.robust.3 = coeftest(AR.lag.8020.3, vcov = vcovHC(AR.lag.8020.3, type = 'HC0'))
+
+#805
+ownership.805.robust = coeftest(AR.lag.805, vcov = vcovHC(AR.lag.805, type = 'HC0'))
+
+ownership.805.robust.2 = coeftest(AR.lag.805.2, vcov = vcovHC(AR.lag.805.2, type = 'HC0'))
+
+ownership.805.robust.3 = coeftest(AR.lag.805.3, vcov = vcovHC(AR.lag.805.3, type = 'HC0'))
+
+
 #---------------
 #STATE LEVEL MORTGAGE COST (MAY INCLUDE AR TERM LATER)
 #---------------
@@ -203,6 +226,12 @@ m20.805 = lm(mort.20.30.percent ~ log.income.gap.80.5 + did.80.5 + lag.mort.20 +
 
 summary(m20.805)
 
+#robust
+m.20.stability.gini.robust = coeftest(m20.gini, vcov = vcovHC(m20.gini, type = 'HC0'))
+
+m.20.stability.8020.robust = coeftest(m20.8020, vcov = vcovHC(m20.8020, type = 'HC0'))
+
+m.20.stability.805.robust = coeftest(m20.805, vcov = vcovHC(m20.805, type = 'HC0'))
 
 #20.000-35.000
 m20.35.gini = lm(mort.20.35.30.percent ~ lagged.GINI + did.GINI + lag.mort.20.35 + housing.pop.ratio +did.housing.pop.ratio + owner.hh.size + renter.hh.size + year + county
@@ -220,6 +249,14 @@ m20.35.805 = lm(mort.20.35.30.percent ~ log.income.gap.80.5 + did.80.5 + lag.mor
 
 summary(m20.35.805)
 
+#robust
+m.20.35.stability.gini.robust = coeftest(m20.35.gini, vcov = vcovHC(m20.35.gini, type = 'HC0'))
+
+m.20.35.stability.8020.robust = coeftest(m20.35.8020, vcov = vcovHC(m20.35.8020, type = 'HC0'))
+
+m.20.35.stability.805.robust = coeftest(m20.35.805, vcov = vcovHC(m20.35.805, type = 'HC0'))
+
+
 #35.000-50.000
 m35.50.gini = lm(mort.35.50.30.percent ~ lagged.GINI + did.GINI + lag.mort.35.50 + housing.pop.ratio +did.housing.pop.ratio + owner.hh.size + renter.hh.size + year + county
                  ,data = analysis.set)
@@ -235,6 +272,13 @@ m35.50.805 = lm(mort.35.50.30.percent ~ log.income.gap.80.5 + did.80.5 + lag.mor
                 ,data = analysis.set)
 
 summary(m35.50.805)
+
+#robust
+m.35.50.stability.gini.robust = coeftest(m35.50.gini, vcov = vcovHC(m35.50.gini, type = 'HC0'))
+
+m.35.50.stability.8020.robust = coeftest(m35.50.8020, vcov = vcovHC(m35.50.8020, type = 'HC0'))
+
+m.35.50.stability.805.robust = coeftest(m35.50.805, vcov = vcovHC(m35.50.805, type = 'HC0'))
 
 #50.000-75.000
 
@@ -252,6 +296,13 @@ m50.75.805 = lm(mort.50.75.30.percent ~ log.income.gap.80.5 + did.80.5 + lag.mor
                 ,data = analysis.set)
 
 summary(m50.75.805)
+
+#robust
+m.50.75.stability.gini.robust = coeftest(m50.75.gini, vcov = vcovHC(m50.75.gini, type = 'HC0'))
+
+m.50.75.stability.8020.robust = coeftest(m50.75.8020, vcov = vcovHC(m50.75.8020, type = 'HC0'))
+
+m.50.75.stability.805.robust = coeftest(m50.75.805, vcov = vcovHC(m50.75.805, type = 'HC0'))
 
 
 #Check with two level did
@@ -274,17 +325,11 @@ summary(m35.50.805.2022)
 #---------------
 
 
-plot(analysis.set$owner.percent, analysis.set$Gini.estimate.low, xlab = "Ownership Percentage", ylab = "GINI Coefficient", main = "Low GINI Estimate")
-plot(analysis.set$owner.percent, analysis.set$Gini.estimate.mid, xlab = "Ownership Percentage", ylab = "GINI Coefficient", main = "Medium GINI Estimate")
-plot(analysis.set$owner.percent, analysis.set$Gini.estimate.high, xlab = "Ownership Percentage", ylab = "GINI Coefficient", main = "High GINI Estimate")
-
-plot(owner.percent,owner.percent.lag)
-
-
 #kernal plotter function
 kernal.plotter = function(x, y, mains, xlabs, ylabs = 'Density'){
   plot(density(na.omit(x[y$year == 2010])), col = 1, main = mains, ylab = ylabs, xlab = xlabs
        #, ylim = c(0,0.25)
+       ,xlim = c(150000,600000)
        )
   lines(density(na.omit(x[y$year == 2011])), col = 2)
   lines(density(na.omit(x[y$year == 2012])), col = 3)
@@ -318,23 +363,17 @@ kernal.plotter(analysis.set$mort.35.50.30.percent, analysis.set, "35k-50k Mortga
 
 kernal.plotter(analysis.set$mort.50.75.30.percent, analysis.set, "50k-75k Mortgage Housing Instability", "Coefficient", 'Density')
 
-kernal.plotter(analysis.set$Gini.estimate.low, "Gini Estimate Low", "Coefficient", 'Density')
-
-kernal.plotter(analysis.set$Gini.estimate.mid, "Gini Estimate Medium", "Coefficient", 'Density')
-
-kernal.plotter(analysis.set$Gini.estimate.high, "Gini Estimate High", "Coefficient", 'Density')
-
 kernal.plotter(analysis.set$housing.pop.working.age, analysis.set, "Housing by working age", "Percentage")
 
 kernal.plotter(analysis.set$housing.pop.ratio, analysis.set, "Housing by population", "Percentage")
 
 kernal.plotter(analysis.set$owner.percent, analysis.set, "Owner Percentage", "Percentage")
 
-kernal.plotter(analysis.set$first.quant, analysis.set, "Owner Percentage", "Percentage")
+kernal.plotter(analysis.set$first.quant, analysis.set, "Bottom Income Quintile", "Income in USD")
 
-kernal.plotter(analysis.set$fifth.quant, analysis.set, "Owner Percentage", "Percentage")
+kernal.plotter(analysis.set$fifth.quant, analysis.set, "Top Income Quintile", "Income in USD")
 
-kernal.plotter(analysis.set$top5, analysis.set, "Owner Percentage", "Percentage")
+kernal.plotter(analysis.set$top5, analysis.set, "Top 5% Income", "Income in ISD")
 
 
 lig.mean = mean(analysis.set$log.income.gap)
@@ -468,12 +507,12 @@ stargazer(models, title = 'Ownership % Regression Results', column.labels = c('A
 stargazer(models2, title = 'Number of Owners Regression Results', column.labels = c('Absolute Housing', 'Log Housing', "Log Housing + Pop", 'Log Housing + pop RSE'),
           type = "text", out = "prelimresults2.txt")
 
-model8020 = list(AR.lag.8020.3, AR.lag.8020.2, AR.lag.8020)
+model8020 = list(AR.lag.8020, AR.lag.8020.2, AR.lag.8020.3)
 
 stargazer(model8020, title = "Ownership % by 80/20 Income Inequality", column.labels = c('DID Only', 'AR Term', 'Household Size'),
           type = "text", omit = c("year","county") , out = "8020percent.txt")
 
-model805 = list(AR.lag.805.3, AR.lag.805.2, AR.lag.805)
+model805 = list(AR.lag.805, AR.lag.805.2, AR.lag.805.3)
 
 stargazer(model805, title = "Ownership % by 80/5 Income Inequality", column.labels = c('DID Only', 'AR Term', 'Household Size'),
           type = "text", omit = c("year","county") , out = "805percent.txt")
@@ -496,6 +535,47 @@ stargazer(m3550, title = '35k-50k Mortgage, Housing Insecurity', column.labels =
 
 stargazer(m5075, title = '50k-75k Mortgage, Housing Insecurity', column.labels = c('Gini', '80/20', '80/5'),
           type = "text", omit = c("year","county"), out = "m5075.txt")
+
+
+#ROBUST
+#GINI housing
+housing.gini.r = list(ownership.Gini.robust, ownership.Gini.robust.2, ownership.Gini.robust.3)
+stargazer(housing.gini.r, title = 'Ownership % by GINI Robust', column.labels = c('DID only', 'AR Term', "Household Size"),
+          type = "text", omit = c("year","county") , out = "ginipercentrobust.txt")
+
+#8020 housing
+housing.8020.r = list(ownership.8020.robust, ownership.8020.robust.2, ownership.8020.robust.3)
+stargazer(housing.8020.r, title = "Ownership % by 80/20 Income Inequality Robust", column.labels = c('DID Only', 'AR Term', 'Household Size'),
+          type = "text", omit = c("year","county") , out = "8020percentrobust.txt")
+
+
+#805 housing
+housing.805.r = list(ownership.805.robust, ownership.805.robust.2, ownership.805.robust.3)
+stargazer(housing.805.r, title = "Ownership % by 80/5 Income Inequality Robust", column.labels = c('DID Only', 'AR Term', 'Household Size'),
+          type = "text", omit = c("year","county") , out = "805percentrobust.txt")
+
+
+#sub 20 stability
+m20.r = list(m.20.stability.gini.robust, m.20.stability.8020.robust, m.20.stability.805.robust)
+
+stargazer(m20.r, title = 'Under 20k Mortgage, Housing Insecurity Robust', column.labels = c('Gini', '80/20', '80/5'),
+          type = "text", omit = c("year","county"), out = "m20robust.txt")
+
+#20-35 stability
+m20.35.r = list(m.20.35.stability.gini.robust, m.20.35.stability.8020.robust, m.20.35.stability.805.robust)
+stargazer(m20.35.r, title = '20k-35k Mortgage, Housing Insecurity Robust', column.labels = c('Gini', '80/20', '80/5'),
+          type = "text", omit = c("year","county"), out = "m2035robust.txt")
+
+#35-50 stability
+m35.50.r = list(m.35.50.stability.gini.robust, m.35.50.stability.8020.robust, m.35.50.stability.805.robust)
+
+stargazer(m35.50.r, title = '35k-50k Mortgage, Housing Insecurity Robust', column.labels = c('Gini', '80/20', '80/5'),
+          type = "text", omit = c("year","county"), out = "m3550robust.txt")
+
+#50-75 stability
+m50.75.r = list(m.50.75.stability.gini.robust, m.50.75.stability.8020.robust, m.50.75.stability.805.robust)
+stargazer(m50.75.r, title = '50k-75k Mortgage, Housing Insecurity Robust', column.labels = c('Gini', '80/20', '80/5'),
+          type = "text", omit = c("year","county"), out = "m5075robust.txt")
 
 
 #-----------------

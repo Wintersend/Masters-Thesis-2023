@@ -7,11 +7,11 @@ Under 20k Mortgage, Housing Insecurity
                                  Gini      80/20     80/5   
                                   (1)       (2)       (3)   
 ------------------------------------------------------------
-lagged.GINI                     0.00001                     
-                               (0.00001)                    
+lagged.GINI                      0.001                      
+                                (0.001)                     
                                                             
-did.GINI                        0.00000                     
-                               (0.00001)                    
+did.GINI                        0.0003                      
+                                (0.001)                     
                                                             
 log.income.gap                            -0.017            
                                           (0.012)           
