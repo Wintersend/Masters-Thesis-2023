@@ -926,5 +926,145 @@ merge21s = name_align.s(dp.2021, merge21)
 merge22s = name_align.s(dp.2022, merge21)
 
 
-mergedf.s = rbind(merge10s, merge11s, merge12s, merge13s, merge14s, merge15s, merge16s, merge17s, merge18s, merge19s, merge21s, merge22s)
+#Rechain all values to 2010 dollars
+#Use January 1st numbers
+#this just breaks as a function, do manually, may look at later
 
+#rechain.2010 = function(df, cpi.new){
+#  n = nrow(df)
+#  for(i in 1:n){
+#  df[i,37] = df[i,37] * cpi.new/217.488
+#  df[i,38] = df[i,38] * cpi.new/217.488
+#  df[i,39] = df[i,39] * cpi.new/217.488
+#  df[i,40] = df[i,40] * cpi.new/217.488
+#  df[i,41] = df[i,41] * cpi.new/217.488
+#  df[i,42] = df[i,42] * cpi.new/217.488
+#}}
+
+#variables to fix, all quantiles, top 5, other 
+#divide by 217.488 to chain
+#2011 221.187
+#merge11s$first.quant = merge11s$first.quant * 221.187/217.488
+#merge11s$second.quant = merge11s$second.quant * 221.187/217.488
+#merge11s$third.quant = merge11s$third.quant * 221.187/217.488
+#merge11s$fourth.quant = merge11s$fourth.quant * 221.187/217.488
+#merge11s$fifth.quant = merge11s$fifth.quant * 221.187/217.488
+#merge11s$top5 = merge11s$top5 * 221.187/217.488
+#rechain.2010(merge11s, 221.187)
+
+for(i in 1:n){
+  merge11s[i,37] = merge11s[i,37] * 221.187/217.488
+  merge11s[i,38] = merge11s[i,38] * 221.187/217.488
+  merge11s[i,39] = merge11s[i,39] * 221.187/217.488
+  merge11s[i,40] = merge11s[i,40] * 221.187/217.488
+  merge11s[i,41] = merge11s[i,41] * 221.187/217.488
+  merge11s[i,42] = merge11s[i,42] * 221.187/217.488
+}
+
+#2012 227.842
+#merge12s$first.quant = merge12s$first.quant * 227.842/217.488
+#merge12s$second.quant = merge12s$second.quant * 227.842/217.488
+#merge12s$third.quant = merge12s$third.quant * 227.842/217.488
+#merge12s$fourth.quant = merge12s$fourth.quant * 227.842/217.488
+#merge12s$fifth.quant = merge12s$fifth.quant * 227.842/217.488
+#merge12s$top5 = merge12s$top5 * 227.842/217.488
+for(i in 1:n){
+  merge12s[i,37] = merge12s[i,37] * 227.842/217.488
+  merge12s[i,38] = merge12s[i,38] * 227.842/217.488
+  merge12s[i,39] = merge12s[i,39] * 227.842/217.488
+  merge12s[i,40] = merge12s[i,40] * 227.842/217.488
+  merge12s[i,41] = merge12s[i,41] * 227.842/217.488
+  merge12s[i,42] = merge12s[i,42] * 227.842/217.488
+}
+#2013 231.679
+for(i in 1:n){
+  merge13s[i,37] = merge13s[i,37] * 231.679/217.488
+  merge13s[i,38] = merge13s[i,38] * 231.679/217.488
+  merge13s[i,39] = merge13s[i,39] * 231.679/217.488
+  merge13s[i,40] = merge13s[i,40] * 231.679/217.488
+  merge13s[i,41] = merge13s[i,41] * 231.679/217.488
+  merge13s[i,42] = merge13s[i,42] * 231.679/217.488
+}
+
+#2014 235.288
+for(i in 1:n){
+  merge14s[i,37] = merge14s[i,37] * 235.288/217.488
+  merge14s[i,38] = merge14s[i,38] * 235.288/217.488
+  merge14s[i,39] = merge14s[i,39] * 235.288/217.488
+  merge14s[i,40] = merge14s[i,40] * 235.288/217.488
+  merge14s[i,41] = merge14s[i,41] * 235.288/217.488
+  merge14s[i,42] = merge14s[i,42] * 235.288/217.488
+}
+
+#2015 234.747
+for(i in 1:n){
+  merge15s[i,37] = merge15s[i,37] * 234.747/217.488
+  merge15s[i,38] = merge15s[i,38] * 234.747/217.488
+  merge15s[i,39] = merge15s[i,39] * 234.747/217.488
+  merge15s[i,40] = merge15s[i,40] * 234.747/217.488
+  merge15s[i,41] = merge15s[i,41] * 234.747/217.488
+  merge15s[i,42] = merge15s[i,42] * 234.747/217.488
+}
+
+#2016 237.652
+for(i in 1:n){
+  merge16s[i,37] = merge16s[i,37] * 237.652/217.488
+  merge16s[i,38] = merge16s[i,38] * 237.652/217.488
+  merge16s[i,39] = merge16s[i,39] * 237.652/217.488
+  merge16s[i,40] = merge16s[i,40] * 237.652/217.488
+  merge16s[i,41] = merge16s[i,41] * 237.652/217.488
+  merge16s[i,42] = merge16s[i,42] * 237.652/217.488
+}
+
+#2017 243.618
+for(i in 1:n){
+  merge17s[i,37] = merge17s[i,37] * 243.618/217.488
+  merge17s[i,38] = merge17s[i,38] * 243.618/217.488
+  merge17s[i,39] = merge17s[i,39] * 243.618/217.488
+  merge17s[i,40] = merge17s[i,40] * 243.618/217.488
+  merge17s[i,41] = merge17s[i,41] * 243.618/217.488
+  merge17s[i,42] = merge17s[i,42] * 243.618/217.488
+}
+
+#2018 248.859
+for(i in 1:n){
+  merge18s[i,37] = merge18s[i,37] * 248.859/217.488
+  merge18s[i,38] = merge18s[i,38] * 248.859/217.488
+  merge18s[i,39] = merge18s[i,39] * 248.859/217.488
+  merge18s[i,40] = merge18s[i,40] * 248.859/217.488
+  merge18s[i,41] = merge18s[i,41] * 248.859/217.488
+  merge18s[i,42] = merge18s[i,42] * 248.859/217.488
+}
+
+#2019 252.718
+for(i in 1:n){
+  merge19s[i,37] = merge19s[i,37] * 252.718/217.488
+  merge19s[i,38] = merge19s[i,38] * 252.718/217.488
+  merge19s[i,39] = merge19s[i,39] * 252.718/217.488
+  merge19s[i,40] = merge19s[i,40] * 252.718/217.488
+  merge19s[i,41] = merge19s[i,41] * 252.718/217.488
+  merge19s[i,42] = merge19s[i,42] * 252.718/217.488
+}
+
+#2021 262.650
+for(i in 1:n){
+  merge21s[i,37] = merge21s[i,37] * 262.650/217.488
+  merge21s[i,38] = merge21s[i,38] * 262.650/217.488
+  merge21s[i,39] = merge21s[i,39] * 262.650/217.488
+  merge21s[i,40] = merge21s[i,40] * 262.650/217.488
+  merge21s[i,41] = merge21s[i,41] * 262.650/217.488
+  merge21s[i,42] = merge21s[i,42] * 262.650/217.488
+}
+
+#2022 282.599
+for(i in 1:n){
+  merge22s[i,37] = merge22s[i,37] * 282.599/217.488
+  merge22s[i,38] = merge22s[i,38] * 282.599/217.488
+  merge22s[i,39] = merge22s[i,39] * 282.599/217.488
+  merge22s[i,40] = merge22s[i,40] * 282.599/217.488
+  merge22s[i,41] = merge22s[i,41] * 282.599/217.488
+  merge22s[i,42] = merge22s[i,42] * 282.599/217.488
+}
+
+
+mergedf.s = rbind(merge10s, merge11s, merge12s, merge13s, merge14s, merge15s, merge16s, merge17s, merge18s, merge19s, merge21s, merge22s)
