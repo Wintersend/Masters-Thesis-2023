@@ -269,7 +269,17 @@ dp.2010 = cleaned2010[,c("state", 'Geographic.Area.Name', 'year', 'region',
                      'Estimate..Total..With.a.mortgage...50.000.to..74.999',
                      'Estimate..Total..With.a.mortgage...50.000.to..74.999..30.percent.or.more',
                      'Estimate..Total..With.a.mortgage...75.000.or.more',
-                     'Estimate..Total..With.a.mortgage...75.000.or.more..30.percent.or.more'
+                     'Estimate..Total..With.a.mortgage...75.000.or.more..30.percent.or.more',
+                     'Estimate..Total..Not.mortgaged..Less.than..20.000',
+                     'Estimate..Total..Not.mortgaged..Less.than..20.000..30.percent.or.more',
+                     'Estimate..Total..Not.mortgaged...20.000.to..34.999',
+                     'Estimate..Total..Not.mortgaged...20.000.to..34.999..30.percent.or.more',
+                     'Estimate..Total..Not.mortgaged...35.000.to..49.999',
+                     'Estimate..Total..Not.mortgaged...35.000.to..49.999..30.percent.or.more',
+                     'Estimate..Total..Not.mortgaged...50.000.to..74.999',
+                     'Estimate..Total..Not.mortgaged...50.000.to..74.999..30.percent.or.more',
+                     'Estimate..Total..Not.mortgaged...75.000.or.more',
+                     'Estimate..Total..Not.mortgaged...75.000.or.more..30.percent.or.more'
                      )]
 
 dp.2011 = cleaned2011[,c("state", 'Geographic.Area.Name', 'year', 'region',
@@ -319,7 +329,17 @@ dp.2011 = cleaned2011[,c("state", 'Geographic.Area.Name', 'year', 'region',
                          'Estimate..Total..With.a.mortgage...50.000.to..74.999',
                          'Estimate..Total..With.a.mortgage...50.000.to..74.999..30.percent.or.more',
                          'Estimate..Total..With.a.mortgage...75.000.or.more',
-                         'Estimate..Total..With.a.mortgage...75.000.or.more..30.percent.or.more')]
+                         'Estimate..Total..With.a.mortgage...75.000.or.more..30.percent.or.more',
+                         'Estimate..Total..Not.mortgaged..Less.than..20.000',
+                         'Estimate..Total..Not.mortgaged..Less.than..20.000..30.percent.or.more',
+                         'Estimate..Total..Not.mortgaged...20.000.to..34.999',
+                         'Estimate..Total..Not.mortgaged...20.000.to..34.999..30.percent.or.more',
+                         'Estimate..Total..Not.mortgaged...35.000.to..49.999',
+                         'Estimate..Total..Not.mortgaged...35.000.to..49.999..30.percent.or.more',
+                         'Estimate..Total..Not.mortgaged...50.000.to..74.999',
+                         'Estimate..Total..Not.mortgaged...50.000.to..74.999..30.percent.or.more',
+                         'Estimate..Total..Not.mortgaged...75.000.or.more',
+                         'Estimate..Total..Not.mortgaged...75.000.or.more..30.percent.or.more')]
 
 
 
@@ -371,7 +391,17 @@ dp.2012 = cleaned2012[,c("state", 'Geographic.Area.Name', 'year', 'region',
                      'Estimate..Total..With.a.mortgage...50.000.to..74.999',
                      'Estimate..Total..With.a.mortgage...50.000.to..74.999..30.percent.or.more',
                      'Estimate..Total..With.a.mortgage...75.000.or.more',
-                     'Estimate..Total..With.a.mortgage...75.000.or.more..30.percent.or.more')]
+                     'Estimate..Total..With.a.mortgage...75.000.or.more..30.percent.or.more',
+                     'Estimate..Total..Not.mortgaged..Less.than..20.000',
+                     'Estimate..Total..Not.mortgaged..Less.than..20.000..30.percent.or.more',
+                     'Estimate..Total..Not.mortgaged...20.000.to..34.999',
+                     'Estimate..Total..Not.mortgaged...20.000.to..34.999..30.percent.or.more',
+                     'Estimate..Total..Not.mortgaged...35.000.to..49.999',
+                     'Estimate..Total..Not.mortgaged...35.000.to..49.999..30.percent.or.more',
+                     'Estimate..Total..Not.mortgaged...50.000.to..74.999',
+                     'Estimate..Total..Not.mortgaged...50.000.to..74.999..30.percent.or.more',
+                     'Estimate..Total..Not.mortgaged...75.000.or.more',
+                     'Estimate..Total..Not.mortgaged...75.000.or.more..30.percent.or.more')]
 
 
 dp.2013 = cleaned2013[,c("state", 'Geographic.Area.Name', 'year', 'region',
@@ -421,7 +451,17 @@ dp.2013 = cleaned2013[,c("state", 'Geographic.Area.Name', 'year', 'region',
                     'Estimate..Total..With.a.mortgage...50.000.to..74.999',
                     'Estimate..Total..With.a.mortgage...50.000.to..74.999..30.percent.or.more',
                     'Estimate..Total..With.a.mortgage...75.000.or.more',
-                    'Estimate..Total..With.a.mortgage...75.000.or.more..30.percent.or.more')]
+                    'Estimate..Total..With.a.mortgage...75.000.or.more..30.percent.or.more',
+                    'Estimate..Total..Not.mortgaged..Less.than..20.000',
+                    'Estimate..Total..Not.mortgaged..Less.than..20.000..30.percent.or.more',
+                    'Estimate..Total..Not.mortgaged...20.000.to..34.999',
+                    'Estimate..Total..Not.mortgaged...20.000.to..34.999..30.percent.or.more',
+                    'Estimate..Total..Not.mortgaged...35.000.to..49.999',
+                    'Estimate..Total..Not.mortgaged...35.000.to..49.999..30.percent.or.more',
+                    'Estimate..Total..Not.mortgaged...50.000.to..74.999',
+                    'Estimate..Total..Not.mortgaged...50.000.to..74.999..30.percent.or.more',
+                    'Estimate..Total..Not.mortgaged...75.000.or.more',
+                    'Estimate..Total..Not.mortgaged...75.000.or.more..30.percent.or.more')]
 
 
 dp.2014 = cleaned2014[,c("state", 'Geographic.Area.Name', 'year', 'region',
@@ -471,7 +511,17 @@ dp.2014 = cleaned2014[,c("state", 'Geographic.Area.Name', 'year', 'region',
                      'Estimate..Total..With.a.mortgage...50.000.to..74.999',
                      'Estimate..Total..With.a.mortgage...50.000.to..74.999..30.percent.or.more',
                      'Estimate..Total..With.a.mortgage...75.000.or.more',
-                     'Estimate..Total..With.a.mortgage...75.000.or.more..30.percent.or.more')]
+                     'Estimate..Total..With.a.mortgage...75.000.or.more..30.percent.or.more',
+                     'Estimate..Total..Not.mortgaged..Less.than..20.000',
+                     'Estimate..Total..Not.mortgaged..Less.than..20.000..30.percent.or.more',
+                     'Estimate..Total..Not.mortgaged...20.000.to..34.999',
+                     'Estimate..Total..Not.mortgaged...20.000.to..34.999..30.percent.or.more',
+                     'Estimate..Total..Not.mortgaged...35.000.to..49.999',
+                     'Estimate..Total..Not.mortgaged...35.000.to..49.999..30.percent.or.more',
+                     'Estimate..Total..Not.mortgaged...50.000.to..74.999',
+                     'Estimate..Total..Not.mortgaged...50.000.to..74.999..30.percent.or.more',
+                     'Estimate..Total..Not.mortgaged...75.000.or.more',
+                     'Estimate..Total..Not.mortgaged...75.000.or.more..30.percent.or.more')]
 
 
 dp.2015 = cleaned2015[,c("state", 'Geographic.Area.Name', 'year', 'region',
@@ -521,7 +571,17 @@ dp.2015 = cleaned2015[,c("state", 'Geographic.Area.Name', 'year', 'region',
                      'Estimate..Total..With.a.mortgage...50.000.to..74.999',
                      'Estimate..Total..With.a.mortgage...50.000.to..74.999..30.percent.or.more',
                      'Estimate..Total..With.a.mortgage...75.000.or.more',
-                     'Estimate..Total..With.a.mortgage...75.000.or.more..30.percent.or.more')]
+                     'Estimate..Total..With.a.mortgage...75.000.or.more..30.percent.or.more',
+                     'Estimate..Total..Not.mortgaged..Less.than..20.000',
+                     'Estimate..Total..Not.mortgaged..Less.than..20.000..30.percent.or.more',
+                     'Estimate..Total..Not.mortgaged...20.000.to..34.999',
+                     'Estimate..Total..Not.mortgaged...20.000.to..34.999..30.percent.or.more',
+                     'Estimate..Total..Not.mortgaged...35.000.to..49.999',
+                     'Estimate..Total..Not.mortgaged...35.000.to..49.999..30.percent.or.more',
+                     'Estimate..Total..Not.mortgaged...50.000.to..74.999',
+                     'Estimate..Total..Not.mortgaged...50.000.to..74.999..30.percent.or.more',
+                     'Estimate..Total..Not.mortgaged...75.000.or.more',
+                     'Estimate..Total..Not.mortgaged...75.000.or.more..30.percent.or.more')]
 
 
 dp.2016 = cleaned2016[,c("state", 'Geographic.Area.Name', 'year', 'region',
@@ -574,7 +634,17 @@ dp.2016 = cleaned2016[,c("state", 'Geographic.Area.Name', 'year', 'region',
                         'Estimate..Total..With.a.mortgage...50.000.to..74.999',
                         'Estimate..Total..With.a.mortgage...50.000.to..74.999..30.percent.or.more',
                         'Estimate..Total..With.a.mortgage...75.000.or.more',
-                        'Estimate..Total..With.a.mortgage...75.000.or.more..30.percent.or.more')]
+                        'Estimate..Total..With.a.mortgage...75.000.or.more..30.percent.or.more',
+                        'Estimate..Total..Not.mortgaged..Less.than..20.000',
+                        'Estimate..Total..Not.mortgaged..Less.than..20.000..30.percent.or.more',
+                        'Estimate..Total..Not.mortgaged...20.000.to..34.999',
+                        'Estimate..Total..Not.mortgaged...20.000.to..34.999..30.percent.or.more',
+                        'Estimate..Total..Not.mortgaged...35.000.to..49.999',
+                        'Estimate..Total..Not.mortgaged...35.000.to..49.999..30.percent.or.more',
+                        'Estimate..Total..Not.mortgaged...50.000.to..74.999',
+                        'Estimate..Total..Not.mortgaged...50.000.to..74.999..30.percent.or.more',
+                        'Estimate..Total..Not.mortgaged...75.000.or.more',
+                        'Estimate..Total..Not.mortgaged...75.000.or.more..30.percent.or.more')]
 
 dp.2017 = cleaned2017[,c("state", 'Geographic.Area.Name', 'year', 'region',
                          'Estimate..UNITS.IN.STRUCTURE..Total.housing.units', 'Estimate..EMPLOYMENT.STATUS..Population.16.years.and.over..In.labor.force',
@@ -627,7 +697,17 @@ dp.2017 = cleaned2017[,c("state", 'Geographic.Area.Name', 'year', 'region',
                         'Estimate..Total..With.a.mortgage...50.000.to..74.999',
                         'Estimate..Total..With.a.mortgage...50.000.to..74.999..30.percent.or.more',
                         'Estimate..Total..With.a.mortgage...75.000.or.more',
-                        'Estimate..Total..With.a.mortgage...75.000.or.more..30.percent.or.more')]
+                        'Estimate..Total..With.a.mortgage...75.000.or.more..30.percent.or.more',
+                        'Estimate..Total..Not.mortgaged..Less.than..20.000',
+                        'Estimate..Total..Not.mortgaged..Less.than..20.000..30.percent.or.more',
+                        'Estimate..Total..Not.mortgaged...20.000.to..34.999',
+                        'Estimate..Total..Not.mortgaged...20.000.to..34.999..30.percent.or.more',
+                        'Estimate..Total..Not.mortgaged...35.000.to..49.999',
+                        'Estimate..Total..Not.mortgaged...35.000.to..49.999..30.percent.or.more',
+                        'Estimate..Total..Not.mortgaged...50.000.to..74.999',
+                        'Estimate..Total..Not.mortgaged...50.000.to..74.999..30.percent.or.more',
+                        'Estimate..Total..Not.mortgaged...75.000.or.more',
+                        'Estimate..Total..Not.mortgaged...75.000.or.more..30.percent.or.more')]
 
 dp.2018 = cleaned2018[,c("state", 'Geographic.Area.Name', 'year', 'region',
                          'Estimate..UNITS.IN.STRUCTURE..Total.housing.units', 'Estimate..EMPLOYMENT.STATUS..Population.16.years.and.over..In.labor.force',
@@ -680,7 +760,17 @@ dp.2018 = cleaned2018[,c("state", 'Geographic.Area.Name', 'year', 'region',
                       'Estimate..Total..With.a.mortgage...50.000.to..74.999',
                       'Estimate..Total..With.a.mortgage...50.000.to..74.999..30.percent.or.more',
                       'Estimate..Total..With.a.mortgage...75.000.or.more',
-                      'Estimate..Total..With.a.mortgage...75.000.or.more..30.percent.or.more')]
+                      'Estimate..Total..With.a.mortgage...75.000.or.more..30.percent.or.more',
+                      'Estimate..Total..Not.mortgaged..Less.than..20.000',
+                      'Estimate..Total..Not.mortgaged..Less.than..20.000..30.percent.or.more',
+                      'Estimate..Total..Not.mortgaged...20.000.to..34.999',
+                      'Estimate..Total..Not.mortgaged...20.000.to..34.999..30.percent.or.more',
+                      'Estimate..Total..Not.mortgaged...35.000.to..49.999',
+                      'Estimate..Total..Not.mortgaged...35.000.to..49.999..30.percent.or.more',
+                      'Estimate..Total..Not.mortgaged...50.000.to..74.999',
+                      'Estimate..Total..Not.mortgaged...50.000.to..74.999..30.percent.or.more',
+                      'Estimate..Total..Not.mortgaged...75.000.or.more',
+                      'Estimate..Total..Not.mortgaged...75.000.or.more..30.percent.or.more')]
 
 dp.2019 = cleaned2019[,c("state", 'Geographic.Area.Name', 'year', 'region', 
                      'Estimate..Total.housing.units', 'Estimate..EMPLOYMENT.STATUS..Population.16.years.and.over..In.labor.force',
@@ -734,7 +824,17 @@ dp.2019 = cleaned2019[,c("state", 'Geographic.Area.Name', 'year', 'region',
                   'Estimate..Total...With.a.mortgage....50.000.to..74.999.',
                   'Estimate..Total...With.a.mortgage....50.000.to..74.999...30.percent.or.more',
                   'Estimate..Total...With.a.mortgage....75.000.or.more.',
-                  'Estimate..Total...With.a.mortgage....75.000.or.more...30.percent.or.more'
+                  'Estimate..Total...With.a.mortgage....75.000.or.more...30.percent.or.more',
+                  'Estimate..Total...Not.mortgaged...Less.than..20.000.',
+                  'Estimate..Total...Not.mortgaged...Less.than..20.000...30.percent.or.more',
+                  'Estimate..Total...Not.mortgaged....20.000.to..34.999.',
+                  'Estimate..Total...Not.mortgaged....20.000.to..34.999...30.percent.or.more',
+                  'Estimate..Total...Not.mortgaged....35.000.to..49.999.',
+                  'Estimate..Total...Not.mortgaged....35.000.to..49.999...30.percent.or.more',
+                  'Estimate..Total...Not.mortgaged....50.000.to..74.999.',
+                  'Estimate..Total...Not.mortgaged....50.000.to..74.999...30.percent.or.more',
+                  'Estimate..Total...Not.mortgaged....75.000.or.more.',
+                  'Estimate..Total...Not.mortgaged....75.000.or.more...30.percent.or.more'
                   )]
 
 
@@ -793,7 +893,17 @@ dp.2021 = cleaned2021[,c("state", 'Geographic.Area.Name' ,'year', 'region',
                           'Estimate..Total...With.a.mortgage....50.000.to..74.999.',
                           'Estimate..Total...With.a.mortgage....50.000.to..74.999...30.percent.or.more',
                           'Estimate..Total...With.a.mortgage....75.000.or.more.',
-                          'Estimate..Total...With.a.mortgage....75.000.or.more...30.percent.or.more')]
+                          'Estimate..Total...With.a.mortgage....75.000.or.more...30.percent.or.more',
+                    'Estimate..Total...Not.mortgaged...Less.than..20.000.',
+                    'Estimate..Total...Not.mortgaged...Less.than..20.000...30.percent.or.more',
+                    'Estimate..Total...Not.mortgaged....20.000.to..34.999.',
+                    'Estimate..Total...Not.mortgaged....20.000.to..34.999...30.percent.or.more',
+                    'Estimate..Total...Not.mortgaged....35.000.to..49.999.',
+                    'Estimate..Total...Not.mortgaged....35.000.to..49.999...30.percent.or.more',
+                    'Estimate..Total...Not.mortgaged....50.000.to..74.999.',
+                    'Estimate..Total...Not.mortgaged....50.000.to..74.999...30.percent.or.more',
+                    'Estimate..Total...Not.mortgaged....75.000.or.more.',
+                    'Estimate..Total...Not.mortgaged....75.000.or.more...30.percent.or.more')]
 
 dp.2022 = cleaned2022[,c("state", 'Geographic.Area.Name' ,'year', 'region', 
                          #'Estimate..SEX.AND.AGE..Total.population', 'Estimate..SEX.AND.AGE..Total.population..Under.18.years',
@@ -849,7 +959,17 @@ dp.2022 = cleaned2022[,c("state", 'Geographic.Area.Name' ,'year', 'region',
                          'Estimate..Total...With.a.mortgage....50.000.to..74.999.',
                          'Estimate..Total...With.a.mortgage....50.000.to..74.999...30.percent.or.more',
                          'Estimate..Total...With.a.mortgage....75.000.or.more.',
-                         'Estimate..Total...With.a.mortgage....75.000.or.more...30.percent.or.more')]
+                         'Estimate..Total...With.a.mortgage....75.000.or.more...30.percent.or.more',
+                         'Estimate..Total...Not.mortgaged...Less.than..20.000.',
+                         'Estimate..Total...Not.mortgaged...Less.than..20.000...30.percent.or.more',
+                         'Estimate..Total...Not.mortgaged....20.000.to..34.999.',
+                         'Estimate..Total...Not.mortgaged....20.000.to..34.999...30.percent.or.more',
+                         'Estimate..Total...Not.mortgaged....35.000.to..49.999.',
+                         'Estimate..Total...Not.mortgaged....35.000.to..49.999...30.percent.or.more',
+                         'Estimate..Total...Not.mortgaged....50.000.to..74.999.',
+                         'Estimate..Total...Not.mortgaged....50.000.to..74.999...30.percent.or.more',
+                         'Estimate..Total...Not.mortgaged....75.000.or.more.',
+                         'Estimate..Total...Not.mortgaged....75.000.or.more...30.percent.or.more')]
 
 #-----------------------
 #State level alter
@@ -905,7 +1025,17 @@ name_align.s = function(df, new_name){
            mort.50.75 = 49,
            mort.50.75.30 = 50,
            mort.75 = 51, 
-           mort.75.30 = 52
+           mort.75.30 = 52,
+           nmort.20 = 53,
+           nmort.20.30 = 54,
+           nmort.20.35 = 55, 
+           nmort.20.35.30 = 56,
+           nmort.35.50 = 57,
+           nmort.35.50.30 = 58,
+           nmort.50.75 = 59,
+           nmort.50.75.30 = 60,
+           nmort.75 = 61, 
+           nmort.75.30 = 62
     )
   #commented out, cuts all non-country observations
   new_name = subset(new_name[(2:53),])
@@ -951,6 +1081,7 @@ merge22s = name_align.s(dp.2022, merge21)
 #merge11s$fifth.quant = merge11s$fifth.quant * 221.187/217.488
 #merge11s$top5 = merge11s$top5 * 221.187/217.488
 #rechain.2010(merge11s, 221.187)
+n=52
 
 for(i in 1:n){
   merge11s[i,37] = merge11s[i,37] * 221.187/217.488
