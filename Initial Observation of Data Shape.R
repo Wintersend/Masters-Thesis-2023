@@ -25,45 +25,20 @@ quant_graph = function(datax, quants, graph_name){
 #--------------------------
 mergedf.s.did = mergedf.s[order(mergedf.s$state),]
 
-for(x in 1:57){
+for(x in 1:58){
 mergedf.s.did[,5+x] = as.numeric(as.character(mergedf.s.did[,5+x]))
 }
 
 #must use lag as dif is messing up somehow
 mergedf.s.did = mergedf.s.did %>%
   group_by(state) %>%
-  mutate(total.housing.dif = total.housing - lag(total.housing),
-         employable.pop.dif = employable.pop - lag(employable.pop),
-         total.pop.labor.dif = total.pop.labor - lag(total.pop.labor),
-         employed.pop.labor.dif = employed.pop.labor - lag(employed.pop.labor),
-         total.income.benefits.dif = total.income.benefits - lag(total.income.benefits),
-         inc.0.10.dif = inc.0.10 - lag(inc.0.10),
-         inc.10.15.dif = inc.10.15 - lag(inc.10.15),
-         inc.15.25.dif = inc.15.25 - lag(inc.15.25),
-         inc.25.35.dif = inc.25.35 - lag(inc.25.35),
-         inc.35.50.dif = inc.35.50 - lag(inc.35.50),
-         inc.50.75.dif = inc.50.75 - lag(inc.50.75),
-         inc.75.100.dif = inc.75.100 - lag(inc.75.100),
-         inc.100.150.dif = inc.100.150 - lag(inc.100.150),
-         inc.150.200.dif = inc.150.200 - lag(inc.150.200),
-         inc.200.abv.dif = inc.200.abv - lag(inc.200.abv),
-         total.educ.dif = total.educ - lag(total.educ),
-         educ.9th.dif = educ.9th - lag(educ.9th),
-         educ.no.dip.dif = educ.no.dip - lag(educ.no.dip),
-         educ.dip.dif = educ.dip - lag(educ.dip),
-         educ.col.no.deg.dif = educ.col.no.deg - lag(educ.col.no.deg),
-         educ.associate.dif = educ.associate - lag(educ.associate),
-         educ.bachelor.dif = educ.bachelor - lag(educ.bachelor),
-         educ.graduate.deg.dif = educ.graduate.deg - lag(educ.graduate.deg),
-         owner.dif = owner - lag(owner),
-         renter.dif = renter - lag(renter),
-         owner.hh.size.dif = owner.hh.size - lag(owner.hh.size),
-         renter.hh.size.dif = renter.hh.size - lag(renter.hh.size),
+  mutate(#ownership metrics
          owner.percent = owner/(owner + renter),
          renter.percent = renter/(owner + renter),
          year = as.factor(year),
          over.18.pop.dif = over.18.pop - lag(over.18.pop),
-         #create new share metrics due to advisor feedback for better comparative analysis
+         civil.unemployment.rate = unemployed.pop.labor/total.pop.labor,
+         #Education metrics
          educated.pop =  educ.9th + educ.no.dip + educ.dip + educ.col.no.deg + educ.associate + educ.bachelor + educ.graduate.deg   ,
          educ.9th.share = educ.9th/educated.pop,
          educ.no.dip.share = educ.no.dip/educated.pop,
@@ -73,54 +48,54 @@ mergedf.s.did = mergedf.s.did %>%
          educ.bachelor.share = educ.bachelor/educated.pop,
          educ.gradaute.share = educ.graduate.deg/educated.pop,
          housing.pop.ratio = (total.housing/over.18.pop) * 100,
-         #And I actually need to pull more data to do these
+         #working age calcs
          working.age = over.18.pop - over.65.pop,
          housing.pop.working.age = total.housing/working.age,
          #housing.pop.total = total.housing/population
          #calculate gini, income values taking median of range, value in thousands, assume 200,000 is just 200
-         owner.percent.lag = lag(owner.percent),
          GINI = GINI*100,
-         lagged.GINI = lag(GINI),
-         income.gap = fifth.quant/first.quant,
-         log.income.gap = log(fifth.quant) - log(first.quant)
-         ,dif.income.gap = log.income.gap - lag(log.income.gap),
-         income.gap.80.5 = top5/first.quant,
-         log.income.gap.80.5 = log(top5) - log(first.quant),
-         dif.income.gap.80.5 = log.income.gap.80.5 - lag(log.income.gap.80.5),
+         income.ratio.20.20 = fifth.quant/first.quant,
+         income.ratio.20.5 = top5/first.quant,
+         #mortgage ratio calculations
          mort.20.30.percent = mort.20.30/mort.20,
          mort.20.35.30.percent = mort.20.35.30/mort.20.35,
          mort.35.50.30.percent = mort.35.50.30/mort.35.50,
          mort.50.75.30.percent = mort.50.75.30/mort.50.75,
          mort.75.30.percent = mort.75.30/mort.75,
+         mort.all = mort.20 + mort.20.35 + mort.35.50 + mort.50.75 + mort.75,
+         mort.all.30 = mort.20.30 + mort.20.35.30 + mort.35.50.30 + mort.50.75.30 + mort.75.30,
+         mort.all.30.percent = mort.all.30/mort.all,
+         #no mortgage but owner ratio calculations
          nmort.20.30.percent = nmort.20.30/nmort.20,
          nmort.20.35.30.percent = nmort.20.35.30/nmort.20.35,
          nmort.35.50.30.percent = nmort.35.50.30/nmort.35.50,
          nmort.50.75.30.percent = nmort.50.75.30/nmort.50.75,
          nmort.75.30.percent = nmort.75.30/nmort.75,
+         nmort.all = nmort.20 + nmort.20.35 + nmort.35.50 + nmort.50.75 + nmort.75,
+         nmort.all.30 = nmort.20.30 + nmort.20.35.30 + nmort.35.50.30 + nmort.50.75.30 + nmort.75.30,
+         nmort.all.30.percent = nmort.all.30/nmort.all,
+         #all owner calculations
          tmort.20.30.percent = (mort.20.30 + nmort.20.30)/(mort.20 + nmort.20),
          tmort.20.35.30.percent = (mort.20.35.30 + nmort.20.35.30)/(mort.20.35 + nmort.20.35),
          tmort.35.50.30.percent = (mort.35.50.30 + nmort.35.50.30)/(mort.35.50 + nmort.35.50),
          tmort.50.75.30.percent = (mort.50.75.30 + nmort.50.75.30)/(mort.50.75 + nmort.50.75),
          tmort.75.30.percent = (mort.75.30 + nmort.75.30)/(mort.75 + nmort.75),
-         lag.mort.20 = mort.20.30.percent - lag(mort.20.30.percent),
-         lag.mort.20.35 = mort.20.35.30.percent - lag(mort.20.35.30.percent),
-         lag.mort.35.50 = mort.35.50.30.percent - lag(mort.35.50.30.percent),
-         lag.mort.50.75 = mort.50.75.30.percent - lag(mort.50.75.30.percent),
+         tmort.all = mort.20 + mort.20.35 + mort.35.50 + mort.50.75 + mort.75 + nmort.20 + nmort.20.35 + nmort.35.50 + nmort.50.75 + nmort.75,
+         tmort.all.30 = mort.20.30 + mort.20.35.30 + mort.35.50.30 + mort.50.75.30 + mort.75.30 + nmort.20.30 + nmort.20.35.30 + nmort.35.50.30 + nmort.50.75.30 + nmort.75.30,
+         tmort.all.30.percent = tmort.all.30/tmort.all,
+         #Region
          south = if_else(county == 'Arizona' | county == 'New Mexico' | county == 'Texas'
                          | county == 'Oklahoma' | county == 'Arkansas' | county == 'Louisiana'
                          | county == 'Mississippi' | county == 'Alabama' | county == 'Georgia'
                          | county == 'Florida' | county == 'South Carolina' | county == 'Tennessee'
                          | county == 'North Carolina' | county == 'Kentucky',
                          1, 0),
-         did.GINI = lagged.GINI * south,
-         did.housing.pop.ratio = housing.pop.ratio * south,
-         did.80.20 = log.income.gap * south,
-         did.80.5 = log.income.gap.80.5 * south,
-         twentytwo = year == 2022,
-         did.GINI.2022 = lagged.GINI*south * twentytwo,
-         did.housing.pop.2022 = housing.pop.ratio * south * twentytwo,
-         did.80.20.2022 = log.income.gap * south * twentytwo,
-         did.80.5.2022 = log.income.gap.80.5 * south * twentytwo
+         #post Covid interaction
+         p.covid = if_else(year == 2022 | year == 2021, 1, 0),
+         GINI.p.covid = GINI * p.covid,
+         income.ratio.20.20.p.covid = income.ratio.20.20 * p.covid,
+         income.ratio.20.5.p.covid = income.ratio.20.5 * p.covid
+         #Mortgage Share interaction
          ) %>%
   ungroup
 
@@ -131,93 +106,10 @@ analysis.set = mergedf.s.did[1:612,]
 #remove DC
 analysis.set = analysis.set[-(97:108),]
 analysis.set = analysis.set[order(analysis.set$year),]
-#-------------
-#TRUE VALUES BECAUSE I FOUND THOSE
-#-------------------
-#Must impute 2021 data
-
-#alt DID spec
-AR.lag.reg3.did = lm(owner.percent ~ lagged.GINI + did.GINI + housing.pop.ratio +did.housing.pop.ratio + owner.hh.size + renter.hh.size +  year + county
-                 ,data = analysis.set)
-
-summary(AR.lag.reg3.did)
-
-
-
-
-AR.lag.reg2.did = lm(owner.percent ~ lagged.GINI + did.GINI + housing.pop.ratio + did.housing.pop.ratio +  year + county
-                 ,data = analysis.set)
-
-summary(AR.lag.reg2.did)
-
-AR.lag.reg.did = lm(owner.percent ~ lagged.GINI +  did.GINI + housing.pop.ratio +did.housing.pop.ratio + year + county
-                ,data = analysis.set)
-
-summary(AR.lag.reg.did)
-
-working.pop.reg = lm(owner.percent ~ lagged.GINI + did.GINI + housing.pop.ratio +did.housing.pop.ratio + year + county
-                     ,data = analysis.set)
-
-summary(working.pop.reg)
-
-#8020 alt
-AR.lag.8020.3 = lm(owner.percent ~ log.income.gap + did.80.20 + housing.pop.ratio + did.housing.pop.ratio + owner.hh.size + renter.hh.size +  year + county
-                 ,data = analysis.set)
-
-summary(AR.lag.8020.3)
-
-AR.lag.8020.2 = lm(owner.percent ~ log.income.gap + did.80.20 + housing.pop.ratio + did.housing.pop.ratio +  year + county
-                   ,data = analysis.set)
-
-summary(AR.lag.8020.2)
-
-AR.lag.8020 = lm(owner.percent ~ log.income.gap + did.80.20 + housing.pop.ratio + did.housing.pop.ratio + year + county
-                   ,data = analysis.set)
-
-summary(AR.lag.8020)
-
-
-#805 alt 
-#Use 80-5 measure to test inequality at extremes
-AR.lag.805.3 = lm(owner.percent ~ log.income.gap.80.5 + did.80.5 + housing.pop.ratio + did.housing.pop.ratio + owner.hh.size + renter.hh.size +  year + county
-                ,data = analysis.set)
-
-summary(AR.lag.805.3)
-
-AR.lag.805.2 = lm(owner.percent ~ log.income.gap.80.5 + did.80.5 + housing.pop.ratio + did.housing.pop.ratio +  year + county
-                  ,data = analysis.set)
-
-summary(AR.lag.805.2)
-
-AR.lag.805 = lm(owner.percent ~ log.income.gap.80.5 + did.80.5 + housing.pop.ratio + did.housing.pop.ratio + year + county
-                  ,data = analysis.set)
-
-summary(AR.lag.805)
-
-#Robust Standard Errors
-ownership.Gini.robust = coeftest(AR.lag.reg.did, vcov = vcovHC(AR.lag.reg.did, type = 'HC0'))
-
-ownership.Gini.robust.2 = coeftest(AR.lag.reg2.did, vcov = vcovHC(AR.lag.reg2.did, type = 'HC0'))
-
-ownership.Gini.robust.3 = coeftest(AR.lag.reg3.did, vcov = vcovHC(AR.lag.reg3.did, type = 'HC0'))
-
-#8020
-ownership.8020.robust = coeftest(AR.lag.8020, vcov = vcovHC(AR.lag.8020, type = 'HC0'))
-
-ownership.8020.robust.2 = coeftest(AR.lag.8020.2, vcov = vcovHC(AR.lag.8020.2, type = 'HC0'))
-
-ownership.8020.robust.3 = coeftest(AR.lag.8020.3, vcov = vcovHC(AR.lag.8020.3, type = 'HC0'))
-
-#805
-ownership.805.robust = coeftest(AR.lag.805, vcov = vcovHC(AR.lag.805, type = 'HC0'))
-
-ownership.805.robust.2 = coeftest(AR.lag.805.2, vcov = vcovHC(AR.lag.805.2, type = 'HC0'))
-
-ownership.805.robust.3 = coeftest(AR.lag.805.3, vcov = vcovHC(AR.lag.805.3, type = 'HC0'))
-
 
 #---------------
-#STATE LEVEL MORTGAGE COST (MAY INCLUDE AR TERM LATER)
+#STATE LEVEL Housing Share 
+#REDO WITH ADJUSTED VARIABLES
 #---------------
 #20.000
 
@@ -384,112 +276,7 @@ lig.mean = mean(analysis.set$log.income.gap)
 lig.sd = sd(analysis.set$log.income.gap)
 analysis.set$county[analysis.set$log.income.gap > lig.mean+2*lig.sd]
 
-#-----------------
-#Check Residuals
-#-----------------
-#I can't function to auto add AB lines every year
-#alternative
 
-plot(resid(AR.lag.reg.did), type = 'l', col = 'blue', main = 'DID Only Gini Homeownership Residuals', xlab = 'Period', ylab = 'Residual')
-abline(v = c(50,100, 150, 200, 250, 300, 350, 400, 450, 500), lty = 2, col = 'red')
-
-plot(resid(AR.lag.reg2.did), type = 'l', col = 'blue', main = 'AR Term Gini Homeonwership Residuals', xlab = 'Period', ylab = 'Residual')
-abline(v = c(50,100, 150, 200, 250, 300, 350, 400, 450, 500), lty = 2, col = 'red')
-
-plot(resid(AR.lag.reg3.did), type = 'l', col = 'blue', main = 'Houshold Size Gini Residuals', xlab = 'Period', ylab = 'Residual')
-abline(v = c(50,100, 150, 200, 250, 300, 350, 400, 450, 500), lty = 2, col = 'red')
-
-
-
-plot(resid(AR.lag.8020.3), type = 'l', col = 'blue', main = 'DID Only 80/20 Homeownership Residuals', xlab = 'Period', ylab = 'Residual')
-abline(v = c(50,100, 150, 200, 250, 300, 350, 400, 450, 500), lty = 2, col = 'red')
-
-plot(resid(AR.lag.8020.2), type = 'l', col = 'blue', main = 'AR Term 80/20 Homeownership Residuals', xlab = 'Period', ylab = 'Residual')
-abline(v = c(50,100, 150, 200, 250, 300, 350, 400, 450, 500), lty = 2, col = 'red')
-
-plot(resid(AR.lag.8020), type = 'l', col = 'blue', main = 'Houshold Size 80/20 Homeownership Residuals', xlab = 'Period', ylab = 'Residual')
-abline(v = c(50,100, 150, 200, 250, 300, 350, 400, 450, 500), lty = 2, col = 'red')
-
-
-
-plot(resid(AR.lag.805.3), type = 'l', col = 'blue', main = 'DID Only 80/5 Homeownership Residuals', xlab = 'Period', ylab = 'Residual')
-abline(v = c(50,100, 150, 200, 250, 300, 350, 400, 450, 500), lty = 2, col = 'red')
-
-plot(resid(AR.lag.805.2), type = 'l', col = 'blue', main = 'AR Term 80/5 Homeownership Residuals', xlab = 'Period', ylab = 'Residual')
-abline(v = c(50,100, 150, 200, 250, 300, 350, 400, 450, 500), lty = 2, col = 'red')
-
-plot(resid(AR.lag.805), type = 'l', col = 'blue', main = 'Houshold Size 80/5 Homeownership Residuals', xlab = 'Period', ylab = 'Residual')
-abline(v = c(50,100, 150, 200, 250, 300, 350, 400, 450, 500), lty = 2, col = 'red')
-
-
-
-
-plot(resid(m35.50.8020), type = 'l', col = 'blue', main = '35,000 - 50,000 Mortgage 80/20 Residuals', xlab = 'Period', ylab = 'Residual')
-abline(v = c(50,100, 150, 200, 250, 300, 350, 400, 450, 500), lty = 2, col = 'red')
-
-plot(resid(m35.50.805), type = 'l', col = 'blue', main = '35,000 - 50,000 Mortgage 80/5 Residuals', xlab = 'Period', ylab = 'Residual')
-abline(v = c(50,100, 150, 200, 250, 300, 350, 400, 450, 500), lty = 2, col = 'red')
-
-plot(resid(m35.50.gini), type = 'l', col = 'blue', main = '35,000 - 50,000 Mortgage Gini Residuals', xlab = 'Period', ylab = 'Residual')
-abline(v = c(50,100, 150, 200, 250, 300, 350, 400, 450, 500), lty = 2, col = 'red')
-
-
-#check other mortgages change titles later
-
-plot(resid(m20.gini), type = 'l', col = 'blue', main = '20,000 or Less Mortgage Gini Residuals', xlab = 'Period', ylab = 'Residual')
-abline(v = c(50,100, 150, 200, 250, 300, 350, 400, 450, 500), lty = 2, col = 'red')
-
-plot(resid(m20.8020), type = 'l', col = 'blue', main = '20,000 or Less Mortgage 80/20 Residuals', xlab = 'Period', ylab = 'Residual')
-abline(v = c(50,100, 150, 200, 250, 300, 350, 400, 450, 500), lty = 2, col = 'red')
-
-plot(resid(m20.805), type = 'l', col = 'blue', main = '20,000 or Less Mortgage 80/5 Residuals', xlab = 'Period', ylab = 'Residual')
-abline(v = c(50,100, 150, 200, 250, 300, 350, 400, 450, 500), lty = 2, col = 'red')
-
-
-plot(resid(m20.35.gini), type = 'l', col = 'blue', main = '20,000 - 535,000 Mortgage Gini Residuals', xlab = 'Period', ylab = 'Residual')
-abline(v = c(50,100, 150, 200, 250, 300, 350, 400, 450, 500), lty = 2, col = 'red')
-
-plot(resid(m20.35.8020), type = 'l', col = 'blue', main = '20,000 - 535,000 Mortgage 80/20 Residuals', xlab = 'Period', ylab = 'Residual')
-abline(v = c(50,100, 150, 200, 250, 300, 350, 400, 450, 500), lty = 2, col = 'red')
-
-plot(resid(m20.35.805), type = 'l', col = 'blue', main = '20,000 - 535,000 Mortgage 80/5 Residuals', xlab = 'Period', ylab = 'Residual')
-abline(v = c(50,100, 150, 200, 250, 300, 350, 400, 450, 500), lty = 2, col = 'red')
-
-
-plot(resid(m50.75.gini), type = 'l', col = 'blue', main = '50,000 - 75,000 Mortgage Gini Residuals', xlab = 'Period', ylab = 'Residual')
-abline(v = c(50,100, 150, 200, 250, 300, 350, 400, 450, 500), lty = 2, col = 'red')
-
-plot(resid(m50.75.8020), type = 'l', col = 'blue', main = '50,000 - 75,000 Mortgage 80/20 Residuals', xlab = 'Period', ylab = 'Residual')
-abline(v = c(50,100, 150, 200, 250, 300, 350, 400, 450, 500), lty = 2, col = 'red')
-
-plot(resid(m50.75.805), type = 'l', col = 'blue', main = '50,000 - 75,000 Mortgage 80/5 Residuals', xlab = 'Period', ylab = 'Residual')
-abline(v = c(50,100, 150, 200, 250, 300, 350, 400, 450, 500), lty = 2, col = 'red')
-
-
-sd(resid(m35.50.gini))
-sd(resid(m35.50.8020))
-sd(resid(m35.50.805))
-
-#residuals of last period
-sd(m35.50.gini$residuals[501:550])
-sd(m35.50.8020$residuals[501:550])
-sd(m35.50.805$residuals[501:550])
-
-#residuals of not last period
-sd(m35.50.gini$residuals[1:500])
-sd(m35.50.8020$residuals[1:500])
-sd(m35.50.805$residuals[1:500])
-
-lmtest::bptest(m35.50.gini)
-lmtest::bptest(m35.50.8020)
-lmtest::bptest(m35.50.805)
-
-sd(m35.50.805.2022$residuals)
-sd(m35.50.8020.2022$residuals)
-
-#fill this out
-plot(m35.50.805.2022$residuals, type = 'l', col = 'blue', main = '35,000 - 50,000 Mortgage Gini Residuals', xlab = 'Period', ylab = 'Residual')
-abline(v = c(50,100, 150, 200, 250, 300, 350, 400, 450, 500), lty = 2, col = 'red')
 #---------------
 #Publish Results
 #---------------
@@ -625,3 +412,72 @@ for(i in 2010:2022){
 plot(first.quant.mean, type = 'l', ylim = c(10000, 600000))
 lines(fifth.quant.mean, type = 'l', col = 2)
 lines(top5.mean, type = 'l', col = 3)
+
+#I'm going to have to function this and be mad about it aren't I?
+plot.default(analysis.set %>%
+               group_by(year) %>%
+               filter(region == 1) %>%
+               summarise_at(vars(income.ratio.20.20), list(name = mean)), type = 'b', ylim = c(12,18))
+
+lines(analysis.set %>%
+        group_by(year) %>%
+        filter(region == 2) %>%
+        summarise_at(vars(income.ratio.20.20), list(name = mean)), type = 'b', col = 2)
+
+lines(analysis.set %>%
+        group_by(year) %>%
+        filter(region == 3) %>%
+        summarise_at(vars(income.ratio.20.20), list(name = mean)), type = 'b', col = 3)
+
+lines(analysis.set %>%
+        group_by(year) %>%
+        filter(region == 4) %>%
+        summarise_at(vars(income.ratio.20.20), list(name = mean)), type = 'b', col = 4)
+
+legend(x = "topleft", legend = c('Northeast', 'Midwest', 'South', 'West'),
+               col = c(1,2,3,4),
+               lwd = 2)
+
+
+
+
+
+region.plotter = function(x, yliml, ylimm, mains, ylabs){
+plot.default(analysis.set %>%
+         group_by(year) %>%
+         filter(region == 1) %>%
+         summarise_at(vars(x), list(name = mean)), type = 'b', ylim = c(yliml,ylimm),
+         main = mains, ylab = ylabs)
+
+lines(analysis.set %>%
+        group_by(year) %>%
+        filter(region == 2) %>%
+        summarise_at(vars(x), list(name = mean)), type = 'b', col = 2)
+
+lines(analysis.set %>%
+        group_by(year) %>%
+        filter(region == 3) %>%
+        summarise_at(vars(x), list(name = mean)), type = 'b', col = 3)
+
+lines(analysis.set %>%
+        group_by(year) %>%
+        filter(region == 4) %>%
+        summarise_at(vars(x), list(name = mean)), type = 'b', col = 4)
+
+legend(x = "topleft", legend = c('Northeast', 'Midwest', 'South', 'West'),
+       col = c(1,2,3,4),
+       lwd = 2)
+}
+
+region.plotter('income.ratio.20.20', 12, 18, "20.20 Income Ratio by Region", "Income Ratio")
+region.plotter('income.ratio.20.5', 18, 30, "20.5 Income Ratio by Region", "Income Ratio")
+region.plotter('GINI', 40, 65, "GINI by Region", "GINI Coef * 100")
+
+
+
+#keep this on hand for nested things in case I need multiple filter example again
+analysis.set %>%
+  group_by(year) %>%
+  filter(region == 1) %>%
+  summarise_at(vars(income.ratio.20.20), list(name = mean))
+  
