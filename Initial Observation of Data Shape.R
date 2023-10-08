@@ -33,11 +33,11 @@ mergedf.s.did[,5+x] = as.numeric(as.character(mergedf.s.did[,5+x]))
 mergedf.s.did = mergedf.s.did %>%
   group_by(state) %>%
   mutate(#ownership metrics
-         owner.percent = owner/(owner + renter),
-         renter.percent = renter/(owner + renter),
+         owner.percent = owner/(owner + renter) * 100,
+         renter.percent = renter/(owner + renter) * 100,
          year = as.factor(year),
          over.18.pop.dif = over.18.pop - lag(over.18.pop),
-         civil.unemployment.rate = unemployed.pop.labor/total.pop.labor,
+         civil.unemployment.rate = (unemployed.pop.labor/total.pop.labor) * 100,
          #Education metrics
          educated.pop =  educ.9th + educ.no.dip + educ.dip + educ.col.no.deg + educ.associate + educ.bachelor + educ.graduate.deg   ,
          educ.9th.share = educ.9th/educated.pop,
@@ -50,39 +50,43 @@ mergedf.s.did = mergedf.s.did %>%
          housing.pop.ratio = (total.housing/over.18.pop) * 100,
          #working age calcs
          working.age = over.18.pop - over.65.pop,
-         housing.pop.working.age = total.housing/working.age,
+         housing.pop.working.age = (total.housing/working.age) * 100,
          #housing.pop.total = total.housing/population
          #calculate gini, income values taking median of range, value in thousands, assume 200,000 is just 200
          GINI = GINI*100,
          income.ratio.20.20 = fifth.quant/first.quant,
          income.ratio.20.5 = top5/first.quant,
          #mortgage ratio calculations
-         mort.20.30.percent = mort.20.30/mort.20,
-         mort.20.35.30.percent = mort.20.35.30/mort.20.35,
-         mort.35.50.30.percent = mort.35.50.30/mort.35.50,
-         mort.50.75.30.percent = mort.50.75.30/mort.50.75,
-         mort.75.30.percent = mort.75.30/mort.75,
+         mort.20.30.percent = (mort.20.30/mort.20) * 100,
+         mort.20.35.30.percent = (mort.20.35.30/mort.20.35) * 100,
+         mort.35.50.30.percent = (mort.35.50.30/mort.35.50) * 100,
+         mort.50.75.30.percent = (mort.50.75.30/mort.50.75) * 100,
+         mort.75.30.percent = (mort.75.30/mort.75) * 100,
          mort.all = mort.20 + mort.20.35 + mort.35.50 + mort.50.75 + mort.75,
          mort.all.30 = mort.20.30 + mort.20.35.30 + mort.35.50.30 + mort.50.75.30 + mort.75.30,
-         mort.all.30.percent = mort.all.30/mort.all,
+         mort.all.30.percent = (mort.all.30/mort.all) * 100,
          #no mortgage but owner ratio calculations
-         nmort.20.30.percent = nmort.20.30/nmort.20,
-         nmort.20.35.30.percent = nmort.20.35.30/nmort.20.35,
-         nmort.35.50.30.percent = nmort.35.50.30/nmort.35.50,
-         nmort.50.75.30.percent = nmort.50.75.30/nmort.50.75,
-         nmort.75.30.percent = nmort.75.30/nmort.75,
+         nmort.20.30.percent = (nmort.20.30/nmort.20) * 100,
+         nmort.20.35.30.percent = (nmort.20.35.30/nmort.20.35) * 100,
+         nmort.35.50.30.percent = (nmort.35.50.30/nmort.35.50) * 100,
+         nmort.50.75.30.percent = (nmort.50.75.30/nmort.50.75) * 100,
+         nmort.75.30.percent = (nmort.75.30/nmort.75) * 100,
          nmort.all = nmort.20 + nmort.20.35 + nmort.35.50 + nmort.50.75 + nmort.75,
          nmort.all.30 = nmort.20.30 + nmort.20.35.30 + nmort.35.50.30 + nmort.50.75.30 + nmort.75.30,
-         nmort.all.30.percent = nmort.all.30/nmort.all,
+         nmort.all.30.percent = (nmort.all.30/nmort.all) * 100,
          #all owner calculations
-         tmort.20.30.percent = (mort.20.30 + nmort.20.30)/(mort.20 + nmort.20),
-         tmort.20.35.30.percent = (mort.20.35.30 + nmort.20.35.30)/(mort.20.35 + nmort.20.35),
-         tmort.35.50.30.percent = (mort.35.50.30 + nmort.35.50.30)/(mort.35.50 + nmort.35.50),
-         tmort.50.75.30.percent = (mort.50.75.30 + nmort.50.75.30)/(mort.50.75 + nmort.50.75),
-         tmort.75.30.percent = (mort.75.30 + nmort.75.30)/(mort.75 + nmort.75),
+         tmort.20.30.percent = ((mort.20.30 + nmort.20.30)/(mort.20 + nmort.20)) * 100,
+         tmort.20.35.30.percent = ((mort.20.35.30 + nmort.20.35.30)/(mort.20.35 + nmort.20.35)) * 100,
+         tmort.35.50.30.percent = ((mort.35.50.30 + nmort.35.50.30)/(mort.35.50 + nmort.35.50)) * 100,
+         tmort.50.75.30.percent = ((mort.50.75.30 + nmort.50.75.30)/(mort.50.75 + nmort.50.75)) * 100,
+         tmort.75.30.percent = ((mort.75.30 + nmort.75.30)/(mort.75 + nmort.75)) * 100,
          tmort.all = mort.20 + mort.20.35 + mort.35.50 + mort.50.75 + mort.75 + nmort.20 + nmort.20.35 + nmort.35.50 + nmort.50.75 + nmort.75,
          tmort.all.30 = mort.20.30 + mort.20.35.30 + mort.35.50.30 + mort.50.75.30 + mort.75.30 + nmort.20.30 + nmort.20.35.30 + nmort.35.50.30 + nmort.50.75.30 + nmort.75.30,
-         tmort.all.30.percent = tmort.all.30/tmort.all,
+         tmort.all.30.percent = (tmort.all.30/tmort.all) * 100,
+         #omit above 50k income
+         tmort.ex = mort.20 + mort.20.35 + mort.35.50 + nmort.20 + nmort.20.35 + nmort.35.50,
+         tmort.ex.30 = mort.20.30 + mort.20.35.30 + mort.35.50.30 + nmort.20.30 + nmort.20.35.30 + nmort.35.50.30,
+         tmort.ex.30.percent = (tmort.ex.30/tmort.ex) * 100,
          #Region
          south = if_else(county == 'Arizona' | county == 'New Mexico' | county == 'Texas'
                          | county == 'Oklahoma' | county == 'Arkansas' | county == 'Louisiana'
@@ -94,8 +98,33 @@ mergedf.s.did = mergedf.s.did %>%
          p.covid = if_else(year == 2022 | year == 2021, 1, 0),
          GINI.p.covid = GINI * p.covid,
          income.ratio.20.20.p.covid = income.ratio.20.20 * p.covid,
-         income.ratio.20.5.p.covid = income.ratio.20.5 * p.covid
-         #Mortgage Share interaction
+         income.ratio.20.5.p.covid = income.ratio.20.5 * p.covid,
+         #Mortgage Share interaction setup
+         #percent of owners that fall in a certain range maybe? I guess?
+         tmort.20.share = ((mort.20 + nmort.20)/tmort.all) * 100,
+         tmort.20.35.share = ((mort.20.35 + nmort.20.35)/tmort.all) * 100,
+         tmort.35.50.share = ((mort.35.50 + nmort.35.50)/tmort.all) * 100,
+         tmort.50.75.share = ((mort.50.75 + nmort.50.75)/tmort.all) * 100,
+         tmort.75.share = ((mort.75 + nmort.75)/tmort.all) * 100,
+         
+         #interaction terms
+         inc.20.20.int.20 = income.ratio.20.20 * tmort.20.share,
+         inc.20.20.int.20.35 = income.ratio.20.20 * tmort.20.35.share,
+         inc.20.20.int.35.50 = income.ratio.20.20 * tmort.35.50.share,
+         inc.20.20.int.50.75 = income.ratio.20.20 * tmort.50.75.share,
+         inc.20.20.int.75 = income.ratio.20.20 * tmort.75.share,
+         
+         inc.20.5.int.20 = income.ratio.20.5 * tmort.20.share,
+         inc.20.5.int.20.35 = income.ratio.20.5 * tmort.20.35.share,
+         inc.20.5.int.35.50 = income.ratio.20.5 * tmort.35.50.share,
+         inc.20.5.int.50.75 = income.ratio.20.5 * tmort.50.75.share,
+         inc.20.5.int.75 = income.ratio.20.5 * tmort.75.share,
+         
+         GINI.int.20 = GINI * tmort.20.share,
+         GINI.int.20.35 = GINI * tmort.20.35.share,
+         GINI.int.35.50 = GINI * tmort.35.50.share,
+         GINI.int.50.75 = GINI * tmort.50.75.share,
+         GINI.int.75 = GINI * tmort.75.share,
          ) %>%
   ungroup
 
@@ -113,7 +142,7 @@ analysis.set = analysis.set[order(analysis.set$year),]
 #---------------
 #20.000
 
-m20.gini = lm(tmort.20.30.percent ~ GINI +  housing.pop.ratio + owner.hh.size + renter.hh.size  + year + county
+m20.gini = lm(tmort.20.30.percent ~ GINI + housing.pop.ratio + owner.hh.size + renter.hh.size  + year + county
                      ,data = analysis.set)
 
 summary(m20.gini)
@@ -208,6 +237,61 @@ m.50.75.stability.805.robust = coeftest(m50.75.805, vcov = vcovHC(m50.75.805, ty
 
 
 
+#-------------------
+#Regression on full data with all interaction terms
+#------------------
+
+#20.20 first
+full.20.20.reg = lm(tmort.all.30.percent ~ income.ratio.20.20 + income.ratio.20.20.p.covid + owner.hh.size + renter.hh.size +
+     housing.pop.working.age + civil.unemployment.rate + inc.20.20.int.20 + inc.20.20.int.20.35 +
+     inc.20.20.int.35.50 + inc.20.20.int.50.75 + inc.20.20.int.75 + year + county
+   ,data = analysis.set)
+
+
+full.20.5.reg = lm(tmort.all.30.percent ~ income.ratio.20.5 + income.ratio.20.5.p.covid + owner.hh.size + renter.hh.size +
+                      housing.pop.working.age + civil.unemployment.rate + inc.20.5.int.20 + inc.20.5.int.20.35 +
+                      inc.20.5.int.35.50 + inc.20.5.int.50.75 + inc.20.5.int.75 + year + county
+                    ,data = analysis.set)
+
+full.Gini.reg = lm(tmort.all.30.percent ~ GINI + GINI.p.covid + owner.hh.size + renter.hh.size +
+                      housing.pop.working.age + civil.unemployment.rate + GINI.int.20 + GINI.int.20.35 +
+                     GINI.int.35.50 + GINI.int.50.75 + GINI.int.75 + year + county
+                    ,data = analysis.set)
+
+#exclude high income 
+
+ex.20.20.reg = lm(tmort.ex.30.percent ~ income.ratio.20.20 + income.ratio.20.20.p.covid + owner.hh.size + renter.hh.size +
+                      housing.pop.working.age + civil.unemployment.rate + inc.20.20.int.20 + inc.20.20.int.20.35 +
+                      inc.20.20.int.35.50 + year + county
+                    ,data = analysis.set)
+
+
+ex.20.5.reg = lm(tmort.ex.30.percent ~ income.ratio.20.5 + income.ratio.20.5.p.covid + owner.hh.size + renter.hh.size +
+                     housing.pop.working.age + civil.unemployment.rate + inc.20.5.int.20 + inc.20.5.int.20.35 +
+                     inc.20.5.int.35.50 + year + county
+                   ,data = analysis.set)
+
+ex.Gini.reg = lm(tmort.ex.30.percent ~ GINI + GINI.p.covid + owner.hh.size + renter.hh.size +
+                     housing.pop.working.age + civil.unemployment.rate + GINI.int.20 + GINI.int.20.35 +
+                     GINI.int.35.50 + year + county
+                   ,data = analysis.set)
+#homeownership
+
+full.20.20.owner.reg = lm(owner.percent ~ income.ratio.20.20 + income.ratio.20.20.p.covid + owner.hh.size + renter.hh.size +
+                      housing.pop.working.age + civil.unemployment.rate + inc.20.20.int.20 + inc.20.20.int.20.35 +
+                      inc.20.20.int.35.50 + inc.20.20.int.50.75 + inc.20.20.int.75 + year + county
+                    ,data = analysis.set)
+
+
+full.20.5.owner.reg = lm(owner.percent ~ income.ratio.20.5 + income.ratio.20.5.p.covid + owner.hh.size + renter.hh.size +
+                     housing.pop.working.age + civil.unemployment.rate + inc.20.5.int.20 + inc.20.5.int.20.35 +
+                     inc.20.5.int.35.50 + inc.20.5.int.50.75 + inc.20.5.int.75 + year + county
+                   ,data = analysis.set)
+
+full.Gini.owner.reg = lm(owner.percent ~ GINI + GINI.p.covid + owner.hh.size + renter.hh.size +
+                     housing.pop.working.age + civil.unemployment.rate + GINI.int.20 + GINI.int.20.35 +
+                     GINI.int.35.50 + GINI.int.50.75 + GINI.int.75 + year + county
+                   ,data = analysis.set)
 #------------------
 #Some more visual analysis
 #---------------
@@ -413,34 +497,8 @@ plot(first.quant.mean, type = 'l', ylim = c(10000, 600000))
 lines(fifth.quant.mean, type = 'l', col = 2)
 lines(top5.mean, type = 'l', col = 3)
 
-#I'm going to have to function this and be mad about it aren't I?
-plot.default(analysis.set %>%
-               group_by(year) %>%
-               filter(region == 1) %>%
-               summarise_at(vars(income.ratio.20.20), list(name = mean)), type = 'b', ylim = c(12,18))
 
-lines(analysis.set %>%
-        group_by(year) %>%
-        filter(region == 2) %>%
-        summarise_at(vars(income.ratio.20.20), list(name = mean)), type = 'b', col = 2)
-
-lines(analysis.set %>%
-        group_by(year) %>%
-        filter(region == 3) %>%
-        summarise_at(vars(income.ratio.20.20), list(name = mean)), type = 'b', col = 3)
-
-lines(analysis.set %>%
-        group_by(year) %>%
-        filter(region == 4) %>%
-        summarise_at(vars(income.ratio.20.20), list(name = mean)), type = 'b', col = 4)
-
-legend(x = "topleft", legend = c('Northeast', 'Midwest', 'South', 'West'),
-               col = c(1,2,3,4),
-               lwd = 2)
-
-
-
-
+#By Region plotting function
 
 region.plotter = function(x, yliml, ylimm, mains, ylabs){
 plot.default(analysis.set %>%
@@ -473,11 +531,171 @@ region.plotter('income.ratio.20.20', 12, 18, "20.20 Income Ratio by Region", "In
 region.plotter('income.ratio.20.5', 18, 30, "20.5 Income Ratio by Region", "Income Ratio")
 region.plotter('GINI', 40, 65, "GINI by Region", "GINI Coef * 100")
 
+region.plotter('tmort.all.30.percent', 0, 1, "Overall Housing Insecurity by Region", "Over 30% rate")
+region.plotter('tmort.75.30.percent', 0, 1, "Overall Housing Insecurity by Region", "Over 30% rate")
+region.plotter('tmort.50.75.30.percent', 0, 1, "Overall Housing Insecurity by Region", "Over 30% rate")
+region.plotter('tmort.35.50.30.percent', 0, 1, "Overall Housing Insecurity by Region", "Over 30% rate")
+region.plotter('tmort.20.35.30.percent', 0, 1, "Overall Housing Insecurity by Region", "Over 30% rate")
+region.plotter('tmort.20.30.percent', 0, 1, "Overall Housing Insecurity by Region", "Over 30% rate")
+
+region.plotter('mort.all.30.percent', 0.2, 0.5, "Overall Housing Insecurity by Region", "Over 30% rate")
+region.plotter('mort.75.30.percent', 0, 1, "Overall Housing Insecurity by Region", "Over 30% rate")
+region.plotter('mort.50.75.30.percent', 0, 1, "Overall Housing Insecurity by Region", "Over 30% rate")
+region.plotter('mort.35.50.30.percent', 0.4, 0.9, "Overall Housing Insecurity by Region", "Over 30% rate")
+region.plotter('mort.20.35.30.percent', 0.75, 1, "Overall Housing Insecurity by Region", "Over 30% rate")
+region.plotter('mort.20.30.percent', 0.95, 1, "Overall Housing Insecurity by Region", "Over 30% rate")
+
+region.plotter('nmort.all.30.percent', 0, 1, "Overall Housing Insecurity by Region", "Over 30% rate")
+region.plotter('nmort.75.30.percent', 0, 1, "Overall Housing Insecurity by Region", "Over 30% rate")
+region.plotter('nmort.50.75.30.percent', 0, 1, "Overall Housing Insecurity by Region", "Over 30% rate")
+region.plotter('nmort.35.50.30.percent', 0, 1, "Overall Housing Insecurity by Region", "Over 30% rate")
+region.plotter('nmort.20.35.30.percent', 0, 1, "Overall Housing Insecurity by Region", "Over 30% rate")
+region.plotter('nmort.20.30.percent', 0, 1, "Overall Housing Insecurity by Region", "Over 30% rate")
 
 
 #keep this on hand for nested things in case I need multiple filter example again
-analysis.set %>%
+panel.a.20.20 = analysis.set %>%
   group_by(year) %>%
   filter(region == 1) %>%
-  summarise_at(vars(income.ratio.20.20), list(name = mean))
-  
+  summarise_at(vars(income.ratio.20.20), list(mean = mean, sd = sd))
+
+
+#is it reasonable for me to do this 4 times as summary stats?
+#I think it is
+#not sure its reasonable to function it
+
+#export 20/20
+
+panel.a.20.20 = analysis.set %>%
+  group_by(year) %>%
+  filter(region == 1) %>%
+  summarise_at(vars(income.ratio.20.20), list(Mean = mean, SD = sd))
+
+panel.b.20.20 = analysis.set %>%
+  group_by(year) %>%
+  filter(region == 2) %>%
+  summarise_at(vars(income.ratio.20.20), list(Mean = mean, SD = sd))
+
+panel.c.20.20 = analysis.set %>%
+  group_by(year) %>%
+  filter(region == 3) %>%
+  summarise_at(vars(income.ratio.20.20), list(Mean = mean, SD = sd))
+
+panel.d.20.20 = analysis.set %>%
+  group_by(year) %>%
+  filter(region == 4) %>%
+  summarise_at(vars(income.ratio.20.20), list(Mean = mean, SD = sd))
+
+#this is annoying and slow and needs to be done manually but I've already spent half an hour on this
+write.xlsx(as.data.frame(round(panel.a.20.20[,2:3], 4)), "panel.a.20.20.xlsx", asTable = FALSE)
+write.xlsx(as.data.frame(round(panel.b.20.20[,2:3], 4)), "panel.b.20.20.xlsx", asTable = FALSE)
+write.xlsx(as.data.frame(round(panel.c.20.20[,2:3], 4)), "panel.c.20.20.xlsx", asTable = FALSE)
+write.xlsx(as.data.frame(round(panel.d.20.20[,2:3], 4)), "panel.d.20.20.xlsx", asTable = FALSE)
+
+#export 20/5
+panel.a.20.5 = analysis.set %>%
+  group_by(year) %>%
+  filter(region == 1) %>%
+  summarise_at(vars(income.ratio.20.5), list(Mean = mean, SD = sd))
+
+panel.b.20.5 = analysis.set %>%
+  group_by(year) %>%
+  filter(region == 2) %>%
+  summarise_at(vars(income.ratio.20.5), list(Mean = mean, SD = sd))
+
+panel.c.20.5 = analysis.set %>%
+  group_by(year) %>%
+  filter(region == 3) %>%
+  summarise_at(vars(income.ratio.20.5), list(Mean = mean, SD = sd))
+
+panel.d.20.5 = analysis.set %>%
+  group_by(year) %>%
+  filter(region == 4) %>%
+  summarise_at(vars(income.ratio.20.5), list(Mean = mean, SD = sd))
+
+#this is annoying and slow and needs to be done manually but I've already spent half an hour on this
+write.xlsx(as.data.frame(round(panel.a.20.5[,2:3], 4)), "panel.a.20.5.xlsx", asTable = FALSE)
+write.xlsx(as.data.frame(round(panel.b.20.5[,2:3], 4)), "panel.b.20.5.xlsx", asTable = FALSE)
+write.xlsx(as.data.frame(round(panel.c.20.5[,2:3], 4)), "panel.c.20.5.xlsx", asTable = FALSE)
+write.xlsx(as.data.frame(round(panel.d.20.5[,2:3], 4)), "panel.d.20.5.xlsx", asTable = FALSE)
+
+#export Gini
+panel.a.GINI = analysis.set %>%
+  group_by(year) %>%
+  filter(region == 1) %>%
+  summarise_at(vars(GINI), list(Mean = mean, SD = sd))
+
+panel.b.GINI = analysis.set %>%
+  group_by(year) %>%
+  filter(region == 2) %>%
+  summarise_at(vars(GINI), list(Mean = mean, SD = sd))
+
+panel.c.GINI = analysis.set %>%
+  group_by(year) %>%
+  filter(region == 3) %>%
+  summarise_at(vars(GINI), list(Mean = mean, SD = sd))
+
+panel.d.GINI = analysis.set %>%
+  group_by(year) %>%
+  filter(region == 4) %>%
+  summarise_at(vars(GINI), list(Mean = mean, SD = sd))
+
+#this is annoying and slow and needs to be done manually but I've already spent half an hour on this
+write.xlsx(as.data.frame(round(panel.a.GINI[,2:3], 4)), "panel.a.GINI.xlsx", asTable = FALSE)
+write.xlsx(as.data.frame(round(panel.b.GINI[,2:3], 4)), "panel.b.GINI.xlsx", asTable = FALSE)
+write.xlsx(as.data.frame(round(panel.c.GINI[,2:3], 4)), "panel.c.GINI.xlsx", asTable = FALSE)
+write.xlsx(as.data.frame(round(panel.d.GINI[,2:3], 4)), "panel.d.GINI.xlsx", asTable = FALSE)
+
+#export housing insecurity
+panel.a.tmort.30 = analysis.set %>%
+  group_by(year) %>%
+  filter(region == 1) %>%
+  summarise_at(vars(tmort.all.30.percent), list(Mean = mean, SD = sd))
+
+panel.b.tmort.30 = analysis.set %>%
+  group_by(year) %>%
+  filter(region == 2) %>%
+  summarise_at(vars(tmort.all.30.percent), list(Mean = mean, SD = sd))
+
+panel.c.tmort.30 = analysis.set %>%
+  group_by(year) %>%
+  filter(region == 3) %>%
+  summarise_at(vars(tmort.all.30.percent), list(Mean = mean, SD = sd))
+
+panel.d.tmort.30 = analysis.set %>%
+  group_by(year) %>%
+  filter(region == 4) %>%
+  summarise_at(vars(tmort.all.30.percent), list(Mean = mean, SD = sd))
+
+#this is annoying and slow and needs to be done manually but I've already spent half an hour on this
+write.xlsx(as.data.frame(round(panel.a.tmort.30[,2:3], 4)), "panel.a.tmort.30.xlsx", asTable = FALSE)
+write.xlsx(as.data.frame(round(panel.b.tmort.30[,2:3], 4)), "panel.b.tmort.30.xlsx", asTable = FALSE)
+write.xlsx(as.data.frame(round(panel.c.tmort.30[,2:3], 4)), "panel.c.tmort.30.xlsx", asTable = FALSE)
+write.xlsx(as.data.frame(round(panel.d.tmort.30[,2:3], 4)), "panel.d.tmort.30.xlsx", asTable = FALSE)
+
+#export housing insecurity except for over 50k
+panel.a.tmort.ex.30 = analysis.set %>%
+  group_by(year) %>%
+  filter(region == 1) %>%
+  summarise_at(vars(tmort.ex.30.percent), list(Mean = mean, SD = sd))
+
+panel.b.tmort.ex.30 = analysis.set %>%
+  group_by(year) %>%
+  filter(region == 2) %>%
+  summarise_at(vars(tmort.ex.30.percent), list(Mean = mean, SD = sd))
+
+panel.c.tmort.ex.30 = analysis.set %>%
+  group_by(year) %>%
+  filter(region == 3) %>%
+  summarise_at(vars(tmort.ex.30.percent), list(Mean = mean, SD = sd))
+
+panel.d.tmort.ex.30 = analysis.set %>%
+  group_by(year) %>%
+  filter(region == 4) %>%
+  summarise_at(vars(tmort.ex.30.percent), list(Mean = mean, SD = sd))
+
+#this is annoying and slow and needs to be done manually but I've already spent half an hour on this
+write.xlsx(as.data.frame(round(panel.a.tmort.ex.30[,2:3], 4)), "panel.a.tmort.ex.30.xlsx", asTable = FALSE)
+write.xlsx(as.data.frame(round(panel.b.tmort.ex.30[,2:3], 4)), "panel.b.tmort.ex.30.xlsx", asTable = FALSE)
+write.xlsx(as.data.frame(round(panel.c.tmort.ex.30[,2:3], 4)), "panel.c.tmort.ex.30.xlsx", asTable = FALSE)
+write.xlsx(as.data.frame(round(panel.d.tmort.ex.30[,2:3], 4)), "panel.d.tmort.ex.30.xlsx", asTable = FALSE)
