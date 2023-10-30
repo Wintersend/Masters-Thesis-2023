@@ -1214,3 +1214,99 @@ for(i in 1:n){
 
 
 mergedf.s = rbind(merge10s, merge11s, merge12s, merge13s, merge14s, merge15s, merge16s, merge17s, merge18s, merge19s, merge21s, merge22s)
+
+#------------------------------
+#County Alter
+#------------------------------
+name_align.c = function(df, new_name){
+  n = nrow(df)
+  new_name = df %>% 
+    rename(county = 2,
+           total.housing = 5,
+           employable.pop = 6,
+           total.pop.labor = 7,
+           employed.pop.labor = 8,
+           unemployed.pop.labor = 9,
+           total.income.benefits = 10,
+           inc.0.10 = 11,
+           inc.10.15 = 12,
+           inc.15.25 = 13,
+           inc.25.35 = 14,
+           inc.35.50 = 15,
+           inc.50.75 = 16,
+           inc.75.100 = 17,
+           inc.100.150 = 18,
+           inc.150.200 = 19,
+           inc.200.abv = 20,
+           total.households = 21,
+           couple.housing = 22,
+           #marital status currently commented out due to bad stat, downshift and adjust when needed
+           total.educ = 23,
+           educ.9th = 24,
+           educ.no.dip = 25,
+           educ.dip = 26,
+           educ.col.no.deg = 27,
+           educ.associate = 28,
+           educ.bachelor = 29,
+           educ.graduate.deg = 30,
+           owner = 31,
+           renter = 32,
+           owner.hh.size = 33,
+           renter.hh.size = 34,
+           over.18.pop = 35,
+           over.65.pop =36,
+           GINI = 37,
+           first.quant = 38,
+           second.quant = 39,
+           third.quant = 40,
+           fourth.quant = 41,
+           fifth.quant = 42,
+           top5 = 43,
+           mort.20 = 44,
+           mort.20.30 = 45,
+           mort.20.35 = 46, 
+           mort.20.35.30 = 47,
+           mort.35.50 = 48,
+           mort.35.50.30 = 49,
+           mort.50.75 = 50,
+           mort.50.75.30 = 51,
+           mort.75 = 52, 
+           mort.75.30 = 53,
+           nmort.20 = 54,
+           nmort.20.30 = 55,
+           nmort.20.35 = 56, 
+           nmort.20.35.30 = 57,
+           nmort.35.50 = 58,
+           nmort.35.50.30 = 59,
+           nmort.50.75 = 60,
+           nmort.50.75.30 = 61,
+           nmort.75 = 62, 
+           nmort.75.30 = 63
+    )
+  #commented out, cuts all non-country observations
+  new_name = subset(new_name[(54:n),])
+  return(new_name)
+}
+
+merge10c = name_align.c(dp.2010, merge10)
+merge11c = name_align.c(dp.2011, merge10)
+merge12c = name_align.c(dp.2012, merge12)
+merge13c = name_align.c(dp.2013, merge13)
+merge14c = name_align.c(dp.2014, merge14)
+merge15c = name_align.c(dp.2015, merge15)
+merge16c = name_align.c(dp.2016, merge16)
+merge17c = name_align.c(dp.2017, merge17)
+merge18c = name_align.c(dp.2018, merge18)
+merge19c = name_align.c(dp.2019, merge19)
+merge21c = name_align.c(dp.2021, merge21)
+merge22c = name_align.c(dp.2022, merge21)
+
+mergedc = rbind(merge10c, merge11c, merge12c, merge13c, merge14c, merge15c, merge16c, merge17c, merge18c, merge19c, merge21c, merge22c)
+
+mergedc = mergedc[order(mergedc$county),]
+
+#create list of names which appear in all periods
+cnames = names(which(table(mergedc$county) == 12))
+
+#only observations that appear in all periods
+mergedc.y = mergedc[mergedc$county %in% cnames,]
